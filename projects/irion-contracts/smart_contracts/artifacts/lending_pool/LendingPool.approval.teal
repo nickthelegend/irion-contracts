@@ -1,0 +1,1044 @@
+#pragma version 11
+#pragma typetrack false
+
+// @algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram() -> uint64:
+main:
+    intcblock 0 1 8 4 1000000000000
+    bytecblock "total_deposits" "l" "total_borrowed" "pool_asset_id" "last_update_round" 0x151f7c75 "lp_token_id" "reserve_factor" "interest_rate_base"
+    // smart_contracts/lending_pool/contract.algo.ts:31
+    // export class LendingPool extends Contract {
+    txn OnCompletion
+    !
+    assert // OnCompletion must be NoOp
+    txn ApplicationID
+    bz main_create_NoOp@11
+    pushbytess 0x93353186 0x21f1ddff 0x99ecf519 0x44a72580 0xefd9af86 0x88622380 0x01cad802 // method "deposit(axfer)void", method "withdraw(uint64)void", method "borrow(uint64,address)uint64", method "repay(axfer,byte[])void", method "get_pool_stats()(uint64,uint64,uint64)", method "get_lender_position(address)(uint64,uint64)", method "set_credit_score_app(uint64)void"
+    txna ApplicationArgs 0
+    match deposit withdraw borrow repay get_pool_stats get_lender_position set_credit_score_app
+    err
+
+main_create_NoOp@11:
+    // smart_contracts/lending_pool/contract.algo.ts:31
+    // export class LendingPool extends Contract {
+    pushbytes 0xa0cadf8a // method "bootstrap(uint64)void"
+    txna ApplicationArgs 0
+    match bootstrap
+    err
+
+
+// smart_contracts/lending_pool/contract.algo.ts::LendingPool.bootstrap[routing]() -> void:
+bootstrap:
+    // smart_contracts/lending_pool/contract.algo.ts:44
+    // @abimethod({ onCreate: 'require' })
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/lending_pool/contract.algo.ts:36
+    // pool_asset_id = GlobalState<uint64>()
+    bytec_3 // "pool_asset_id"
+    // smart_contracts/lending_pool/contract.algo.ts:46
+    // this.pool_asset_id.value = pool_asset_id
+    swap
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:48-56
+    // const create_lp_token = itxn.assetConfig({
+    //   total: Uint64(1_000_000_000_000),
+    //   decimals: Uint64(6),
+    //   unitName: 'LPC',
+    //   assetName: 'Irion LP',
+    //   manager: Global.currentApplicationAddress,
+    //   reserve: Global.currentApplicationAddress,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_begin
+    // smart_contracts/lending_pool/contract.algo.ts:53
+    // manager: Global.currentApplicationAddress,
+    global CurrentApplicationAddress
+    // smart_contracts/lending_pool/contract.algo.ts:54
+    // reserve: Global.currentApplicationAddress,
+    dup
+    itxn_field ConfigAssetReserve
+    itxn_field ConfigAssetManager
+    // smart_contracts/lending_pool/contract.algo.ts:52
+    // assetName: 'Irion LP',
+    pushbytes "Irion LP"
+    itxn_field ConfigAssetName
+    // smart_contracts/lending_pool/contract.algo.ts:51
+    // unitName: 'LPC',
+    pushbytes "LPC"
+    itxn_field ConfigAssetUnitName
+    // smart_contracts/lending_pool/contract.algo.ts:50
+    // decimals: Uint64(6),
+    pushint 6 // 6
+    itxn_field ConfigAssetDecimals
+    // smart_contracts/lending_pool/contract.algo.ts:49
+    // total: Uint64(1_000_000_000_000),
+    intc 4 // 1000000000000
+    itxn_field ConfigAssetTotal
+    // smart_contracts/lending_pool/contract.algo.ts:48-56
+    // const create_lp_token = itxn.assetConfig({
+    //   total: Uint64(1_000_000_000_000),
+    //   decimals: Uint64(6),
+    //   unitName: 'LPC',
+    //   assetName: 'Irion LP',
+    //   manager: Global.currentApplicationAddress,
+    //   reserve: Global.currentApplicationAddress,
+    //   fee: Uint64(0),
+    // }).submit()
+    pushint 3 // 3
+    itxn_field TypeEnum
+    // smart_contracts/lending_pool/contract.algo.ts:55
+    // fee: Uint64(0),
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/lending_pool/contract.algo.ts:48-56
+    // const create_lp_token = itxn.assetConfig({
+    //   total: Uint64(1_000_000_000_000),
+    //   decimals: Uint64(6),
+    //   unitName: 'LPC',
+    //   assetName: 'Irion LP',
+    //   manager: Global.currentApplicationAddress,
+    //   reserve: Global.currentApplicationAddress,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_submit
+    // smart_contracts/lending_pool/contract.algo.ts:37
+    // lp_token_id = GlobalState<uint64>()
+    bytec 6 // "lp_token_id"
+    itxn CreatedAssetID
+    // smart_contracts/lending_pool/contract.algo.ts:58
+    // this.lp_token_id.value = create_lp_token.createdAsset.id
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:32
+    // total_deposits = GlobalState<uint64>()
+    bytec_0 // "total_deposits"
+    // smart_contracts/lending_pool/contract.algo.ts:59
+    // this.total_deposits.value = Uint64(0)
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:33
+    // total_borrowed = GlobalState<uint64>()
+    bytec_2 // "total_borrowed"
+    // smart_contracts/lending_pool/contract.algo.ts:60
+    // this.total_borrowed.value = Uint64(0)
+    intc_0 // 0
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:34
+    // reserve_factor = GlobalState<uint64>()
+    bytec 7 // "reserve_factor"
+    // smart_contracts/lending_pool/contract.algo.ts:61
+    // this.reserve_factor.value = Uint64(1000)
+    pushint 1000 // 1000
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:35
+    // interest_rate_base = GlobalState<uint64>()
+    bytec 8 // "interest_rate_base"
+    // smart_contracts/lending_pool/contract.algo.ts:62
+    // this.interest_rate_base.value = Uint64(500)
+    pushint 500 // 500
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:38
+    // last_update_round = GlobalState<uint64>()
+    bytec 4 // "last_update_round"
+    // smart_contracts/lending_pool/contract.algo.ts:63
+    // this.last_update_round.value = Global.round
+    global Round
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:44
+    // @abimethod({ onCreate: 'require' })
+    intc_1 // 1
+    return
+
+
+// smart_contracts/lending_pool/contract.algo.ts::LendingPool.deposit[routing]() -> void:
+deposit:
+    pushbytes ""
+    // smart_contracts/lending_pool/contract.algo.ts:66
+    // @abimethod()
+    txn GroupIndex
+    intc_1 // 1
+    -
+    dup
+    gtxns TypeEnum
+    intc_3 // axfer
+    ==
+    assert // transaction type is axfer
+    // smart_contracts/lending_pool/contract.algo.ts:69
+    // payment.xferAsset.id === this.pool_asset_id.value,
+    dup
+    gtxns XferAsset
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:36
+    // pool_asset_id = GlobalState<uint64>()
+    bytec_3 // "pool_asset_id"
+    // smart_contracts/lending_pool/contract.algo.ts:69
+    // payment.xferAsset.id === this.pool_asset_id.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    ==
+    // smart_contracts/lending_pool/contract.algo.ts:68-71
+    // assert(
+    //   payment.xferAsset.id === this.pool_asset_id.value,
+    //   'Asset must be the pool asset'
+    // )
+    assert // Asset must be the pool asset
+    // smart_contracts/lending_pool/contract.algo.ts:73
+    // payment.assetReceiver.bytes === Global.currentApplicationAddress.bytes,
+    dup
+    gtxns AssetReceiver
+    global CurrentApplicationAddress
+    ==
+    // smart_contracts/lending_pool/contract.algo.ts:72-75
+    // assert(
+    //   payment.assetReceiver.bytes === Global.currentApplicationAddress.bytes,
+    //   'Asset must be received by the pool'
+    // )
+    assert // Asset must be received by the pool
+    // smart_contracts/lending_pool/contract.algo.ts:76
+    // assert(payment.assetAmount > Uint64(0), 'Deposit amount must be > 0')
+    gtxns AssetAmount
+    dup
+    assert // Deposit amount must be > 0
+    // smart_contracts/lending_pool/contract.algo.ts:78
+    // this.update_accrued_yield(Txn.sender)
+    txn Sender
+    callsub update_accrued_yield
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    bytec_1 // "l"
+    // smart_contracts/lending_pool/contract.algo.ts:80
+    // const current_position = this.lender_boxes(Txn.sender).exists
+    txn Sender
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    concat
+    // smart_contracts/lending_pool/contract.algo.ts:80
+    // const current_position = this.lender_boxes(Txn.sender).exists
+    box_len
+    bury 1
+    // smart_contracts/lending_pool/contract.algo.ts:80-82
+    // const current_position = this.lender_boxes(Txn.sender).exists
+    //   ? this.lender_boxes(Txn.sender).value
+    //   : { deposit_amount: Uint64(0), deposit_round: Global.round, accrued_yield: Uint64(0) }
+    bz deposit_ternary_false@3
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    bytec_1 // "l"
+    // smart_contracts/lending_pool/contract.algo.ts:81
+    // ? this.lender_boxes(Txn.sender).value
+    txn Sender
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    concat
+    // smart_contracts/lending_pool/contract.algo.ts:81
+    // ? this.lender_boxes(Txn.sender).value
+    box_get
+    assert // Box must have value
+
+deposit_ternary_merge@4:
+    // smart_contracts/lending_pool/contract.algo.ts:84
+    // const deposit_amount: uint64 = current_position.deposit_amount + payment.assetAmount
+    dup
+    intc_0 // 0
+    extract_uint64
+    dig 2
+    +
+    // smart_contracts/lending_pool/contract.algo.ts:85
+    // const deposit_round: uint64 = Global.round
+    global Round
+    // smart_contracts/lending_pool/contract.algo.ts:90
+    // accrued_yield: current_position.accrued_yield,
+    uncover 2
+    extract 16 8
+    // smart_contracts/lending_pool/contract.algo.ts:87-91
+    // this.lender_boxes(Txn.sender).value = {
+    //   deposit_amount,
+    //   deposit_round,
+    //   accrued_yield: current_position.accrued_yield,
+    // }
+    uncover 2
+    itob
+    uncover 2
+    itob
+    concat
+    swap
+    concat
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    bytec_1 // "l"
+    // smart_contracts/lending_pool/contract.algo.ts:87
+    // this.lender_boxes(Txn.sender).value = {
+    txn Sender
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    concat
+    // smart_contracts/lending_pool/contract.algo.ts:87-91
+    // this.lender_boxes(Txn.sender).value = {
+    //   deposit_amount,
+    //   deposit_round,
+    //   accrued_yield: current_position.accrued_yield,
+    // }
+    swap
+    box_put
+    // smart_contracts/lending_pool/contract.algo.ts:95
+    // this.total_deposits.value
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:32
+    // total_deposits = GlobalState<uint64>()
+    bytec_0 // "total_deposits"
+    // smart_contracts/lending_pool/contract.algo.ts:95
+    // this.total_deposits.value
+    app_global_get_ex
+    swap
+    dup
+    cover 2
+    bury 4
+    assert // check GlobalState exists
+    // smart_contracts/lending_pool/contract.algo.ts:113
+    // if (existing_deposits === Uint64(0)) {
+    bnz deposit_after_if_else@7
+    dup
+
+deposit_after_inlined_smart_contracts/lending_pool/contract.algo.ts::LendingPool.calculate_lp_tokens@8:
+    // smart_contracts/lending_pool/contract.algo.ts:98-103
+    // itxn.assetTransfer({
+    //   xferAsset: this.lp_token_id.value,
+    //   assetReceiver: Txn.sender,
+    //   assetAmount: lp_tokens_to_mint,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_begin
+    // smart_contracts/lending_pool/contract.algo.ts:99
+    // xferAsset: this.lp_token_id.value,
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:37
+    // lp_token_id = GlobalState<uint64>()
+    bytec 6 // "lp_token_id"
+    // smart_contracts/lending_pool/contract.algo.ts:99
+    // xferAsset: this.lp_token_id.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/lending_pool/contract.algo.ts:100
+    // assetReceiver: Txn.sender,
+    txn Sender
+    uncover 2
+    itxn_field AssetAmount
+    itxn_field AssetReceiver
+    itxn_field XferAsset
+    // smart_contracts/lending_pool/contract.algo.ts:98-103
+    // itxn.assetTransfer({
+    //   xferAsset: this.lp_token_id.value,
+    //   assetReceiver: Txn.sender,
+    //   assetAmount: lp_tokens_to_mint,
+    //   fee: Uint64(0),
+    // }).submit()
+    intc_3 // 4
+    itxn_field TypeEnum
+    // smart_contracts/lending_pool/contract.algo.ts:102
+    // fee: Uint64(0),
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/lending_pool/contract.algo.ts:98-103
+    // itxn.assetTransfer({
+    //   xferAsset: this.lp_token_id.value,
+    //   assetReceiver: Txn.sender,
+    //   assetAmount: lp_tokens_to_mint,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_submit
+    // smart_contracts/lending_pool/contract.algo.ts:105
+    // this.total_deposits.value = this.total_deposits.value + payment.assetAmount
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:32
+    // total_deposits = GlobalState<uint64>()
+    bytec_0 // "total_deposits"
+    // smart_contracts/lending_pool/contract.algo.ts:105
+    // this.total_deposits.value = this.total_deposits.value + payment.assetAmount
+    app_global_get_ex
+    assert // check GlobalState exists
+    dig 1
+    +
+    // smart_contracts/lending_pool/contract.algo.ts:32
+    // total_deposits = GlobalState<uint64>()
+    bytec_0 // "total_deposits"
+    // smart_contracts/lending_pool/contract.algo.ts:105
+    // this.total_deposits.value = this.total_deposits.value + payment.assetAmount
+    swap
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:38
+    // last_update_round = GlobalState<uint64>()
+    bytec 4 // "last_update_round"
+    // smart_contracts/lending_pool/contract.algo.ts:106
+    // this.last_update_round.value = Global.round
+    global Round
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:66
+    // @abimethod()
+    intc_1 // 1
+    return
+
+deposit_after_if_else@7:
+    // smart_contracts/lending_pool/contract.algo.ts:118
+    // const new_lp_amount: uint64 = (deposit_amount * total_lp_supply) / existing_deposits
+    dup
+    intc 4 // 1000000000000
+    *
+    dig 2
+    /
+    // smart_contracts/lending_pool/contract.algo.ts:93-96
+    // const lp_tokens_to_mint: uint64 = this.calculate_lp_tokens(
+    //   payment.assetAmount,
+    //   this.total_deposits.value
+    // )
+    b deposit_after_inlined_smart_contracts/lending_pool/contract.algo.ts::LendingPool.calculate_lp_tokens@8
+
+deposit_ternary_false@3:
+    // smart_contracts/lending_pool/contract.algo.ts:82
+    // : { deposit_amount: Uint64(0), deposit_round: Global.round, accrued_yield: Uint64(0) }
+    global Round
+    intc_0 // 0
+    itob
+    swap
+    itob
+    dig 1
+    swap
+    concat
+    swap
+    concat
+    b deposit_ternary_merge@4
+
+
+// smart_contracts/lending_pool/contract.algo.ts::LendingPool.withdraw[routing]() -> void:
+withdraw:
+    // smart_contracts/lending_pool/contract.algo.ts:122
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/lending_pool/contract.algo.ts:124
+    // assert(lp_amount > Uint64(0), 'LP amount must be > 0')
+    assert // LP amount must be > 0
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    bytec_1 // "l"
+    // smart_contracts/lending_pool/contract.algo.ts:126
+    // const position = clone(this.lender_boxes(Txn.sender).value)
+    txn Sender
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    concat
+    // smart_contracts/lending_pool/contract.algo.ts:126
+    // const position = clone(this.lender_boxes(Txn.sender).value)
+    box_get
+    assert // Box must have value
+    // smart_contracts/lending_pool/contract.algo.ts:127
+    // assert(position.deposit_amount > Uint64(0), 'No deposit found')
+    intc_0 // 0
+    extract_uint64
+    assert // No deposit found
+    // smart_contracts/lending_pool/contract.algo.ts:129
+    // this.update_accrued_yield(Txn.sender)
+    txn Sender
+    callsub update_accrued_yield
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    bytec_1 // "l"
+    // smart_contracts/lending_pool/contract.algo.ts:131
+    // const updated_position = clone(this.lender_boxes(Txn.sender).value)
+    txn Sender
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    concat
+    // smart_contracts/lending_pool/contract.algo.ts:131
+    // const updated_position = clone(this.lender_boxes(Txn.sender).value)
+    box_get
+    assert // Box must have value
+    // smart_contracts/lending_pool/contract.algo.ts:132
+    // const yield_earned: uint64 = updated_position.accrued_yield
+    dup
+    pushint 16 // 16
+    extract_uint64
+    // smart_contracts/lending_pool/contract.algo.ts:133
+    // const total_withdrawal: uint64 = updated_position.deposit_amount + yield_earned
+    swap
+    intc_0 // 0
+    extract_uint64
+    dup
+    uncover 2
+    +
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    bytec_1 // "l"
+    // smart_contracts/lending_pool/contract.algo.ts:135
+    // this.lender_boxes(Txn.sender).delete()
+    txn Sender
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    concat
+    // smart_contracts/lending_pool/contract.algo.ts:135
+    // this.lender_boxes(Txn.sender).delete()
+    box_del
+    pop
+    // smart_contracts/lending_pool/contract.algo.ts:137
+    // this.total_deposits.value = this.total_deposits.value - updated_position.deposit_amount
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:32
+    // total_deposits = GlobalState<uint64>()
+    bytec_0 // "total_deposits"
+    // smart_contracts/lending_pool/contract.algo.ts:137
+    // this.total_deposits.value = this.total_deposits.value - updated_position.deposit_amount
+    app_global_get_ex
+    assert // check GlobalState exists
+    uncover 2
+    -
+    // smart_contracts/lending_pool/contract.algo.ts:32
+    // total_deposits = GlobalState<uint64>()
+    bytec_0 // "total_deposits"
+    // smart_contracts/lending_pool/contract.algo.ts:137
+    // this.total_deposits.value = this.total_deposits.value - updated_position.deposit_amount
+    swap
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:139-144
+    // itxn.assetTransfer({
+    //   xferAsset: this.pool_asset_id.value,
+    //   assetReceiver: Txn.sender,
+    //   assetAmount: total_withdrawal,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_begin
+    // smart_contracts/lending_pool/contract.algo.ts:140
+    // xferAsset: this.pool_asset_id.value,
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:36
+    // pool_asset_id = GlobalState<uint64>()
+    bytec_3 // "pool_asset_id"
+    // smart_contracts/lending_pool/contract.algo.ts:140
+    // xferAsset: this.pool_asset_id.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/lending_pool/contract.algo.ts:141
+    // assetReceiver: Txn.sender,
+    txn Sender
+    uncover 2
+    itxn_field AssetAmount
+    itxn_field AssetReceiver
+    itxn_field XferAsset
+    // smart_contracts/lending_pool/contract.algo.ts:139-144
+    // itxn.assetTransfer({
+    //   xferAsset: this.pool_asset_id.value,
+    //   assetReceiver: Txn.sender,
+    //   assetAmount: total_withdrawal,
+    //   fee: Uint64(0),
+    // }).submit()
+    intc_3 // 4
+    itxn_field TypeEnum
+    // smart_contracts/lending_pool/contract.algo.ts:143
+    // fee: Uint64(0),
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/lending_pool/contract.algo.ts:139-144
+    // itxn.assetTransfer({
+    //   xferAsset: this.pool_asset_id.value,
+    //   assetReceiver: Txn.sender,
+    //   assetAmount: total_withdrawal,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_submit
+    // smart_contracts/lending_pool/contract.algo.ts:38
+    // last_update_round = GlobalState<uint64>()
+    bytec 4 // "last_update_round"
+    // smart_contracts/lending_pool/contract.algo.ts:146
+    // this.last_update_round.value = Global.round
+    global Round
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:122
+    // @abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts/lending_pool/contract.algo.ts::LendingPool.borrow[routing]() -> void:
+borrow:
+    // smart_contracts/lending_pool/contract.algo.ts:149
+    // @abimethod()
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    dup
+    btoi
+    txna ApplicationArgs 2
+    dup
+    len
+    pushint 32 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/lending_pool/contract.algo.ts:151
+    // const pool_asset: uint64 = this.pool_asset_id.value
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:36
+    // pool_asset_id = GlobalState<uint64>()
+    bytec_3 // "pool_asset_id"
+    // smart_contracts/lending_pool/contract.algo.ts:151
+    // const pool_asset: uint64 = this.pool_asset_id.value
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/lending_pool/contract.algo.ts:153
+    // const available: uint64 = this.total_deposits.value - this.total_borrowed.value
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:32
+    // total_deposits = GlobalState<uint64>()
+    bytec_0 // "total_deposits"
+    // smart_contracts/lending_pool/contract.algo.ts:153
+    // const available: uint64 = this.total_deposits.value - this.total_borrowed.value
+    app_global_get_ex
+    assert // check GlobalState exists
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:33
+    // total_borrowed = GlobalState<uint64>()
+    bytec_2 // "total_borrowed"
+    // smart_contracts/lending_pool/contract.algo.ts:153
+    // const available: uint64 = this.total_deposits.value - this.total_borrowed.value
+    app_global_get_ex
+    assert // check GlobalState exists
+    swap
+    dig 1
+    -
+    // smart_contracts/lending_pool/contract.algo.ts:154
+    // assert(amount <= available, 'Insufficient liquidity')
+    dig 4
+    >=
+    assert // Insufficient liquidity
+    // smart_contracts/lending_pool/contract.algo.ts:156
+    // this.total_borrowed.value = this.total_borrowed.value + amount
+    dig 3
+    +
+    // smart_contracts/lending_pool/contract.algo.ts:33
+    // total_borrowed = GlobalState<uint64>()
+    bytec_2 // "total_borrowed"
+    // smart_contracts/lending_pool/contract.algo.ts:156
+    // this.total_borrowed.value = this.total_borrowed.value + amount
+    swap
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:158-163
+    // itxn.assetTransfer({
+    //   xferAsset: pool_asset,
+    //   assetReceiver: borrower,
+    //   assetAmount: amount,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_begin
+    uncover 2
+    itxn_field AssetAmount
+    itxn_field XferAsset
+    itxn_field AssetReceiver
+    intc_3 // 4
+    itxn_field TypeEnum
+    // smart_contracts/lending_pool/contract.algo.ts:162
+    // fee: Uint64(0),
+    intc_0 // 0
+    itxn_field Fee
+    // smart_contracts/lending_pool/contract.algo.ts:158-163
+    // itxn.assetTransfer({
+    //   xferAsset: pool_asset,
+    //   assetReceiver: borrower,
+    //   assetAmount: amount,
+    //   fee: Uint64(0),
+    // }).submit()
+    itxn_submit
+    // smart_contracts/lending_pool/contract.algo.ts:149
+    // @abimethod()
+    bytec 5 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts/lending_pool/contract.algo.ts::LendingPool.repay[routing]() -> void:
+repay:
+    // smart_contracts/lending_pool/contract.algo.ts:168
+    // @abimethod()
+    txn GroupIndex
+    intc_1 // 1
+    -
+    dup
+    gtxns TypeEnum
+    intc_3 // axfer
+    ==
+    assert // transaction type is axfer
+    txna ApplicationArgs 1
+    dup
+    intc_0 // 0
+    extract_uint16 // on error: invalid array length header
+    pushint 2 // 2
+    +
+    swap
+    len
+    ==
+    assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>
+    // smart_contracts/lending_pool/contract.algo.ts:170
+    // const pool_asset: uint64 = this.pool_asset_id.value
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:36
+    // pool_asset_id = GlobalState<uint64>()
+    bytec_3 // "pool_asset_id"
+    // smart_contracts/lending_pool/contract.algo.ts:170
+    // const pool_asset: uint64 = this.pool_asset_id.value
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/lending_pool/contract.algo.ts:172
+    // payment.xferAsset.id === pool_asset,
+    dig 1
+    gtxns XferAsset
+    ==
+    // smart_contracts/lending_pool/contract.algo.ts:171-174
+    // assert(
+    //   payment.xferAsset.id === pool_asset,
+    //   'Asset must be the pool asset'
+    // )
+    assert // Asset must be the pool asset
+    // smart_contracts/lending_pool/contract.algo.ts:176
+    // payment.assetReceiver.bytes === Global.currentApplicationAddress.bytes,
+    dup
+    gtxns AssetReceiver
+    global CurrentApplicationAddress
+    ==
+    // smart_contracts/lending_pool/contract.algo.ts:175-178
+    // assert(
+    //   payment.assetReceiver.bytes === Global.currentApplicationAddress.bytes,
+    //   'Asset must be received by pool'
+    // )
+    assert // Asset must be received by pool
+    // smart_contracts/lending_pool/contract.algo.ts:179
+    // assert(payment.assetAmount > Uint64(0), 'Repayment amount must be > 0')
+    gtxns AssetAmount
+    dup
+    assert // Repayment amount must be > 0
+    // smart_contracts/lending_pool/contract.algo.ts:181
+    // this.total_borrowed.value = this.total_borrowed.value - payment.assetAmount
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:33
+    // total_borrowed = GlobalState<uint64>()
+    bytec_2 // "total_borrowed"
+    // smart_contracts/lending_pool/contract.algo.ts:181
+    // this.total_borrowed.value = this.total_borrowed.value - payment.assetAmount
+    app_global_get_ex
+    assert // check GlobalState exists
+    swap
+    -
+    // smart_contracts/lending_pool/contract.algo.ts:33
+    // total_borrowed = GlobalState<uint64>()
+    bytec_2 // "total_borrowed"
+    // smart_contracts/lending_pool/contract.algo.ts:181
+    // this.total_borrowed.value = this.total_borrowed.value - payment.assetAmount
+    swap
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:183
+    // const reserve_fee: uint64 = (payment.assetAmount * this.reserve_factor.value) / BPS_MULTIPLIER
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:34
+    // reserve_factor = GlobalState<uint64>()
+    bytec 7 // "reserve_factor"
+    // smart_contracts/lending_pool/contract.algo.ts:183
+    // const reserve_fee: uint64 = (payment.assetAmount * this.reserve_factor.value) / BPS_MULTIPLIER
+    app_global_get_ex
+    bury 1
+    assert // check GlobalState exists
+    // smart_contracts/lending_pool/contract.algo.ts:168
+    // @abimethod()
+    intc_1 // 1
+    return
+
+
+// smart_contracts/lending_pool/contract.algo.ts::LendingPool.get_pool_stats[routing]() -> void:
+get_pool_stats:
+    // smart_contracts/lending_pool/contract.algo.ts:239
+    // this.total_deposits.value,
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:32
+    // total_deposits = GlobalState<uint64>()
+    bytec_0 // "total_deposits"
+    // smart_contracts/lending_pool/contract.algo.ts:239
+    // this.total_deposits.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/lending_pool/contract.algo.ts:240
+    // this.total_borrowed.value,
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:33
+    // total_borrowed = GlobalState<uint64>()
+    bytec_2 // "total_borrowed"
+    // smart_contracts/lending_pool/contract.algo.ts:240
+    // this.total_borrowed.value,
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/lending_pool/contract.algo.ts:241
+    // this.calculate_utilization(),
+    callsub calculate_utilization
+    // smart_contracts/lending_pool/contract.algo.ts:238-242
+    // return [
+    //   this.total_deposits.value,
+    //   this.total_borrowed.value,
+    //   this.calculate_utilization(),
+    // ]
+    uncover 2
+    itob
+    uncover 2
+    itob
+    concat
+    swap
+    itob
+    concat
+    // smart_contracts/lending_pool/contract.algo.ts:236
+    // @abimethod({ readonly: true })
+    bytec 5 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+
+// smart_contracts/lending_pool/contract.algo.ts::LendingPool.get_lender_position[routing]() -> void:
+get_lender_position:
+    // smart_contracts/lending_pool/contract.algo.ts:245
+    // @abimethod({ readonly: true })
+    txna ApplicationArgs 1
+    dup
+    len
+    pushint 32 // 32
+    ==
+    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    bytec_1 // "l"
+    swap
+    concat
+    dup
+    // smart_contracts/lending_pool/contract.algo.ts:247
+    // if (!this.lender_boxes(lender).exists) {
+    box_len
+    bury 1
+    bnz get_lender_position_after_if_else@3
+    // smart_contracts/lending_pool/contract.algo.ts:248
+    // return [Uint64(0), Uint64(0)]
+    pushbytes 0x00000000000000000000000000000000
+
+get_lender_position_after_inlined_smart_contracts/lending_pool/contract.algo.ts::LendingPool.get_lender_position@4:
+    // smart_contracts/lending_pool/contract.algo.ts:245
+    // @abimethod({ readonly: true })
+    bytec 5 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+get_lender_position_after_if_else@3:
+    // smart_contracts/lending_pool/contract.algo.ts:250
+    // const position = clone(this.lender_boxes(lender).value)
+    dup
+    box_get
+    assert // Box must have value
+    // smart_contracts/lending_pool/contract.algo.ts:251
+    // return [position.deposit_amount, position.accrued_yield]
+    dup
+    extract 0 8
+    swap
+    extract 16 8
+    concat
+    // smart_contracts/lending_pool/contract.algo.ts:245
+    // @abimethod({ readonly: true })
+    b get_lender_position_after_inlined_smart_contracts/lending_pool/contract.algo.ts::LendingPool.get_lender_position@4
+
+
+// smart_contracts/lending_pool/contract.algo.ts::LendingPool.set_credit_score_app[routing]() -> void:
+set_credit_score_app:
+    // smart_contracts/lending_pool/contract.algo.ts:254
+    // public set_credit_score_app(app_id: uint64): void {
+    txna ApplicationArgs 1
+    dup
+    len
+    intc_2 // 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    btoi
+    // smart_contracts/lending_pool/contract.algo.ts:42
+    // credit_score_app_id = GlobalState<uint64>()
+    pushbytes "credit_score_app_id"
+    // smart_contracts/lending_pool/contract.algo.ts:255
+    // this.credit_score_app_id.value = app_id
+    swap
+    app_global_put
+    // smart_contracts/lending_pool/contract.algo.ts:254
+    // public set_credit_score_app(app_id: uint64): void {
+    intc_1 // 1
+    return
+
+
+// smart_contracts/lending_pool/contract.algo.ts::LendingPool.update_accrued_yield(lender: bytes) -> void:
+update_accrued_yield:
+    // smart_contracts/lending_pool/contract.algo.ts:186
+    // private update_accrued_yield(lender: Account): void {
+    proto 1 0
+    intc_0 // 0
+    pushbytes ""
+    // smart_contracts/lending_pool/contract.algo.ts:40
+    // lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
+    bytec_1 // "l"
+    frame_dig -1
+    concat
+    dup
+    // smart_contracts/lending_pool/contract.algo.ts:188
+    // if (!key.exists) {
+    box_len
+    bury 1
+    bnz update_accrued_yield_after_if_else@2
+    // smart_contracts/lending_pool/contract.algo.ts:189
+    // return
+    retsub
+
+update_accrued_yield_after_if_else@2:
+    // smart_contracts/lending_pool/contract.algo.ts:192
+    // const position = clone(key.value)
+    frame_dig 2
+    box_get
+    swap
+    dup
+    cover 2
+    frame_bury 0
+    assert // Box must have value
+    // smart_contracts/lending_pool/contract.algo.ts:193
+    // const rounds_elapsed: uint64 = Global.round - position.deposit_round
+    global Round
+    swap
+    intc_2 // 8
+    extract_uint64
+    -
+    dup
+    frame_bury 1
+    // smart_contracts/lending_pool/contract.algo.ts:195
+    // if (rounds_elapsed === Uint64(0)) {
+    bnz update_accrued_yield_after_if_else@4
+    // smart_contracts/lending_pool/contract.algo.ts:196
+    // return
+    retsub
+
+update_accrued_yield_after_if_else@4:
+    // smart_contracts/lending_pool/contract.algo.ts:212
+    // const utilization: uint64 = this.calculate_utilization()
+    callsub calculate_utilization
+    // smart_contracts/lending_pool/contract.algo.ts:213
+    // const rate: uint64 = this.interest_rate_base.value +
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:35
+    // interest_rate_base = GlobalState<uint64>()
+    bytec 8 // "interest_rate_base"
+    // smart_contracts/lending_pool/contract.algo.ts:213
+    // const rate: uint64 = this.interest_rate_base.value +
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/lending_pool/contract.algo.ts:214
+    // ((utilization * UTILIZATION_SLOPE) / BPS_MULTIPLIER)
+    swap
+    pushint 800 // 800
+    *
+    pushint 10000 // 10000
+    /
+    // smart_contracts/lending_pool/contract.algo.ts:213-214
+    // const rate: uint64 = this.interest_rate_base.value +
+    //   ((utilization * UTILIZATION_SLOPE) / BPS_MULTIPLIER)
+    +
+    // smart_contracts/lending_pool/contract.algo.ts:201
+    // position.deposit_amount,
+    frame_dig 0
+    dup
+    cover 2
+    intc_0 // 0
+    extract_uint64
+    // smart_contracts/lending_pool/contract.algo.ts:231
+    // const yield_amount: uint64 = (deposit_amount * annual_rate * rounds_elapsed) /
+    *
+    frame_dig 1
+    *
+    // smart_contracts/lending_pool/contract.algo.ts:232
+    // (BPS_MULTIPLIER * rounds_per_year)
+    pushint 15768000000 // 15768000000
+    // smart_contracts/lending_pool/contract.algo.ts:231-232
+    // const yield_amount: uint64 = (deposit_amount * annual_rate * rounds_elapsed) /
+    //   (BPS_MULTIPLIER * rounds_per_year)
+    /
+    // smart_contracts/lending_pool/contract.algo.ts:206
+    // position.accrued_yield = position.accrued_yield + yield_earned
+    dig 1
+    pushint 16 // 16
+    extract_uint64
+    +
+    itob
+    replace2 16
+    // smart_contracts/lending_pool/contract.algo.ts:207
+    // position.deposit_round = Global.round
+    global Round
+    itob
+    replace2 8
+    // smart_contracts/lending_pool/contract.algo.ts:208
+    // key.value = clone(position)
+    frame_dig 2
+    swap
+    box_put
+    retsub
+
+
+// smart_contracts/lending_pool/contract.algo.ts::LendingPool.calculate_utilization() -> uint64:
+calculate_utilization:
+    // smart_contracts/lending_pool/contract.algo.ts:219
+    // if (this.total_deposits.value === Uint64(0)) {
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:32
+    // total_deposits = GlobalState<uint64>()
+    bytec_0 // "total_deposits"
+    // smart_contracts/lending_pool/contract.algo.ts:219
+    // if (this.total_deposits.value === Uint64(0)) {
+    app_global_get_ex
+    assert // check GlobalState exists
+    bnz calculate_utilization_after_if_else@2
+    // smart_contracts/lending_pool/contract.algo.ts:220
+    // return Uint64(0)
+    intc_0 // 0
+    retsub
+
+calculate_utilization_after_if_else@2:
+    // smart_contracts/lending_pool/contract.algo.ts:222
+    // return (this.total_borrowed.value * BPS_MULTIPLIER) / this.total_deposits.value
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:33
+    // total_borrowed = GlobalState<uint64>()
+    bytec_2 // "total_borrowed"
+    // smart_contracts/lending_pool/contract.algo.ts:222
+    // return (this.total_borrowed.value * BPS_MULTIPLIER) / this.total_deposits.value
+    app_global_get_ex
+    assert // check GlobalState exists
+    pushint 10000 // 10000
+    *
+    intc_0 // 0
+    // smart_contracts/lending_pool/contract.algo.ts:32
+    // total_deposits = GlobalState<uint64>()
+    bytec_0 // "total_deposits"
+    // smart_contracts/lending_pool/contract.algo.ts:222
+    // return (this.total_borrowed.value * BPS_MULTIPLIER) / this.total_deposits.value
+    app_global_get_ex
+    assert // check GlobalState exists
+    /
+    retsub

@@ -20,7 +20,21 @@
     "lib": [
       "ESNext"
     ],
+    "paths": {
+      "@algorandfoundation/algorand-typescript": [
+        "./node_modules/@algorandfoundation/algorand-typescript/index.d.ts"
+      ]
+    }
   },
-  "include": ["smart_contracts/**/*.ts"],
-  "exclude": ["node_modules", "dist", "coverage"]
+  "include": [
+    "smart_contracts/**/*.ts",
+    "artifacts/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "smart_contracts/**/*.algo.ts",
+    "smart_contracts/artifacts"
+  ]
 }
