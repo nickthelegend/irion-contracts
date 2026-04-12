@@ -35,11 +35,21 @@ export class MerchantEscrow extends Contract {
 
   escrow_boxes = BoxMap<uint64, EscrowData>({ keyPrefix: '' })
 
-  @abimethod({ onCreate: 'require' })
+  @abimethod({ allowActions: ['NoOp'], onCreate: 'require' })
+  public create(): void {}
+
+  @abimethod({ allowActions: ['NoOp', 'OptIn'], onCreate: 'allow' })
   public bootstrap(bnpl_app_id: uint64, usdc_asset_id: uint64): void {
     this.bnpl_app_id.value = bnpl_app_id
     this.settlement_delay_rounds.value = SETTLEMENT_DELAY_ROUNDS
     this.usdc_asset_id.value = usdc_asset_id
+
+    itxn.assetTransfer({
+      xferAsset: usdc_asset_id,
+      assetReceiver: Global.currentApplicationAddress,
+      assetAmount: Uint64(0),
+      fee: Uint64(0),
+    }).submit()
   }
 
   @abimethod()

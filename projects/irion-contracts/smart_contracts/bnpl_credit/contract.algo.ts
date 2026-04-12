@@ -48,7 +48,10 @@ export class BNPLCredit extends Contract {
   loan_boxes = BoxMap<uint64, LoanData>({ keyPrefix: 'l' })
   user_loans = BoxMap<Account, uint64[]>({ keyPrefix: 'u' })
 
-  @abimethod({ onCreate: 'require' })
+  @abimethod({ allowActions: ['NoOp'], onCreate: 'require' })
+  public create(): void {}
+
+  @abimethod({ allowActions: ['NoOp', 'OptIn'], onCreate: 'allow' })
   public bootstrap(
     credit_score_app_id: uint64,
     lending_pool_app_id: uint64

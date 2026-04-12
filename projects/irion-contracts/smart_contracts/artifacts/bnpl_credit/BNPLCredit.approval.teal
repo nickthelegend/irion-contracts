@@ -7,29 +7,53 @@ main:
     bytecblock "lending_pool_app_id" "l" "u" "installment_interval" "loan_counter" 0x151f7c75 "credit_score_app_id" "late_fee_bps" 0xebccb26c
     // smart_contracts/bnpl_credit/contract.algo.ts:41
     // export class BNPLCredit extends Contract {
+    pushbytes 0x8bef050e // method "bootstrap(uint64,uint64)void"
+    txna ApplicationArgs 0
+    match main_bootstrap_route@2
+
+main_switch_case_next@3:
+    // smart_contracts/bnpl_credit/contract.algo.ts:41
+    // export class BNPLCredit extends Contract {
     txn OnCompletion
     !
     assert // OnCompletion must be NoOp
     txn ApplicationID
-    bz main_create_NoOp@10
+    bz main_create_NoOp@12
     pushbytess 0xd2602e8e 0x3c413647 0x0073cb92 0x0e4ba688 0x5b3cb21c 0xde4aa7ca // method "initiate_loan(address,uint64,uint64)uint64", method "make_payment(uint64,axfer)void", method "dispute_loan(uint64)void", method "liquidate_loan(uint64)void", method "get_loan(uint64)(byte[],byte[],uint64,uint64,uint64,uint64,uint64,uint64,uint64)", method "get_user_loans(address)uint64[]"
     txna ApplicationArgs 0
     match initiate_loan make_payment dispute_loan liquidate_loan get_loan get_user_loans
     err
 
-main_create_NoOp@10:
+main_create_NoOp@12:
     // smart_contracts/bnpl_credit/contract.algo.ts:41
     // export class BNPLCredit extends Contract {
-    pushbytes 0x8bef050e // method "bootstrap(uint64,uint64)void"
+    pushbytes 0x4c5c61ba // method "create()void"
     txna ApplicationArgs 0
-    match bootstrap
+    match main_create_route@13
     err
+
+main_create_route@13:
+    // smart_contracts/bnpl_credit/contract.algo.ts:51
+    // @abimethod({ allowActions: ['NoOp'], onCreate: 'require' })
+    intc_2 // 1
+    return
+
+main_bootstrap_route@2:
+    // smart_contracts/bnpl_credit/contract.algo.ts:54
+    // @abimethod({ allowActions: ['NoOp', 'OptIn'], onCreate: 'allow' })
+    intc_2 // 1
+    txn OnCompletion
+    shl
+    pushint 3 // 3
+    &
+    assert // OnCompletion must be one of NoOp, OptIn
+    b bootstrap
 
 
 // smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.bootstrap[routing]() -> void:
 bootstrap:
-    // smart_contracts/bnpl_credit/contract.algo.ts:51
-    // @abimethod({ onCreate: 'require' })
+    // smart_contracts/bnpl_credit/contract.algo.ts:54
+    // @abimethod({ allowActions: ['NoOp', 'OptIn'], onCreate: 'allow' })
     txna ApplicationArgs 1
     dup
     len
@@ -47,47 +71,47 @@ bootstrap:
     // smart_contracts/bnpl_credit/contract.algo.ts:42
     // credit_score_app_id = GlobalState<uint64>()
     bytec 6 // "credit_score_app_id"
-    // smart_contracts/bnpl_credit/contract.algo.ts:56
+    // smart_contracts/bnpl_credit/contract.algo.ts:59
     // this.credit_score_app_id.value = credit_score_app_id
     uncover 2
     app_global_put
     // smart_contracts/bnpl_credit/contract.algo.ts:43
     // lending_pool_app_id = GlobalState<uint64>()
     bytec_0 // "lending_pool_app_id"
-    // smart_contracts/bnpl_credit/contract.algo.ts:57
+    // smart_contracts/bnpl_credit/contract.algo.ts:60
     // this.lending_pool_app_id.value = lending_pool_app_id
     swap
     app_global_put
     // smart_contracts/bnpl_credit/contract.algo.ts:44
     // loan_counter = GlobalState<uint64>()
     bytec 4 // "loan_counter"
-    // smart_contracts/bnpl_credit/contract.algo.ts:58
+    // smart_contracts/bnpl_credit/contract.algo.ts:61
     // this.loan_counter.value = Uint64(0)
     intc_0 // 0
     app_global_put
     // smart_contracts/bnpl_credit/contract.algo.ts:45
     // late_fee_bps = GlobalState<uint64>()
     bytec 7 // "late_fee_bps"
-    // smart_contracts/bnpl_credit/contract.algo.ts:59
+    // smart_contracts/bnpl_credit/contract.algo.ts:62
     // this.late_fee_bps.value = LATE_FEE_BPS
     pushint 200 // 200
     app_global_put
     // smart_contracts/bnpl_credit/contract.algo.ts:46
     // installment_interval = GlobalState<uint64>()
     bytec_3 // "installment_interval"
-    // smart_contracts/bnpl_credit/contract.algo.ts:60
+    // smart_contracts/bnpl_credit/contract.algo.ts:63
     // this.installment_interval.value = INSTALLMENT_INTERVAL_ROUNDS
     pushint 1576800 // 1576800
     app_global_put
-    // smart_contracts/bnpl_credit/contract.algo.ts:51
-    // @abimethod({ onCreate: 'require' })
+    // smart_contracts/bnpl_credit/contract.algo.ts:54
+    // @abimethod({ allowActions: ['NoOp', 'OptIn'], onCreate: 'allow' })
     intc_2 // 1
     return
 
 
 // smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.initiate_loan[routing]() -> void:
 initiate_loan:
-    // smart_contracts/bnpl_credit/contract.algo.ts:63
+    // smart_contracts/bnpl_credit/contract.algo.ts:66
     // @abimethod()
     txna ApplicationArgs 1
     dup
@@ -110,35 +134,35 @@ initiate_loan:
     ==
     assert // invalid number of bytes for arc4.uint64
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:69
+    // smart_contracts/bnpl_credit/contract.algo.ts:72
     // assert(amount > Uint64(0), 'Amount must be > 0')
     dig 1
     assert // Amount must be > 0
-    // smart_contracts/bnpl_credit/contract.algo.ts:70
+    // smart_contracts/bnpl_credit/contract.algo.ts:73
     // assert(num_installments > Uint64(0), 'Installments must be > 0')
     dup
     assert // Installments must be > 0
-    // smart_contracts/bnpl_credit/contract.algo.ts:71
+    // smart_contracts/bnpl_credit/contract.algo.ts:74
     // assert(num_installments <= Uint64(52), 'Max 52 installments')
     dup
     pushint 52 // 52
     <=
     assert // Max 52 installments
-    // smart_contracts/bnpl_credit/contract.algo.ts:73
+    // smart_contracts/bnpl_credit/contract.algo.ts:76
     // const lending_pool_app: uint64 = this.lending_pool_app_id.value
     intc_0 // 0
     // smart_contracts/bnpl_credit/contract.algo.ts:43
     // lending_pool_app_id = GlobalState<uint64>()
     bytec_0 // "lending_pool_app_id"
-    // smart_contracts/bnpl_credit/contract.algo.ts:73
+    // smart_contracts/bnpl_credit/contract.algo.ts:76
     // const lending_pool_app: uint64 = this.lending_pool_app_id.value
     app_global_get_ex
     assert // check GlobalState exists
-    // smart_contracts/bnpl_credit/contract.algo.ts:74
+    // smart_contracts/bnpl_credit/contract.algo.ts:77
     // assert(lending_pool_app > Uint64(0), 'Lending pool not set')
     dup
     assert // Lending pool not set
-    // smart_contracts/bnpl_credit/contract.algo.ts:77-85
+    // smart_contracts/bnpl_credit/contract.algo.ts:80-88
     // itxn.applicationCall({
     //   appId: lending_pool_app,
     //   appArgs: [
@@ -149,14 +173,14 @@ initiate_loan:
     //   fee: Uint64(0),
     // }).submit()
     itxn_begin
-    // smart_contracts/bnpl_credit/contract.algo.ts:81
+    // smart_contracts/bnpl_credit/contract.algo.ts:84
     // Bytes(amount),
     dig 2
     itob
-    // smart_contracts/bnpl_credit/contract.algo.ts:82
+    // smart_contracts/bnpl_credit/contract.algo.ts:85
     // Txn.sender.bytes,
     txn Sender
-    // smart_contracts/bnpl_credit/contract.algo.ts:80
+    // smart_contracts/bnpl_credit/contract.algo.ts:83
     // borrow_selector,
     pushbytes 0x99ecf519 // method "borrow(uint64,address)uint64"
     itxn_field ApplicationArgs
@@ -165,7 +189,7 @@ initiate_loan:
     itxn_field ApplicationArgs
     swap
     itxn_field ApplicationID
-    // smart_contracts/bnpl_credit/contract.algo.ts:77-85
+    // smart_contracts/bnpl_credit/contract.algo.ts:80-88
     // itxn.applicationCall({
     //   appId: lending_pool_app,
     //   appArgs: [
@@ -177,11 +201,11 @@ initiate_loan:
     // }).submit()
     pushint 6 // 6
     itxn_field TypeEnum
-    // smart_contracts/bnpl_credit/contract.algo.ts:84
+    // smart_contracts/bnpl_credit/contract.algo.ts:87
     // fee: Uint64(0),
     intc_0 // 0
     itxn_field Fee
-    // smart_contracts/bnpl_credit/contract.algo.ts:77-85
+    // smart_contracts/bnpl_credit/contract.algo.ts:80-88
     // itxn.applicationCall({
     //   appId: lending_pool_app,
     //   appArgs: [
@@ -192,13 +216,13 @@ initiate_loan:
     //   fee: Uint64(0),
     // }).submit()
     itxn_submit
-    // smart_contracts/bnpl_credit/contract.algo.ts:87
+    // smart_contracts/bnpl_credit/contract.algo.ts:90
     // const new_loan_id: uint64 = this.loan_counter.value + Uint64(1)
     intc_0 // 0
     // smart_contracts/bnpl_credit/contract.algo.ts:44
     // loan_counter = GlobalState<uint64>()
     bytec 4 // "loan_counter"
-    // smart_contracts/bnpl_credit/contract.algo.ts:87
+    // smart_contracts/bnpl_credit/contract.algo.ts:90
     // const new_loan_id: uint64 = this.loan_counter.value + Uint64(1)
     app_global_get_ex
     assert // check GlobalState exists
@@ -207,34 +231,34 @@ initiate_loan:
     // smart_contracts/bnpl_credit/contract.algo.ts:44
     // loan_counter = GlobalState<uint64>()
     bytec 4 // "loan_counter"
-    // smart_contracts/bnpl_credit/contract.algo.ts:88
+    // smart_contracts/bnpl_credit/contract.algo.ts:91
     // this.loan_counter.value = new_loan_id
     dig 1
     app_global_put
-    // smart_contracts/bnpl_credit/contract.algo.ts:90
+    // smart_contracts/bnpl_credit/contract.algo.ts:93
     // const installment_amount: uint64 = amount / num_installments
     uncover 3
     dig 3
     /
-    // smart_contracts/bnpl_credit/contract.algo.ts:93
+    // smart_contracts/bnpl_credit/contract.algo.ts:96
     // borrower: Txn.sender.bytes,
     txn Sender
-    // smart_contracts/bnpl_credit/contract.algo.ts:100
+    // smart_contracts/bnpl_credit/contract.algo.ts:103
     // start_round: Global.round,
     global Round
-    // smart_contracts/bnpl_credit/contract.algo.ts:101
+    // smart_contracts/bnpl_credit/contract.algo.ts:104
     // next_due_round: Global.round + this.installment_interval.value,
     dup
     intc_0 // 0
     // smart_contracts/bnpl_credit/contract.algo.ts:46
     // installment_interval = GlobalState<uint64>()
     bytec_3 // "installment_interval"
-    // smart_contracts/bnpl_credit/contract.algo.ts:101
+    // smart_contracts/bnpl_credit/contract.algo.ts:104
     // next_due_round: Global.round + this.installment_interval.value,
     app_global_get_ex
     assert // check GlobalState exists
     +
-    // smart_contracts/bnpl_credit/contract.algo.ts:92-103
+    // smart_contracts/bnpl_credit/contract.algo.ts:95-106
     // const loan: LoanData = {
     //   borrower: Txn.sender.bytes,
     //   merchant: merchant.bytes,
@@ -267,10 +291,10 @@ initiate_loan:
     concat
     uncover 7
     concat
-    // smart_contracts/bnpl_credit/contract.algo.ts:96
+    // smart_contracts/bnpl_credit/contract.algo.ts:99
     // total_repaid: Uint64(0),
     intc_0 // 0
-    // smart_contracts/bnpl_credit/contract.algo.ts:92-103
+    // smart_contracts/bnpl_credit/contract.algo.ts:95-106
     // const loan: LoanData = {
     //   borrower: Txn.sender.bytes,
     //   merchant: merchant.bytes,
@@ -307,7 +331,7 @@ initiate_loan:
     concat
     swap
     concat
-    // smart_contracts/bnpl_credit/contract.algo.ts:105
+    // smart_contracts/bnpl_credit/contract.algo.ts:108
     // this.loan_boxes(new_loan_id).value = clone(loan)
     swap
     itob
@@ -318,7 +342,7 @@ initiate_loan:
     bytec_1 // "l"
     swap
     concat
-    // smart_contracts/bnpl_credit/contract.algo.ts:105
+    // smart_contracts/bnpl_credit/contract.algo.ts:108
     // this.loan_boxes(new_loan_id).value = clone(loan)
     dup
     box_del
@@ -328,18 +352,18 @@ initiate_loan:
     // smart_contracts/bnpl_credit/contract.algo.ts:49
     // user_loans = BoxMap<Account, uint64[]>({ keyPrefix: 'u' })
     bytec_2 // "u"
-    // smart_contracts/bnpl_credit/contract.algo.ts:107
+    // smart_contracts/bnpl_credit/contract.algo.ts:110
     // if (!this.user_loans(Txn.sender).exists) {
     txn Sender
     // smart_contracts/bnpl_credit/contract.algo.ts:49
     // user_loans = BoxMap<Account, uint64[]>({ keyPrefix: 'u' })
     concat
-    // smart_contracts/bnpl_credit/contract.algo.ts:107
+    // smart_contracts/bnpl_credit/contract.algo.ts:110
     // if (!this.user_loans(Txn.sender).exists) {
     box_len
     bury 1
     bnz initiate_loan_else_body@4
-    // smart_contracts/bnpl_credit/contract.algo.ts:108
+    // smart_contracts/bnpl_credit/contract.algo.ts:111
     // this.user_loans(Txn.sender).value = [new_loan_id]
     pushbytes 0x0001
     dig 1
@@ -347,13 +371,13 @@ initiate_loan:
     // smart_contracts/bnpl_credit/contract.algo.ts:49
     // user_loans = BoxMap<Account, uint64[]>({ keyPrefix: 'u' })
     bytec_2 // "u"
-    // smart_contracts/bnpl_credit/contract.algo.ts:108
+    // smart_contracts/bnpl_credit/contract.algo.ts:111
     // this.user_loans(Txn.sender).value = [new_loan_id]
     txn Sender
     // smart_contracts/bnpl_credit/contract.algo.ts:49
     // user_loans = BoxMap<Account, uint64[]>({ keyPrefix: 'u' })
     concat
-    // smart_contracts/bnpl_credit/contract.algo.ts:108
+    // smart_contracts/bnpl_credit/contract.algo.ts:111
     // this.user_loans(Txn.sender).value = [new_loan_id]
     dup
     box_del
@@ -362,7 +386,7 @@ initiate_loan:
     box_put
 
 initiate_loan_after_if_else@5:
-    // smart_contracts/bnpl_credit/contract.algo.ts:63
+    // smart_contracts/bnpl_credit/contract.algo.ts:66
     // @abimethod()
     bytec 5 // 0x151f7c75
     dig 1
@@ -375,17 +399,17 @@ initiate_loan_else_body@4:
     // smart_contracts/bnpl_credit/contract.algo.ts:49
     // user_loans = BoxMap<Account, uint64[]>({ keyPrefix: 'u' })
     bytec_2 // "u"
-    // smart_contracts/bnpl_credit/contract.algo.ts:110
+    // smart_contracts/bnpl_credit/contract.algo.ts:113
     // const existing_loans = clone(this.user_loans(Txn.sender).value)
     txn Sender
     // smart_contracts/bnpl_credit/contract.algo.ts:49
     // user_loans = BoxMap<Account, uint64[]>({ keyPrefix: 'u' })
     concat
-    // smart_contracts/bnpl_credit/contract.algo.ts:110
+    // smart_contracts/bnpl_credit/contract.algo.ts:113
     // const existing_loans = clone(this.user_loans(Txn.sender).value)
     box_get
     assert // Box must have value
-    // smart_contracts/bnpl_credit/contract.algo.ts:111
+    // smart_contracts/bnpl_credit/contract.algo.ts:114
     // existing_loans.push(new_loan_id)
     dup
     dig 2
@@ -401,13 +425,13 @@ initiate_loan_else_body@4:
     // smart_contracts/bnpl_credit/contract.algo.ts:49
     // user_loans = BoxMap<Account, uint64[]>({ keyPrefix: 'u' })
     bytec_2 // "u"
-    // smart_contracts/bnpl_credit/contract.algo.ts:112
+    // smart_contracts/bnpl_credit/contract.algo.ts:115
     // this.user_loans(Txn.sender).value = clone(existing_loans)
     txn Sender
     // smart_contracts/bnpl_credit/contract.algo.ts:49
     // user_loans = BoxMap<Account, uint64[]>({ keyPrefix: 'u' })
     concat
-    // smart_contracts/bnpl_credit/contract.algo.ts:112
+    // smart_contracts/bnpl_credit/contract.algo.ts:115
     // this.user_loans(Txn.sender).value = clone(existing_loans)
     dup
     box_del
@@ -421,7 +445,7 @@ initiate_loan_else_body@4:
 make_payment:
     pushbytes ""
     dup
-    // smart_contracts/bnpl_credit/contract.algo.ts:118
+    // smart_contracts/bnpl_credit/contract.algo.ts:121
     // @abimethod()
     txna ApplicationArgs 1
     dup
@@ -440,7 +464,7 @@ make_payment:
     pushint 4 // axfer
     ==
     assert // transaction type is axfer
-    // smart_contracts/bnpl_credit/contract.algo.ts:120
+    // smart_contracts/bnpl_credit/contract.algo.ts:123
     // const loan = clone(this.loan_boxes(loan_id).value)
     swap
     itob
@@ -451,7 +475,7 @@ make_payment:
     concat
     dup
     cover 3
-    // smart_contracts/bnpl_credit/contract.algo.ts:120
+    // smart_contracts/bnpl_credit/contract.algo.ts:123
     // const loan = clone(this.loan_boxes(loan_id).value)
     dup
     box_get
@@ -460,19 +484,19 @@ make_payment:
     cover 3
     cover 5
     assert // Box must have value
-    // smart_contracts/bnpl_credit/contract.algo.ts:120-121
+    // smart_contracts/bnpl_credit/contract.algo.ts:123-124
     // const loan = clone(this.loan_boxes(loan_id).value)
     // assert(loan.status === LOAN_STATUS_ACTIVE, 'Loan not active')
     dup
     intc_3 // 60
     intc_1 // 8
     box_extract
-    // smart_contracts/bnpl_credit/contract.algo.ts:121
+    // smart_contracts/bnpl_credit/contract.algo.ts:124
     // assert(loan.status === LOAN_STATUS_ACTIVE, 'Loan not active')
     btoi
     !
     assert // Loan not active
-    // smart_contracts/bnpl_credit/contract.algo.ts:123
+    // smart_contracts/bnpl_credit/contract.algo.ts:126
     // payment.sender.bytes === loan.borrower,
     dig 2
     gtxns Sender
@@ -487,13 +511,13 @@ make_payment:
     substring3
     extract 2 0
     ==
-    // smart_contracts/bnpl_credit/contract.algo.ts:122-125
+    // smart_contracts/bnpl_credit/contract.algo.ts:125-128
     // assert(
     //   payment.sender.bytes === loan.borrower,
     //   'Payment must be from borrower'
     // )
     assert // Payment must be from borrower
-    // smart_contracts/bnpl_credit/contract.algo.ts:127
+    // smart_contracts/bnpl_credit/contract.algo.ts:130
     // assert(payment.xferAsset.id === this.lending_pool_app_id.value, 'Must pay with pool asset')
     swap
     gtxns XferAsset
@@ -501,16 +525,16 @@ make_payment:
     // smart_contracts/bnpl_credit/contract.algo.ts:43
     // lending_pool_app_id = GlobalState<uint64>()
     bytec_0 // "lending_pool_app_id"
-    // smart_contracts/bnpl_credit/contract.algo.ts:127
+    // smart_contracts/bnpl_credit/contract.algo.ts:130
     // assert(payment.xferAsset.id === this.lending_pool_app_id.value, 'Must pay with pool asset')
     app_global_get_ex
     assert // check GlobalState exists
     ==
     assert // Must pay with pool asset
-    // smart_contracts/bnpl_credit/contract.algo.ts:129
+    // smart_contracts/bnpl_credit/contract.algo.ts:132
     // const payment_round: uint64 = Global.round
     global Round
-    // smart_contracts/bnpl_credit/contract.algo.ts:130
+    // smart_contracts/bnpl_credit/contract.algo.ts:133
     // const is_on_time: boolean = payment_round <= loan.next_due_round
     swap
     pushint 52 // 52
@@ -518,10 +542,10 @@ make_payment:
     box_extract
     btoi
     <=
-    // smart_contracts/bnpl_credit/contract.algo.ts:132
+    // smart_contracts/bnpl_credit/contract.algo.ts:135
     // if (is_on_time) {
     bz make_payment_else_body@7
-    // smart_contracts/bnpl_credit/contract.algo.ts:133
+    // smart_contracts/bnpl_credit/contract.algo.ts:136
     // loan.total_repaid = loan.total_repaid + payment.assetAmount
     dig 2
     pushint 12 // 12
@@ -537,7 +561,7 @@ make_payment:
     dig 1
     swap
     replace2 12
-    // smart_contracts/bnpl_credit/contract.algo.ts:134
+    // smart_contracts/bnpl_credit/contract.algo.ts:137
     // loan.installments_paid = loan.installments_paid + Uint64(1)
     dup
     pushint 36 // 36
@@ -548,7 +572,7 @@ make_payment:
     replace2 36
     dup
     bury 2
-    // smart_contracts/bnpl_credit/contract.algo.ts:136
+    // smart_contracts/bnpl_credit/contract.algo.ts:139
     // if (loan.installments_paid >= loan.num_installments) {
     dup
     pushint 36 // 36
@@ -558,7 +582,7 @@ make_payment:
     extract_uint64
     >=
     bz make_payment_else_body@5
-    // smart_contracts/bnpl_credit/contract.algo.ts:137
+    // smart_contracts/bnpl_credit/contract.algo.ts:140
     // loan.status = LOAN_STATUS_COMPLETED
     intc_2 // 1
     itob
@@ -567,24 +591,24 @@ make_payment:
     replace2 60
     dup
     bury 2
-    // smart_contracts/bnpl_credit/contract.algo.ts:139-143
+    // smart_contracts/bnpl_credit/contract.algo.ts:142-146
     // itxn.applicationCall({
     //   appId: this.lending_pool_app_id.value,
     //   appArgs: [repay_selector, Bytes(payment.assetAmount), loan.borrower],
     //   fee: Uint64(0),
     // }).submit()
     itxn_begin
-    // smart_contracts/bnpl_credit/contract.algo.ts:140
+    // smart_contracts/bnpl_credit/contract.algo.ts:143
     // appId: this.lending_pool_app_id.value,
     intc_0 // 0
     // smart_contracts/bnpl_credit/contract.algo.ts:43
     // lending_pool_app_id = GlobalState<uint64>()
     bytec_0 // "lending_pool_app_id"
-    // smart_contracts/bnpl_credit/contract.algo.ts:140
+    // smart_contracts/bnpl_credit/contract.algo.ts:143
     // appId: this.lending_pool_app_id.value,
     app_global_get_ex
     assert // check GlobalState exists
-    // smart_contracts/bnpl_credit/contract.algo.ts:141
+    // smart_contracts/bnpl_credit/contract.algo.ts:144
     // appArgs: [repay_selector, Bytes(payment.assetAmount), loan.borrower],
     dig 5
     itob
@@ -604,7 +628,7 @@ make_payment:
     itxn_field ApplicationArgs
     itxn_field ApplicationArgs
     itxn_field ApplicationID
-    // smart_contracts/bnpl_credit/contract.algo.ts:139-143
+    // smart_contracts/bnpl_credit/contract.algo.ts:142-146
     // itxn.applicationCall({
     //   appId: this.lending_pool_app_id.value,
     //   appArgs: [repay_selector, Bytes(payment.assetAmount), loan.borrower],
@@ -612,11 +636,11 @@ make_payment:
     // }).submit()
     pushint 6 // 6
     itxn_field TypeEnum
-    // smart_contracts/bnpl_credit/contract.algo.ts:142
+    // smart_contracts/bnpl_credit/contract.algo.ts:145
     // fee: Uint64(0),
     intc_0 // 0
     itxn_field Fee
-    // smart_contracts/bnpl_credit/contract.algo.ts:139-143
+    // smart_contracts/bnpl_credit/contract.algo.ts:142-146
     // itxn.applicationCall({
     //   appId: this.lending_pool_app_id.value,
     //   appArgs: [repay_selector, Bytes(payment.assetAmount), loan.borrower],
@@ -625,7 +649,7 @@ make_payment:
     itxn_submit
 
 make_payment_after_if_else@12:
-    // smart_contracts/bnpl_credit/contract.algo.ts:167
+    // smart_contracts/bnpl_credit/contract.algo.ts:170
     // this.loan_boxes(loan_id).value = clone(loan)
     dig 1
     dup
@@ -633,13 +657,13 @@ make_payment_after_if_else@12:
     pop
     dig 1
     box_put
-    // smart_contracts/bnpl_credit/contract.algo.ts:118
+    // smart_contracts/bnpl_credit/contract.algo.ts:121
     // @abimethod()
     intc_2 // 1
     return
 
 make_payment_else_body@5:
-    // smart_contracts/bnpl_credit/contract.algo.ts:145
+    // smart_contracts/bnpl_credit/contract.algo.ts:148
     // loan.next_due_round = loan.next_due_round + this.installment_interval.value
     dupn 2
     pushint 52 // 52
@@ -648,7 +672,7 @@ make_payment_else_body@5:
     // smart_contracts/bnpl_credit/contract.algo.ts:46
     // installment_interval = GlobalState<uint64>()
     bytec_3 // "installment_interval"
-    // smart_contracts/bnpl_credit/contract.algo.ts:145
+    // smart_contracts/bnpl_credit/contract.algo.ts:148
     // loan.next_due_round = loan.next_due_round + this.installment_interval.value
     app_global_get_ex
     assert // check GlobalState exists
@@ -659,14 +683,14 @@ make_payment_else_body@5:
     b make_payment_after_if_else@12
 
 make_payment_else_body@7:
-    // smart_contracts/bnpl_credit/contract.algo.ts:148
+    // smart_contracts/bnpl_credit/contract.algo.ts:151
     // const late_fee: uint64 = (payment.assetAmount * this.late_fee_bps.value) / Uint64(10000)
     gtxns AssetAmount
     intc_0 // 0
     // smart_contracts/bnpl_credit/contract.algo.ts:45
     // late_fee_bps = GlobalState<uint64>()
     bytec 7 // "late_fee_bps"
-    // smart_contracts/bnpl_credit/contract.algo.ts:148
+    // smart_contracts/bnpl_credit/contract.algo.ts:151
     // const late_fee: uint64 = (payment.assetAmount * this.late_fee_bps.value) / Uint64(10000)
     app_global_get_ex
     assert // check GlobalState exists
@@ -674,12 +698,12 @@ make_payment_else_body@7:
     *
     pushint 10000 // 10000
     /
-    // smart_contracts/bnpl_credit/contract.algo.ts:149
+    // smart_contracts/bnpl_credit/contract.algo.ts:152
     // const total_payment: uint64 = payment.assetAmount + late_fee
     +
     dup
     bury 4
-    // smart_contracts/bnpl_credit/contract.algo.ts:151
+    // smart_contracts/bnpl_credit/contract.algo.ts:154
     // loan.total_repaid = loan.total_repaid + total_payment
     dig 2
     pushint 12 // 12
@@ -691,7 +715,7 @@ make_payment_else_body@7:
     dig 1
     swap
     replace2 12
-    // smart_contracts/bnpl_credit/contract.algo.ts:152
+    // smart_contracts/bnpl_credit/contract.algo.ts:155
     // loan.installments_paid = loan.installments_paid + Uint64(1)
     dup
     pushint 36 // 36
@@ -702,7 +726,7 @@ make_payment_else_body@7:
     replace2 36
     dup
     bury 2
-    // smart_contracts/bnpl_credit/contract.algo.ts:154
+    // smart_contracts/bnpl_credit/contract.algo.ts:157
     // if (loan.installments_paid >= loan.num_installments) {
     dup
     pushint 36 // 36
@@ -712,7 +736,7 @@ make_payment_else_body@7:
     extract_uint64
     >=
     bz make_payment_else_body@10
-    // smart_contracts/bnpl_credit/contract.algo.ts:155
+    // smart_contracts/bnpl_credit/contract.algo.ts:158
     // loan.status = LOAN_STATUS_COMPLETED
     intc_2 // 1
     itob
@@ -721,24 +745,24 @@ make_payment_else_body@7:
     replace2 60
     dup
     bury 2
-    // smart_contracts/bnpl_credit/contract.algo.ts:157-161
+    // smart_contracts/bnpl_credit/contract.algo.ts:160-164
     // itxn.applicationCall({
     //   appId: this.lending_pool_app_id.value,
     //   appArgs: [repay_selector, Bytes(total_payment), loan.borrower],
     //   fee: Uint64(0),
     // }).submit()
     itxn_begin
-    // smart_contracts/bnpl_credit/contract.algo.ts:158
+    // smart_contracts/bnpl_credit/contract.algo.ts:161
     // appId: this.lending_pool_app_id.value,
     intc_0 // 0
     // smart_contracts/bnpl_credit/contract.algo.ts:43
     // lending_pool_app_id = GlobalState<uint64>()
     bytec_0 // "lending_pool_app_id"
-    // smart_contracts/bnpl_credit/contract.algo.ts:158
+    // smart_contracts/bnpl_credit/contract.algo.ts:161
     // appId: this.lending_pool_app_id.value,
     app_global_get_ex
     assert // check GlobalState exists
-    // smart_contracts/bnpl_credit/contract.algo.ts:159
+    // smart_contracts/bnpl_credit/contract.algo.ts:162
     // appArgs: [repay_selector, Bytes(total_payment), loan.borrower],
     dig 4
     itob
@@ -758,7 +782,7 @@ make_payment_else_body@7:
     itxn_field ApplicationArgs
     itxn_field ApplicationArgs
     itxn_field ApplicationID
-    // smart_contracts/bnpl_credit/contract.algo.ts:157-161
+    // smart_contracts/bnpl_credit/contract.algo.ts:160-164
     // itxn.applicationCall({
     //   appId: this.lending_pool_app_id.value,
     //   appArgs: [repay_selector, Bytes(total_payment), loan.borrower],
@@ -766,11 +790,11 @@ make_payment_else_body@7:
     // }).submit()
     pushint 6 // 6
     itxn_field TypeEnum
-    // smart_contracts/bnpl_credit/contract.algo.ts:160
+    // smart_contracts/bnpl_credit/contract.algo.ts:163
     // fee: Uint64(0),
     intc_0 // 0
     itxn_field Fee
-    // smart_contracts/bnpl_credit/contract.algo.ts:157-161
+    // smart_contracts/bnpl_credit/contract.algo.ts:160-164
     // itxn.applicationCall({
     //   appId: this.lending_pool_app_id.value,
     //   appArgs: [repay_selector, Bytes(total_payment), loan.borrower],
@@ -780,7 +804,7 @@ make_payment_else_body@7:
     b make_payment_after_if_else@12
 
 make_payment_else_body@10:
-    // smart_contracts/bnpl_credit/contract.algo.ts:163
+    // smart_contracts/bnpl_credit/contract.algo.ts:166
     // loan.next_due_round = loan.next_due_round + this.installment_interval.value
     dupn 2
     pushint 52 // 52
@@ -789,7 +813,7 @@ make_payment_else_body@10:
     // smart_contracts/bnpl_credit/contract.algo.ts:46
     // installment_interval = GlobalState<uint64>()
     bytec_3 // "installment_interval"
-    // smart_contracts/bnpl_credit/contract.algo.ts:163
+    // smart_contracts/bnpl_credit/contract.algo.ts:166
     // loan.next_due_round = loan.next_due_round + this.installment_interval.value
     app_global_get_ex
     assert // check GlobalState exists
@@ -802,7 +826,7 @@ make_payment_else_body@10:
 
 // smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.dispute_loan[routing]() -> void:
 dispute_loan:
-    // smart_contracts/bnpl_credit/contract.algo.ts:170
+    // smart_contracts/bnpl_credit/contract.algo.ts:173
     // @abimethod()
     txna ApplicationArgs 1
     dup
@@ -811,7 +835,7 @@ dispute_loan:
     ==
     assert // invalid number of bytes for arc4.uint64
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:172
+    // smart_contracts/bnpl_credit/contract.algo.ts:175
     // const loan = clone(this.loan_boxes(loan_id).value)
     itob
     // smart_contracts/bnpl_credit/contract.algo.ts:48
@@ -819,24 +843,24 @@ dispute_loan:
     bytec_1 // "l"
     swap
     concat
-    // smart_contracts/bnpl_credit/contract.algo.ts:172
+    // smart_contracts/bnpl_credit/contract.algo.ts:175
     // const loan = clone(this.loan_boxes(loan_id).value)
     dup
     box_get
     assert // Box must have value
-    // smart_contracts/bnpl_credit/contract.algo.ts:172-173
+    // smart_contracts/bnpl_credit/contract.algo.ts:175-176
     // const loan = clone(this.loan_boxes(loan_id).value)
     // assert(loan.status === LOAN_STATUS_ACTIVE, 'Loan not active')
     dig 1
     intc_3 // 60
     intc_1 // 8
     box_extract
-    // smart_contracts/bnpl_credit/contract.algo.ts:173
+    // smart_contracts/bnpl_credit/contract.algo.ts:176
     // assert(loan.status === LOAN_STATUS_ACTIVE, 'Loan not active')
     btoi
     !
     assert // Loan not active
-    // smart_contracts/bnpl_credit/contract.algo.ts:175
+    // smart_contracts/bnpl_credit/contract.algo.ts:178
     // Txn.sender.bytes === loan.borrower,
     txn Sender
     dig 1
@@ -850,23 +874,23 @@ dispute_loan:
     substring3
     extract 2 0
     ==
-    // smart_contracts/bnpl_credit/contract.algo.ts:174-177
+    // smart_contracts/bnpl_credit/contract.algo.ts:177-180
     // assert(
     //   Txn.sender.bytes === loan.borrower,
     //   'Only borrower can dispute'
     // )
     assert // Only borrower can dispute
-    // smart_contracts/bnpl_credit/contract.algo.ts:179
+    // smart_contracts/bnpl_credit/contract.algo.ts:182
     // loan.status = LOAN_STATUS_DISPUTED
     pushint 3 // 3
     itob
-    // smart_contracts/bnpl_credit/contract.algo.ts:179-180
+    // smart_contracts/bnpl_credit/contract.algo.ts:182-183
     // loan.status = LOAN_STATUS_DISPUTED
     // this.loan_boxes(loan_id).value = clone(loan)
     intc_3 // 60
     swap
     box_replace
-    // smart_contracts/bnpl_credit/contract.algo.ts:170
+    // smart_contracts/bnpl_credit/contract.algo.ts:173
     // @abimethod()
     intc_2 // 1
     return
@@ -874,7 +898,7 @@ dispute_loan:
 
 // smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.liquidate_loan[routing]() -> void:
 liquidate_loan:
-    // smart_contracts/bnpl_credit/contract.algo.ts:183
+    // smart_contracts/bnpl_credit/contract.algo.ts:186
     // @abimethod()
     txna ApplicationArgs 1
     dup
@@ -883,7 +907,7 @@ liquidate_loan:
     ==
     assert // invalid number of bytes for arc4.uint64
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:185
+    // smart_contracts/bnpl_credit/contract.algo.ts:188
     // const loan = clone(this.loan_boxes(loan_id).value)
     itob
     // smart_contracts/bnpl_credit/contract.algo.ts:48
@@ -891,24 +915,24 @@ liquidate_loan:
     bytec_1 // "l"
     swap
     concat
-    // smart_contracts/bnpl_credit/contract.algo.ts:185
+    // smart_contracts/bnpl_credit/contract.algo.ts:188
     // const loan = clone(this.loan_boxes(loan_id).value)
     dup
     box_get
     assert // Box must have value
-    // smart_contracts/bnpl_credit/contract.algo.ts:185-186
+    // smart_contracts/bnpl_credit/contract.algo.ts:188-189
     // const loan = clone(this.loan_boxes(loan_id).value)
     // assert(loan.status === LOAN_STATUS_ACTIVE, 'Loan not active')
     dig 1
     intc_3 // 60
     intc_1 // 8
     box_extract
-    // smart_contracts/bnpl_credit/contract.algo.ts:186
+    // smart_contracts/bnpl_credit/contract.algo.ts:189
     // assert(loan.status === LOAN_STATUS_ACTIVE, 'Loan not active')
     btoi
     !
     assert // Loan not active
-    // smart_contracts/bnpl_credit/contract.algo.ts:188
+    // smart_contracts/bnpl_credit/contract.algo.ts:191
     // assert(Global.round >= loan.next_due_round, 'Loan not overdue')
     global Round
     dig 2
@@ -918,38 +942,38 @@ liquidate_loan:
     btoi
     >=
     assert // Loan not overdue
-    // smart_contracts/bnpl_credit/contract.algo.ts:190
+    // smart_contracts/bnpl_credit/contract.algo.ts:193
     // loan.status = LOAN_STATUS_DEFAULTED
     pushint 2 // 2
     itob
     swap
     dig 1
     replace2 60
-    // smart_contracts/bnpl_credit/contract.algo.ts:190-191
+    // smart_contracts/bnpl_credit/contract.algo.ts:193-194
     // loan.status = LOAN_STATUS_DEFAULTED
     // this.loan_boxes(loan_id).value = clone(loan)
     uncover 2
     intc_3 // 60
     uncover 3
     box_replace
-    // smart_contracts/bnpl_credit/contract.algo.ts:194-198
+    // smart_contracts/bnpl_credit/contract.algo.ts:197-201
     // itxn.applicationCall({
     //   appId: this.credit_score_app_id.value,
     //   appArgs: [default_selector, loan.borrower],
     //   fee: Uint64(0),
     // }).submit()
     itxn_begin
-    // smart_contracts/bnpl_credit/contract.algo.ts:195
+    // smart_contracts/bnpl_credit/contract.algo.ts:198
     // appId: this.credit_score_app_id.value,
     intc_0 // 0
     // smart_contracts/bnpl_credit/contract.algo.ts:42
     // credit_score_app_id = GlobalState<uint64>()
     bytec 6 // "credit_score_app_id"
-    // smart_contracts/bnpl_credit/contract.algo.ts:195
+    // smart_contracts/bnpl_credit/contract.algo.ts:198
     // appId: this.credit_score_app_id.value,
     app_global_get_ex
     assert // check GlobalState exists
-    // smart_contracts/bnpl_credit/contract.algo.ts:196
+    // smart_contracts/bnpl_credit/contract.algo.ts:199
     // appArgs: [default_selector, loan.borrower],
     dig 1
     intc_0 // 0
@@ -965,7 +989,7 @@ liquidate_loan:
     itxn_field ApplicationArgs
     itxn_field ApplicationArgs
     itxn_field ApplicationID
-    // smart_contracts/bnpl_credit/contract.algo.ts:194-198
+    // smart_contracts/bnpl_credit/contract.algo.ts:197-201
     // itxn.applicationCall({
     //   appId: this.credit_score_app_id.value,
     //   appArgs: [default_selector, loan.borrower],
@@ -973,18 +997,18 @@ liquidate_loan:
     // }).submit()
     pushint 6 // 6
     itxn_field TypeEnum
-    // smart_contracts/bnpl_credit/contract.algo.ts:197
+    // smart_contracts/bnpl_credit/contract.algo.ts:200
     // fee: Uint64(0),
     intc_0 // 0
     itxn_field Fee
-    // smart_contracts/bnpl_credit/contract.algo.ts:194-198
+    // smart_contracts/bnpl_credit/contract.algo.ts:197-201
     // itxn.applicationCall({
     //   appId: this.credit_score_app_id.value,
     //   appArgs: [default_selector, loan.borrower],
     //   fee: Uint64(0),
     // }).submit()
     itxn_submit
-    // smart_contracts/bnpl_credit/contract.algo.ts:183
+    // smart_contracts/bnpl_credit/contract.algo.ts:186
     // @abimethod()
     intc_2 // 1
     return
@@ -992,7 +1016,7 @@ liquidate_loan:
 
 // smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.get_loan[routing]() -> void:
 get_loan:
-    // smart_contracts/bnpl_credit/contract.algo.ts:201
+    // smart_contracts/bnpl_credit/contract.algo.ts:204
     // @abimethod({ readonly: true })
     txna ApplicationArgs 1
     dup
@@ -1001,7 +1025,7 @@ get_loan:
     ==
     assert // invalid number of bytes for arc4.uint64
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:205
+    // smart_contracts/bnpl_credit/contract.algo.ts:208
     // if (!this.loan_boxes(loan_id).exists) {
     itob
     // smart_contracts/bnpl_credit/contract.algo.ts:48
@@ -1010,12 +1034,12 @@ get_loan:
     swap
     concat
     dup
-    // smart_contracts/bnpl_credit/contract.algo.ts:205
+    // smart_contracts/bnpl_credit/contract.algo.ts:208
     // if (!this.loan_boxes(loan_id).exists) {
     box_len
     bury 1
     bnz get_loan_after_if_else@3
-    // smart_contracts/bnpl_credit/contract.algo.ts:206-216
+    // smart_contracts/bnpl_credit/contract.algo.ts:209-219
     // return [
     //   Bytes(''),
     //   Bytes(''),
@@ -1030,7 +1054,7 @@ get_loan:
     pushbytes 0x003c003e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 get_loan_after_inlined_smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.get_loan@4:
-    // smart_contracts/bnpl_credit/contract.algo.ts:201
+    // smart_contracts/bnpl_credit/contract.algo.ts:204
     // @abimethod({ readonly: true })
     bytec 5 // 0x151f7c75
     swap
@@ -1040,12 +1064,12 @@ get_loan_after_inlined_smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.
     return
 
 get_loan_after_if_else@3:
-    // smart_contracts/bnpl_credit/contract.algo.ts:219
+    // smart_contracts/bnpl_credit/contract.algo.ts:222
     // const loan = clone(this.loan_boxes(loan_id).value)
     dupn 2
     box_get
     assert // Box must have value
-    // smart_contracts/bnpl_credit/contract.algo.ts:221
+    // smart_contracts/bnpl_credit/contract.algo.ts:224
     // loan.borrower,
     dup
     intc_0 // 0
@@ -1058,7 +1082,7 @@ get_loan_after_if_else@3:
     dig 2
     substring3
     extract 2 0
-    // smart_contracts/bnpl_credit/contract.algo.ts:222
+    // smart_contracts/bnpl_credit/contract.algo.ts:225
     // loan.merchant,
     dig 2
     len
@@ -1067,56 +1091,56 @@ get_loan_after_if_else@3:
     uncover 2
     substring3
     extract 2 0
-    // smart_contracts/bnpl_credit/contract.algo.ts:223
+    // smart_contracts/bnpl_credit/contract.algo.ts:226
     // loan.principal,
     dig 2
     pushint 4 // 4
     intc_1 // 8
     box_extract
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:224
+    // smart_contracts/bnpl_credit/contract.algo.ts:227
     // loan.total_repaid,
     dig 3
     pushint 12 // 12
     intc_1 // 8
     box_extract
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:225
+    // smart_contracts/bnpl_credit/contract.algo.ts:228
     // loan.installment_amount,
     dig 4
     pushint 20 // 20
     intc_1 // 8
     box_extract
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:226
+    // smart_contracts/bnpl_credit/contract.algo.ts:229
     // loan.num_installments,
     dig 5
     pushint 28 // 28
     intc_1 // 8
     box_extract
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:227
+    // smart_contracts/bnpl_credit/contract.algo.ts:230
     // loan.installments_paid,
     dig 6
     pushint 36 // 36
     intc_1 // 8
     box_extract
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:228
+    // smart_contracts/bnpl_credit/contract.algo.ts:231
     // loan.next_due_round,
     dig 7
     pushint 52 // 52
     intc_1 // 8
     box_extract
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:229
+    // smart_contracts/bnpl_credit/contract.algo.ts:232
     // loan.status,
     uncover 8
     intc_3 // 60
     intc_1 // 8
     box_extract
     btoi
-    // smart_contracts/bnpl_credit/contract.algo.ts:220-230
+    // smart_contracts/bnpl_credit/contract.algo.ts:223-233
     // return [
     //   loan.borrower,
     //   loan.merchant,
@@ -1175,14 +1199,14 @@ get_loan_after_if_else@3:
     concat
     swap
     concat
-    // smart_contracts/bnpl_credit/contract.algo.ts:201
+    // smart_contracts/bnpl_credit/contract.algo.ts:204
     // @abimethod({ readonly: true })
     b get_loan_after_inlined_smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.get_loan@4
 
 
 // smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.get_user_loans[routing]() -> void:
 get_user_loans:
-    // smart_contracts/bnpl_credit/contract.algo.ts:233
+    // smart_contracts/bnpl_credit/contract.algo.ts:236
     // @abimethod({ readonly: true })
     txna ApplicationArgs 1
     dup
@@ -1196,17 +1220,17 @@ get_user_loans:
     swap
     concat
     dup
-    // smart_contracts/bnpl_credit/contract.algo.ts:235
+    // smart_contracts/bnpl_credit/contract.algo.ts:238
     // if (!this.user_loans(user).exists) {
     box_len
     bury 1
     bnz get_user_loans_after_if_else@3
-    // smart_contracts/bnpl_credit/contract.algo.ts:236
+    // smart_contracts/bnpl_credit/contract.algo.ts:239
     // return []
     pushbytes 0x0000
 
 get_user_loans_after_inlined_smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.get_user_loans@4:
-    // smart_contracts/bnpl_credit/contract.algo.ts:233
+    // smart_contracts/bnpl_credit/contract.algo.ts:236
     // @abimethod({ readonly: true })
     bytec 5 // 0x151f7c75
     swap
@@ -1216,11 +1240,11 @@ get_user_loans_after_inlined_smart_contracts/bnpl_credit/contract.algo.ts::BNPLC
     return
 
 get_user_loans_after_if_else@3:
-    // smart_contracts/bnpl_credit/contract.algo.ts:238
+    // smart_contracts/bnpl_credit/contract.algo.ts:241
     // return this.user_loans(user).value
     dup
     box_get
     assert // Box must have value
-    // smart_contracts/bnpl_credit/contract.algo.ts:233
+    // smart_contracts/bnpl_credit/contract.algo.ts:236
     // @abimethod({ readonly: true })
     b get_user_loans_after_inlined_smart_contracts/bnpl_credit/contract.algo.ts::BNPLCredit.get_user_loans@4

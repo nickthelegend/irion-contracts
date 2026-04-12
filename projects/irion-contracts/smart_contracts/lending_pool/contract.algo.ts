@@ -41,7 +41,10 @@ export class LendingPool extends Contract {
 
   credit_score_app_id = GlobalState<uint64>()
 
-  @abimethod({ onCreate: 'require' })
+  @abimethod({ allowActions: ['NoOp'], onCreate: 'require' })
+  public create(): void {}
+
+  @abimethod({ allowActions: ['NoOp', 'OptIn'], onCreate: 'allow' })
   public bootstrap(pool_asset_id: uint64): void {
     this.pool_asset_id.value = pool_asset_id
 

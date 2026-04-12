@@ -1,125 +1,203 @@
 import { AlgorandClient, microAlgo, algo } from '@algorandfoundation/algokit-utils'
 import algosdk from 'algosdk'
+import fs from 'fs'
+import path from 'path'
 
 import { LendingPoolFactory } from './artifacts/lending_pool/LendingPoolClient'
 import { CreditScoreFactory } from './artifacts/credit_score/CreditScoreClient'
-import { BNPLCreditFactory } from './artifacts/bnpl_credit/BNPLCreditClient'
+import { BnplCreditFactory } from './artifacts/bnpl_credit/BNPLCreditClient'
 import { MerchantEscrowFactory } from './artifacts/merchant_escrow/MerchantEscrowClient'
 
-function getAppAddress(appId: number): string {
-  return algosdk.getApplicationAddress(appId).toString()
-}
-
-console.log('Script loaded, starting deployment...')
-
-export async function deploy() {
-  console.log('=== BNPL Protocol Deployment ===')
+async function deploy() {
+  console.log('=== BNPL Protocol Deployment ===\n')
 
   const algorand = AlgorandClient.fromEnvironment()
   const dispenser = await algorand.account.localNetDispenser()
-  const creator = dispenser.addr.toString()
-  console.log('Deployer:', creator)
+  console.log('Deployer:', dispenser.addr.toString())
 
-  // Pre-fund all potential app addresses (1024-1500 range to be safe)
-  console.log('\n[Pre-funding] Funding potential app addresses...')
-  const startAppId = 1024
-  const endAppId = 1500
-  for (let appId = startAppId; appId <= endAppId; appId++) {
-    const addr = getAppAddress(appId)
-    console.log(`  Funding app ${appId}: ${addr}`)
-    await algorand.send.payment({
-      sender: dispenser.addr,
-      receiver: addr,
-      amount: algo(3),
-    })
-  }
-  console.log('  Done funding app addresses')
+  // ─────────────────────────────────────────────
+  // STEP 1: Create mock USDC ASA
+  // ─────────────────────────────────────────────
+  console.log('[1/9] Creating mock USDC ASA...')
+  const usdcTxResult = await algorand.send.assetCreate({
+    sender: dispenser.addr,
+    total: 1_000_000_000_000_000n, // 1 billion USDC (6 decimals)
+    decimals: 6,
+    defaultFrozen: false,
+    unitName: 'USDC',
+    assetName: 'USD Coin (Mock)',
+    manager: dispenser.addr.toString(),
+    reserve: dispenser.addr.toString(),
+  })
+  const usdcAssetId = BigInt(usdcTxResult.confirmation.assetIndex!)
+  console.log('  Mock USDC Asset ID:', usdcAssetId.toString())
 
-  // Deploy CreditScore with bootstrap
-  console.log('\n[1/5] Deploying CreditScore with bootstrap...')
+  // ─────────────────────────────────────────────
+  // STEP 2: Deploy CreditScore (create + bootstrap)
+  // ─────────────────────────────────────────────
+  console.log('\n[2/9] Creating CreditScore app...')
   const creditScoreFactory = algorand.client.getTypedAppFactory(CreditScoreFactory, {
     defaultSender: dispenser.addr,
   })
 
-  const { appClient: creditScoreClient } = await creditScoreFactory.deploy({
-    createParams: {
-      method: 'bootstrap()void',
-    },
-    onUpdate: 'append',
-    onSchemaBreak: 'append',
-    extraFee: microAlgo(1000),
-  })
-  console.log('CreditScore App ID:', creditScoreClient.appId)
+  // Create bare (no method call yet)
+  const { appClient: creditScoreClient, result: csCreateResult } =
+    await creditScoreFactory.send.create.create()
+  const creditScoreAppId = creditScoreClient.appId
+  const creditScoreAddress = algosdk.getApplicationAddress(creditScoreAppId)
+  console.log('  CreditScore App ID:', creditScoreAppId.toString())
+  console.log('  CreditScore Address:', creditScoreAddress.toString())
 
-  // Deploy LendingPool with bootstrap
-  console.log('\n[2/5] Deploying LendingPool with bootstrap...')
+  // Fund app account (0.5 ALGO is plenty)
+  console.log('[3/9] Funding CreditScore app account...')
+  await algorand.send.payment({
+    sender: dispenser.addr,
+    receiver: creditScoreAddress,
+    amount: algo(0.5),
+  })
+
+  // Call bootstrap
+  console.log('[3/9] Calling CreditScore bootstrap...')
+  await creditScoreClient.send.bootstrap({
+    args: [],
+  })
+  console.log('  CreditScore bootstrapped!')
+
+  // ─────────────────────────────────────────────
+  // STEP 3: Deploy LendingPool (create + fund + bootstrap)
+  // ─────────────────────────────────────────────
+  console.log('\n[4/9] Creating LendingPool app...')
   const lendingPoolFactory = algorand.client.getTypedAppFactory(LendingPoolFactory, {
     defaultSender: dispenser.addr,
   })
 
-  const { appClient: lendingPoolClient } = await lendingPoolFactory.deploy({
-    createParams: {
-      method: 'bootstrap(uint64)void',
-      args: [1n],
-    },
-    onUpdate: 'append',
-    onSchemaBreak: 'append',
-    extraFee: microAlgo(3000),
-  })
-  console.log('LendingPool App ID:', lendingPoolClient.appId)
+  const { appClient: lendingPoolClient } = await lendingPoolFactory.send.create.create()
+  const lendingPoolAppId = lendingPoolClient.appId
+  const lendingPoolAddress = algosdk.getApplicationAddress(lendingPoolAppId)
+  console.log('  LendingPool App ID:', lendingPoolAppId.toString())
+  console.log('  LendingPool Address:', lendingPoolAddress.toString())
 
-  // Link contracts
-  console.log('\n[3/5] Linking CreditScore and LendingPool...')
-  
-  const creditScoreClientForCall = creditScoreFactory.getAppClientFromGlobalState({})
-  const lendingPoolClientForCall = lendingPoolFactory.getAppClientFromGlobalState({})
-
-  await lendingPoolClientForCall.send.set_credit_score_app({
-    args: { app_id: creditScoreClient.appId },
+  // Fund the app BEFORE bootstrap (needs MBR for asset creation + opt-in)
+  // 0.1 base + 0.1 asset creation + 0.1 opt-in + buffer = 1 ALGO
+  console.log('[5/9] Funding LendingPool app account...')
+  await algorand.send.payment({
+    sender: dispenser.addr,
+    receiver: lendingPoolAddress,
+    amount: algo(1),
   })
-  
-  await creditScoreClientForCall.send.set_lending_pool_app({
-    args: { app_id: lendingPoolClient.appId },
-  })
-  console.log('Contracts linked!')
 
-  // Deploy BNPLCredit with bootstrap
-  console.log('\n[4/5] Deploying BNPLCredit with bootstrap...')
-  const bnplCreditFactory = algorand.client.getTypedAppFactory(BNPLCreditFactory, {
+  // Opt dispenser into USDC first (needed to receive LP tokens etc.)
+  console.log('[5/9] Opting dispenser into USDC...')
+  await algorand.send.assetOptIn({
+    sender: dispenser.addr,
+    assetId: usdcAssetId,
+  })
+
+  // Call bootstrap with USDC asset ID + extra fee for inner txns (assetConfig + assetTransfer = 2 inner txns)
+  console.log('[5/9] Calling LendingPool bootstrap...')
+  await lendingPoolClient.send.bootstrap({
+    args: [usdcAssetId],
+    extraFee: microAlgo(2000), // 2 inner txns × 1000 microAlgo each
+  })
+  console.log('  LendingPool bootstrapped!')
+
+  // ─────────────────────────────────────────────
+  // STEP 4: Link CreditScore ↔ LendingPool
+  // ─────────────────────────────────────────────
+  console.log('\n[6/9] Linking CreditScore and LendingPool...')
+  await lendingPoolClient.send.setCreditScoreApp({
+    args: [creditScoreAppId],
+  })
+  await creditScoreClient.send.setLendingPoolApp({
+    args: [lendingPoolAppId],
+  })
+  console.log('  Linked!')
+
+  // ─────────────────────────────────────────────
+  // STEP 5: Deploy BNPLCredit (create + fund + bootstrap)
+  // ─────────────────────────────────────────────
+  console.log('\n[7/9] Creating BNPLCredit app...')
+  const bnplCreditFactory = algorand.client.getTypedAppFactory(BnplCreditFactory, {
     defaultSender: dispenser.addr,
   })
 
-  const { appClient: bnplCreditClient } = await bnplCreditFactory.deploy({
-    createParams: {
-      method: 'bootstrap(uint64,uint64)void',
-      args: [creditScoreClient.appId, lendingPoolClient.appId],
-    },
-    onUpdate: 'append',
-    onSchemaBreak: 'append',
-    extraFee: microAlgo(1000),
-  })
-  console.log('BNPLCredit App ID:', bnplCreditClient.appId)
+  const { appClient: bnplCreditClient } = await bnplCreditFactory.send.create.create()
+  const bnplCreditAppId = bnplCreditClient.appId
+  const bnplCreditAddress = algosdk.getApplicationAddress(bnplCreditAppId)
+  console.log('  BNPLCredit App ID:', bnplCreditAppId.toString())
 
-  // Deploy MerchantEscrow with bootstrap
-  console.log('\n[5/5] Deploying MerchantEscrow with bootstrap...')
+  await algorand.send.payment({
+    sender: dispenser.addr,
+    receiver: bnplCreditAddress,
+    amount: algo(0.5),
+  })
+
+  await bnplCreditClient.send.bootstrap({
+    args: [creditScoreAppId, lendingPoolAppId],
+  })
+  console.log('  BNPLCredit bootstrapped!')
+
+  // ─────────────────────────────────────────────
+  // STEP 6: Deploy MerchantEscrow (create + fund + bootstrap)
+  // ─────────────────────────────────────────────
+  console.log('\n[8/9] Creating MerchantEscrow app...')
   const merchantEscrowFactory = algorand.client.getTypedAppFactory(MerchantEscrowFactory, {
     defaultSender: dispenser.addr,
   })
 
-  const { appClient: merchantEscrowClient } = await merchantEscrowFactory.deploy({
-    createParams: {
-      method: 'bootstrap(uint64,uint64)void',
-      args: [bnplCreditClient.appId, 1n],
-    },
-    onUpdate: 'append',
-    onSchemaBreak: 'append',
-    extraFee: microAlgo(1000),
+  const { appClient: merchantEscrowClient } = await merchantEscrowFactory.send.create.create()
+  const merchantEscrowAppId = merchantEscrowClient.appId
+  const merchantEscrowAddress = algosdk.getApplicationAddress(merchantEscrowAppId)
+  console.log('  MerchantEscrow App ID:', merchantEscrowAppId.toString())
+
+  await algorand.send.payment({
+    sender: dispenser.addr,
+    receiver: merchantEscrowAddress,
+    amount: algo(0.5),
   })
-  console.log('MerchantEscrow App ID:', merchantEscrowClient.appId)
+
+  // Opt MerchantEscrow into USDC (needs MBR for asset opt-in)
+  // Fund extra 0.1 ALGO for opt-in MBR
+  await algorand.send.payment({
+    sender: dispenser.addr,
+    receiver: merchantEscrowAddress,
+    amount: algo(0.2), // Added extra to be safe
+  })
+
+  await merchantEscrowClient.send.bootstrap({
+    args: [bnplCreditAppId, usdcAssetId],
+    extraFee: microAlgo(1000), // 1 inner txn
+  })
+  console.log('  MerchantEscrow bootstrapped!')
+
+  // ─────────────────────────────────────────────
+  // STEP 7: Write deployments.json
+  // ─────────────────────────────────────────────
+  const deployments = {
+    network: 'localnet',
+    deployed_at: new Date().toISOString(),
+    usdc_asset_id: Number(usdcAssetId),
+    credit_score_app_id: Number(creditScoreAppId),
+    lending_pool_app_id: Number(lendingPoolAppId),
+    bnpl_credit_app_id: Number(bnplCreditAppId),
+    merchant_escrow_app_id: Number(merchantEscrowAppId),
+    addresses: {
+      credit_score: creditScoreAddress.toString(),
+      lending_pool: lendingPoolAddress.toString(),
+      bnpl_credit: bnplCreditAddress.toString(),
+      merchant_escrow: merchantEscrowAddress.toString(),
+    }
+  }
+
+  const deploymentsPath = path.join(__dirname, '..', '..', '..', 'deployments.json')
+  fs.writeFileSync(deploymentsPath, JSON.stringify(deployments, null, 2))
 
   console.log('\n=== Deployment Complete ===')
-  console.log('CreditScore:', creditScoreClient.appId)
-  console.log('LendingPool:', lendingPoolClient.appId)
-  console.log('BNPLCredit:', bnplCreditClient.appId)
-  console.log('MerchantEscrow:', merchantEscrowClient.appId)
+  console.log(JSON.stringify(deployments, null, 2))
+  console.log('\ndeployments.json written to:', deploymentsPath)
 }
+
+deploy().catch((err) => {
+  console.error('Deployment failed:', err)
+  process.exit(1)
+})

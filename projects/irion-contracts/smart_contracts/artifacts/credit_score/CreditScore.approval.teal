@@ -7,23 +7,47 @@ main:
     bytecblock "c" 0x151f7c75 "lending_pool_app_id"
     // smart_contracts/credit_score/contract.algo.ts:36
     // export class CreditScore extends Contract {
+    pushbytes 0xbec76d87 // method "bootstrap()void"
+    txna ApplicationArgs 0
+    match main_bootstrap_route@2
+
+main_switch_case_next@3:
+    // smart_contracts/credit_score/contract.algo.ts:36
+    // export class CreditScore extends Contract {
     txn OnCompletion
     !
     assert // OnCompletion must be NoOp
     txn ApplicationID
-    bz main_create_NoOp@13
+    bz main_create_NoOp@15
     pushbytess 0x50658ca9 0x5cf1dfec 0xb82a4596 0x973e8ccd 0xb2b513cd 0x205b720c 0xafa5ad30 0xe2e0fd47 0x95cb9e25 // method "create_profile()void", method "update_score_on_deposit(address,uint64)void", method "update_score_on_borrow(address,uint64)void", method "update_score_on_repay(address,uint64,bool)void", method "update_score_on_default(address)void", method "get_score(address)uint64", method "get_borrow_limit(address)uint64", method "get_credit_profile(address)(uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64)", method "set_lending_pool_app(uint64)void"
     txna ApplicationArgs 0
     match create_profile update_score_on_deposit update_score_on_borrow update_score_on_repay update_score_on_default get_score get_borrow_limit get_credit_profile set_lending_pool_app
     err
 
-main_create_NoOp@13:
+main_create_NoOp@15:
     // smart_contracts/credit_score/contract.algo.ts:36
     // export class CreditScore extends Contract {
-    pushbytes 0xbec76d87 // method "bootstrap()void"
+    pushbytes 0x4c5c61ba // method "create()void"
     txna ApplicationArgs 0
-    match bootstrap
+    match main_create_route@16
     err
+
+main_create_route@16:
+    // smart_contracts/credit_score/contract.algo.ts:43
+    // @abimethod({ allowActions: ['NoOp'], onCreate: 'require' })
+    intc_0 // 1
+    return
+
+main_bootstrap_route@2:
+    // smart_contracts/credit_score/contract.algo.ts:46
+    // @abimethod({ allowActions: ['NoOp', 'OptIn'], onCreate: 'allow' })
+    intc_0 // 1
+    txn OnCompletion
+    shl
+    pushint 3 // 3
+    &
+    assert // OnCompletion must be one of NoOp, OptIn
+    b bootstrap
 
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.bootstrap[routing]() -> void:
@@ -31,36 +55,36 @@ bootstrap:
     // smart_contracts/credit_score/contract.algo.ts:37
     // min_score = GlobalState<uint64>()
     pushbytes "min_score"
-    // smart_contracts/credit_score/contract.algo.ts:45
+    // smart_contracts/credit_score/contract.algo.ts:48
     // this.min_score.value = MIN_SCORE
     intc 4 // 300
     app_global_put
     // smart_contracts/credit_score/contract.algo.ts:38
     // max_score = GlobalState<uint64>()
     pushbytes "max_score"
-    // smart_contracts/credit_score/contract.algo.ts:46
+    // smart_contracts/credit_score/contract.algo.ts:49
     // this.max_score.value = MAX_SCORE
     intc 5 // 850
     app_global_put
     // smart_contracts/credit_score/contract.algo.ts:39
     // lending_pool_app_id = GlobalState<uint64>()
     bytec_2 // "lending_pool_app_id"
-    // smart_contracts/credit_score/contract.algo.ts:47
+    // smart_contracts/credit_score/contract.algo.ts:50
     // this.lending_pool_app_id.value = Uint64(0)
     intc_1 // 0
     app_global_put
-    // smart_contracts/credit_score/contract.algo.ts:43
-    // @abimethod({ onCreate: 'require' })
+    // smart_contracts/credit_score/contract.algo.ts:46
+    // @abimethod({ allowActions: ['NoOp', 'OptIn'], onCreate: 'allow' })
     intc_0 // 1
     return
 
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.create_profile[routing]() -> void:
 create_profile:
-    // smart_contracts/credit_score/contract.algo.ts:60
+    // smart_contracts/credit_score/contract.algo.ts:63
     // last_updated_round: Global.round,
     global Round
-    // smart_contracts/credit_score/contract.algo.ts:52-61
+    // smart_contracts/credit_score/contract.algo.ts:55-64
     // const initial_profile: CreditProfile = {
     //   score: MIN_SCORE,
     //   total_borrowed: Uint64(0),
@@ -78,17 +102,17 @@ create_profile:
     // smart_contracts/credit_score/contract.algo.ts:41
     // credit_profiles = BoxMap<Account, CreditProfile>({ keyPrefix: 'c' })
     bytec_0 // "c"
-    // smart_contracts/credit_score/contract.algo.ts:62
+    // smart_contracts/credit_score/contract.algo.ts:65
     // this.credit_profiles(Txn.sender).value = clone(initial_profile)
     txn Sender
     // smart_contracts/credit_score/contract.algo.ts:41
     // credit_profiles = BoxMap<Account, CreditProfile>({ keyPrefix: 'c' })
     concat
-    // smart_contracts/credit_score/contract.algo.ts:62
+    // smart_contracts/credit_score/contract.algo.ts:65
     // this.credit_profiles(Txn.sender).value = clone(initial_profile)
     swap
     box_put
-    // smart_contracts/credit_score/contract.algo.ts:50
+    // smart_contracts/credit_score/contract.algo.ts:53
     // @abimethod()
     intc_0 // 1
     return
@@ -96,7 +120,7 @@ create_profile:
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.update_score_on_deposit[routing]() -> void:
 update_score_on_deposit:
-    // smart_contracts/credit_score/contract.algo.ts:65
+    // smart_contracts/credit_score/contract.algo.ts:68
     // public update_score_on_deposit(user: Account, amount: uint64): void {
     txna ApplicationArgs 1
     dup
@@ -116,17 +140,17 @@ update_score_on_deposit:
     bytec_0 // "c"
     uncover 2
     concat
-    // smart_contracts/credit_score/contract.algo.ts:66
+    // smart_contracts/credit_score/contract.algo.ts:69
     // const profile = clone(this.credit_profiles(user).value)
     dup
     box_get
     assert // Box must have value
-    // smart_contracts/credit_score/contract.algo.ts:68
+    // smart_contracts/credit_score/contract.algo.ts:71
     // const deposit_increase: uint64 = amount / Uint64(10_000_000)
     dig 2
     pushint 10000000 // 10000000
     /
-    // smart_contracts/credit_score/contract.algo.ts:70
+    // smart_contracts/credit_score/contract.algo.ts:73
     // const capped_bonus: uint64 = score_bonus > MAX_DEPOSIT_BONUS ? MAX_DEPOSIT_BONUS : score_bonus
     dup
     pushint 200 // 200
@@ -134,18 +158,18 @@ update_score_on_deposit:
     pushint 200 // 200
     swap
     select
-    // smart_contracts/credit_score/contract.algo.ts:72
+    // smart_contracts/credit_score/contract.algo.ts:75
     // const new_score: uint64 = this.clamp_score(profile.score + capped_bonus)
     dig 1
     intc_1 // 0
     extract_uint64
     +
     callsub clamp_score
-    // smart_contracts/credit_score/contract.algo.ts:73
+    // smart_contracts/credit_score/contract.algo.ts:76
     // profile.score = new_score
     itob
     replace2 0
-    // smart_contracts/credit_score/contract.algo.ts:74
+    // smart_contracts/credit_score/contract.algo.ts:77
     // profile.lending_pool_deposits = profile.lending_pool_deposits + amount
     dup
     pushint 48 // 48
@@ -154,15 +178,15 @@ update_score_on_deposit:
     +
     itob
     replace2 48
-    // smart_contracts/credit_score/contract.algo.ts:75
+    // smart_contracts/credit_score/contract.algo.ts:78
     // profile.last_updated_round = Global.round
     global Round
     itob
     replace2 56
-    // smart_contracts/credit_score/contract.algo.ts:77
+    // smart_contracts/credit_score/contract.algo.ts:80
     // this.credit_profiles(user).value = clone(profile)
     box_put
-    // smart_contracts/credit_score/contract.algo.ts:65
+    // smart_contracts/credit_score/contract.algo.ts:68
     // public update_score_on_deposit(user: Account, amount: uint64): void {
     intc_0 // 1
     return
@@ -170,7 +194,7 @@ update_score_on_deposit:
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.update_score_on_borrow[routing]() -> void:
 update_score_on_borrow:
-    // smart_contracts/credit_score/contract.algo.ts:80
+    // smart_contracts/credit_score/contract.algo.ts:83
     // public update_score_on_borrow(user: Account, amount: uint64): void {
     txna ApplicationArgs 1
     dup
@@ -190,12 +214,12 @@ update_score_on_borrow:
     bytec_0 // "c"
     uncover 2
     concat
-    // smart_contracts/credit_score/contract.algo.ts:81
+    // smart_contracts/credit_score/contract.algo.ts:84
     // const profile = clone(this.credit_profiles(user).value)
     dup
     box_get
     assert // Box must have value
-    // smart_contracts/credit_score/contract.algo.ts:83
+    // smart_contracts/credit_score/contract.algo.ts:86
     // const new_score: uint64 = this.clamp_score(profile.score - NEW_LOAN_PENALTY)
     dup
     intc_1 // 0
@@ -203,11 +227,11 @@ update_score_on_borrow:
     pushint 5 // 5
     -
     callsub clamp_score
-    // smart_contracts/credit_score/contract.algo.ts:84
+    // smart_contracts/credit_score/contract.algo.ts:87
     // profile.score = new_score
     itob
     replace2 0
-    // smart_contracts/credit_score/contract.algo.ts:85
+    // smart_contracts/credit_score/contract.algo.ts:88
     // profile.total_borrowed = profile.total_borrowed + amount
     dup
     intc_3 // 8
@@ -216,7 +240,7 @@ update_score_on_borrow:
     +
     itob
     replace2 8
-    // smart_contracts/credit_score/contract.algo.ts:86
+    // smart_contracts/credit_score/contract.algo.ts:89
     // profile.active_loans = profile.active_loans + Uint64(1)
     dup
     pushint 24 // 24
@@ -225,15 +249,15 @@ update_score_on_borrow:
     +
     itob
     replace2 24
-    // smart_contracts/credit_score/contract.algo.ts:87
+    // smart_contracts/credit_score/contract.algo.ts:90
     // profile.last_updated_round = Global.round
     global Round
     itob
     replace2 56
-    // smart_contracts/credit_score/contract.algo.ts:89
+    // smart_contracts/credit_score/contract.algo.ts:92
     // this.credit_profiles(user).value = clone(profile)
     box_put
-    // smart_contracts/credit_score/contract.algo.ts:80
+    // smart_contracts/credit_score/contract.algo.ts:83
     // public update_score_on_borrow(user: Account, amount: uint64): void {
     intc_0 // 1
     return
@@ -241,7 +265,7 @@ update_score_on_borrow:
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.update_score_on_repay[routing]() -> void:
 update_score_on_repay:
-    // smart_contracts/credit_score/contract.algo.ts:92
+    // smart_contracts/credit_score/contract.algo.ts:95
     // public update_score_on_repay(user: Account, amount: uint64, on_time: boolean): void {
     txna ApplicationArgs 1
     dup
@@ -272,16 +296,16 @@ update_score_on_repay:
     concat
     dup
     cover 2
-    // smart_contracts/credit_score/contract.algo.ts:93
+    // smart_contracts/credit_score/contract.algo.ts:96
     // const profile = clone(this.credit_profiles(user).value)
     box_get
     swap
     cover 2
     assert // Box must have value
-    // smart_contracts/credit_score/contract.algo.ts:96
+    // smart_contracts/credit_score/contract.algo.ts:99
     // if (on_time) {
     bz update_score_on_repay_else_body@3
-    // smart_contracts/credit_score/contract.algo.ts:97
+    // smart_contracts/credit_score/contract.algo.ts:100
     // profile.on_time_repayments = profile.on_time_repayments + Uint64(1)
     dupn 2
     intc_2 // 32
@@ -291,12 +315,12 @@ update_score_on_repay:
     itob
     replace2 32
     bury 1
-    // smart_contracts/credit_score/contract.algo.ts:98
+    // smart_contracts/credit_score/contract.algo.ts:101
     // score_change = ON_TIME_REPAYMENT_BONUS
     pushint 20 // 20
 
 update_score_on_repay_after_if_else@4:
-    // smart_contracts/credit_score/contract.algo.ts:104
+    // smart_contracts/credit_score/contract.algo.ts:107
     // const new_score: uint64 = this.clamp_score(profile.score - score_change)
     dig 1
     dup
@@ -305,11 +329,11 @@ update_score_on_repay_after_if_else@4:
     uncover 2
     -
     callsub clamp_score
-    // smart_contracts/credit_score/contract.algo.ts:105
+    // smart_contracts/credit_score/contract.algo.ts:108
     // profile.score = new_score
     itob
     replace2 0
-    // smart_contracts/credit_score/contract.algo.ts:106
+    // smart_contracts/credit_score/contract.algo.ts:109
     // profile.total_repaid = profile.total_repaid + amount
     dup
     pushint 16 // 16
@@ -318,7 +342,7 @@ update_score_on_repay_after_if_else@4:
     +
     itob
     replace2 16
-    // smart_contracts/credit_score/contract.algo.ts:107
+    // smart_contracts/credit_score/contract.algo.ts:110
     // profile.active_loans = profile.active_loans - Uint64(1)
     dup
     pushint 24 // 24
@@ -327,23 +351,23 @@ update_score_on_repay_after_if_else@4:
     -
     itob
     replace2 24
-    // smart_contracts/credit_score/contract.algo.ts:108
+    // smart_contracts/credit_score/contract.algo.ts:111
     // profile.last_updated_round = Global.round
     global Round
     itob
     replace2 56
-    // smart_contracts/credit_score/contract.algo.ts:110
+    // smart_contracts/credit_score/contract.algo.ts:113
     // this.credit_profiles(user).value = clone(profile)
     dig 2
     swap
     box_put
-    // smart_contracts/credit_score/contract.algo.ts:92
+    // smart_contracts/credit_score/contract.algo.ts:95
     // public update_score_on_repay(user: Account, amount: uint64, on_time: boolean): void {
     intc_0 // 1
     return
 
 update_score_on_repay_else_body@3:
-    // smart_contracts/credit_score/contract.algo.ts:100
+    // smart_contracts/credit_score/contract.algo.ts:103
     // profile.late_repayments = profile.late_repayments + Uint64(1)
     dupn 2
     pushint 40 // 40
@@ -353,7 +377,7 @@ update_score_on_repay_else_body@3:
     itob
     replace2 40
     bury 1
-    // smart_contracts/credit_score/contract.algo.ts:101
+    // smart_contracts/credit_score/contract.algo.ts:104
     // score_change = LATE_REPAYMENT_PENALTY
     pushint 30 // 30
     b update_score_on_repay_after_if_else@4
@@ -361,7 +385,7 @@ update_score_on_repay_else_body@3:
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.update_score_on_default[routing]() -> void:
 update_score_on_default:
-    // smart_contracts/credit_score/contract.algo.ts:113
+    // smart_contracts/credit_score/contract.algo.ts:116
     // public update_score_on_default(user: Account): void {
     txna ApplicationArgs 1
     dup
@@ -374,12 +398,12 @@ update_score_on_default:
     bytec_0 // "c"
     swap
     concat
-    // smart_contracts/credit_score/contract.algo.ts:114
+    // smart_contracts/credit_score/contract.algo.ts:117
     // const profile = clone(this.credit_profiles(user).value)
     dup
     box_get
     assert // Box must have value
-    // smart_contracts/credit_score/contract.algo.ts:116
+    // smart_contracts/credit_score/contract.algo.ts:119
     // const new_score: uint64 = this.clamp_score(profile.score - DEFAULT_PENALTY)
     dup
     intc_1 // 0
@@ -387,19 +411,19 @@ update_score_on_default:
     pushint 100 // 100
     -
     callsub clamp_score
-    // smart_contracts/credit_score/contract.algo.ts:117
+    // smart_contracts/credit_score/contract.algo.ts:120
     // profile.score = new_score
     itob
     replace2 0
-    // smart_contracts/credit_score/contract.algo.ts:118
+    // smart_contracts/credit_score/contract.algo.ts:121
     // profile.last_updated_round = Global.round
     global Round
     itob
     replace2 56
-    // smart_contracts/credit_score/contract.algo.ts:120
+    // smart_contracts/credit_score/contract.algo.ts:123
     // this.credit_profiles(user).value = clone(profile)
     box_put
-    // smart_contracts/credit_score/contract.algo.ts:113
+    // smart_contracts/credit_score/contract.algo.ts:116
     // public update_score_on_default(user: Account): void {
     intc_0 // 1
     return
@@ -407,7 +431,7 @@ update_score_on_default:
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.get_score[routing]() -> void:
 get_score:
-    // smart_contracts/credit_score/contract.algo.ts:133
+    // smart_contracts/credit_score/contract.algo.ts:136
     // @abimethod({ readonly: true })
     txna ApplicationArgs 1
     dup
@@ -427,7 +451,7 @@ get_score:
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.get_borrow_limit[routing]() -> void:
 get_borrow_limit:
-    // smart_contracts/credit_score/contract.algo.ts:141
+    // smart_contracts/credit_score/contract.algo.ts:144
     // @abimethod({ readonly: true })
     txna ApplicationArgs 1
     dup
@@ -435,21 +459,21 @@ get_borrow_limit:
     intc_2 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
-    // smart_contracts/credit_score/contract.algo.ts:143
+    // smart_contracts/credit_score/contract.algo.ts:146
     // const score: uint64 = this.get_score(user)
     callsub smart_contracts/credit_score/contract.algo.ts::CreditScore.get_score
     dup
-    // smart_contracts/credit_score/contract.algo.ts:145
+    // smart_contracts/credit_score/contract.algo.ts:148
     // if (score < Uint64(500)) {
     pushint 500 // 500
     <
     bz get_borrow_limit_after_if_else@3
-    // smart_contracts/credit_score/contract.algo.ts:146
+    // smart_contracts/credit_score/contract.algo.ts:149
     // return Uint64(0)
     intc_1 // 0
 
 get_borrow_limit_after_inlined_smart_contracts/credit_score/contract.algo.ts::CreditScore.get_borrow_limit@10:
-    // smart_contracts/credit_score/contract.algo.ts:141
+    // smart_contracts/credit_score/contract.algo.ts:144
     // @abimethod({ readonly: true })
     itob
     bytec_1 // 0x151f7c75
@@ -460,59 +484,59 @@ get_borrow_limit_after_inlined_smart_contracts/credit_score/contract.algo.ts::Cr
     return
 
 get_borrow_limit_after_if_else@3:
-    // smart_contracts/credit_score/contract.algo.ts:148
+    // smart_contracts/credit_score/contract.algo.ts:151
     // if (score < Uint64(600)) {
     dup
     pushint 600 // 600
     <
     bz get_borrow_limit_after_if_else@5
-    // smart_contracts/credit_score/contract.algo.ts:149
+    // smart_contracts/credit_score/contract.algo.ts:152
     // return Uint64(500_000_000)
     pushint 500000000 // 500000000
-    // smart_contracts/credit_score/contract.algo.ts:141
+    // smart_contracts/credit_score/contract.algo.ts:144
     // @abimethod({ readonly: true })
     b get_borrow_limit_after_inlined_smart_contracts/credit_score/contract.algo.ts::CreditScore.get_borrow_limit@10
 
 get_borrow_limit_after_if_else@5:
-    // smart_contracts/credit_score/contract.algo.ts:151
+    // smart_contracts/credit_score/contract.algo.ts:154
     // if (score < Uint64(700)) {
     dup
     pushint 700 // 700
     <
     bz get_borrow_limit_after_if_else@7
-    // smart_contracts/credit_score/contract.algo.ts:152
+    // smart_contracts/credit_score/contract.algo.ts:155
     // return Uint64(2_000_000_000)
     pushint 2000000000 // 2000000000
-    // smart_contracts/credit_score/contract.algo.ts:141
+    // smart_contracts/credit_score/contract.algo.ts:144
     // @abimethod({ readonly: true })
     b get_borrow_limit_after_inlined_smart_contracts/credit_score/contract.algo.ts::CreditScore.get_borrow_limit@10
 
 get_borrow_limit_after_if_else@7:
-    // smart_contracts/credit_score/contract.algo.ts:154
+    // smart_contracts/credit_score/contract.algo.ts:157
     // if (score < Uint64(750)) {
     dup
     pushint 750 // 750
     <
     bz get_borrow_limit_after_if_else@9
-    // smart_contracts/credit_score/contract.algo.ts:155
+    // smart_contracts/credit_score/contract.algo.ts:158
     // return Uint64(5_000_000_000)
     pushint 5000000000 // 5000000000
-    // smart_contracts/credit_score/contract.algo.ts:141
+    // smart_contracts/credit_score/contract.algo.ts:144
     // @abimethod({ readonly: true })
     b get_borrow_limit_after_inlined_smart_contracts/credit_score/contract.algo.ts::CreditScore.get_borrow_limit@10
 
 get_borrow_limit_after_if_else@9:
-    // smart_contracts/credit_score/contract.algo.ts:157
+    // smart_contracts/credit_score/contract.algo.ts:160
     // return Uint64(10_000_000_000)
     pushint 10000000000 // 10000000000
-    // smart_contracts/credit_score/contract.algo.ts:141
+    // smart_contracts/credit_score/contract.algo.ts:144
     // @abimethod({ readonly: true })
     b get_borrow_limit_after_inlined_smart_contracts/credit_score/contract.algo.ts::CreditScore.get_borrow_limit@10
 
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.get_credit_profile[routing]() -> void:
 get_credit_profile:
-    // smart_contracts/credit_score/contract.algo.ts:160
+    // smart_contracts/credit_score/contract.algo.ts:163
     // @abimethod({ readonly: true })
     txna ApplicationArgs 1
     dup
@@ -526,12 +550,12 @@ get_credit_profile:
     swap
     concat
     dup
-    // smart_contracts/credit_score/contract.algo.ts:164
+    // smart_contracts/credit_score/contract.algo.ts:167
     // if (!this.credit_profiles(user).exists) {
     box_len
     bury 1
     bnz get_credit_profile_after_if_else@3
-    // smart_contracts/credit_score/contract.algo.ts:165-174
+    // smart_contracts/credit_score/contract.algo.ts:168-177
     // return [
     //   MIN_SCORE,
     //   Uint64(0),
@@ -545,7 +569,7 @@ get_credit_profile:
     pushbytes 0x000000000000012c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 get_credit_profile_after_inlined_smart_contracts/credit_score/contract.algo.ts::CreditScore.get_credit_profile@4:
-    // smart_contracts/credit_score/contract.algo.ts:160
+    // smart_contracts/credit_score/contract.algo.ts:163
     // @abimethod({ readonly: true })
     bytec_1 // 0x151f7c75
     swap
@@ -555,44 +579,44 @@ get_credit_profile_after_inlined_smart_contracts/credit_score/contract.algo.ts::
     return
 
 get_credit_profile_after_if_else@3:
-    // smart_contracts/credit_score/contract.algo.ts:176
+    // smart_contracts/credit_score/contract.algo.ts:179
     // const profile = clone(this.credit_profiles(user).value)
     dup
     box_get
     assert // Box must have value
-    // smart_contracts/credit_score/contract.algo.ts:178
+    // smart_contracts/credit_score/contract.algo.ts:181
     // profile.score,
     dup
     extract 0 8
-    // smart_contracts/credit_score/contract.algo.ts:179
+    // smart_contracts/credit_score/contract.algo.ts:182
     // profile.total_borrowed,
     dig 1
     extract 8 8
-    // smart_contracts/credit_score/contract.algo.ts:180
+    // smart_contracts/credit_score/contract.algo.ts:183
     // profile.total_repaid,
     dig 2
     extract 16 8
-    // smart_contracts/credit_score/contract.algo.ts:181
+    // smart_contracts/credit_score/contract.algo.ts:184
     // profile.active_loans,
     dig 3
     extract 24 8
-    // smart_contracts/credit_score/contract.algo.ts:182
+    // smart_contracts/credit_score/contract.algo.ts:185
     // profile.on_time_repayments,
     dig 4
     extract 32 8
-    // smart_contracts/credit_score/contract.algo.ts:183
+    // smart_contracts/credit_score/contract.algo.ts:186
     // profile.late_repayments,
     dig 5
     extract 40 8
-    // smart_contracts/credit_score/contract.algo.ts:184
+    // smart_contracts/credit_score/contract.algo.ts:187
     // profile.lending_pool_deposits,
     dig 6
     extract 48 8
-    // smart_contracts/credit_score/contract.algo.ts:185
+    // smart_contracts/credit_score/contract.algo.ts:188
     // profile.last_updated_round,
     uncover 7
     extract 56 8
-    // smart_contracts/credit_score/contract.algo.ts:177-186
+    // smart_contracts/credit_score/contract.algo.ts:180-189
     // return [
     //   profile.score,
     //   profile.total_borrowed,
@@ -618,14 +642,14 @@ get_credit_profile_after_if_else@3:
     concat
     swap
     concat
-    // smart_contracts/credit_score/contract.algo.ts:160
+    // smart_contracts/credit_score/contract.algo.ts:163
     // @abimethod({ readonly: true })
     b get_credit_profile_after_inlined_smart_contracts/credit_score/contract.algo.ts::CreditScore.get_credit_profile@4
 
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.set_lending_pool_app[routing]() -> void:
 set_lending_pool_app:
-    // smart_contracts/credit_score/contract.algo.ts:189
+    // smart_contracts/credit_score/contract.algo.ts:192
     // public set_lending_pool_app(app_id: uint64): void {
     txna ApplicationArgs 1
     dup
@@ -637,11 +661,11 @@ set_lending_pool_app:
     // smart_contracts/credit_score/contract.algo.ts:39
     // lending_pool_app_id = GlobalState<uint64>()
     bytec_2 // "lending_pool_app_id"
-    // smart_contracts/credit_score/contract.algo.ts:190
+    // smart_contracts/credit_score/contract.algo.ts:193
     // this.lending_pool_app_id.value = app_id
     swap
     app_global_put
-    // smart_contracts/credit_score/contract.algo.ts:189
+    // smart_contracts/credit_score/contract.algo.ts:192
     // public set_lending_pool_app(app_id: uint64): void {
     intc_0 // 1
     return
@@ -649,34 +673,34 @@ set_lending_pool_app:
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.clamp_score(score: uint64) -> uint64:
 clamp_score:
-    // smart_contracts/credit_score/contract.algo.ts:123
+    // smart_contracts/credit_score/contract.algo.ts:126
     // private clamp_score(score: uint64): uint64 {
     proto 1 1
-    // smart_contracts/credit_score/contract.algo.ts:124
+    // smart_contracts/credit_score/contract.algo.ts:127
     // if (score < MIN_SCORE) {
     frame_dig -1
     intc 4 // 300
     <
     bz clamp_score_after_if_else@2
-    // smart_contracts/credit_score/contract.algo.ts:125
+    // smart_contracts/credit_score/contract.algo.ts:128
     // return MIN_SCORE
     intc 4 // 300
     retsub
 
 clamp_score_after_if_else@2:
-    // smart_contracts/credit_score/contract.algo.ts:127
+    // smart_contracts/credit_score/contract.algo.ts:130
     // if (score > MAX_SCORE) {
     frame_dig -1
     intc 5 // 850
     >
     bz clamp_score_after_if_else@4
-    // smart_contracts/credit_score/contract.algo.ts:128
+    // smart_contracts/credit_score/contract.algo.ts:131
     // return MAX_SCORE
     intc 5 // 850
     retsub
 
 clamp_score_after_if_else@4:
-    // smart_contracts/credit_score/contract.algo.ts:130
+    // smart_contracts/credit_score/contract.algo.ts:133
     // return score
     frame_dig -1
     retsub
@@ -684,7 +708,7 @@ clamp_score_after_if_else@4:
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.get_score(user: bytes) -> uint64:
 smart_contracts/credit_score/contract.algo.ts::CreditScore.get_score:
-    // smart_contracts/credit_score/contract.algo.ts:133-134
+    // smart_contracts/credit_score/contract.algo.ts:136-137
     // @abimethod({ readonly: true })
     // public get_score(user: Account): uint64 {
     proto 1 1
@@ -694,19 +718,19 @@ smart_contracts/credit_score/contract.algo.ts::CreditScore.get_score:
     frame_dig -1
     concat
     dup
-    // smart_contracts/credit_score/contract.algo.ts:135
+    // smart_contracts/credit_score/contract.algo.ts:138
     // if (!this.credit_profiles(user).exists) {
     box_len
     bury 1
     bnz smart_contracts/credit_score/contract.algo.ts::CreditScore.get_score_after_if_else@2
-    // smart_contracts/credit_score/contract.algo.ts:136
+    // smart_contracts/credit_score/contract.algo.ts:139
     // return MIN_SCORE
     intc 4 // 300
     swap
     retsub
 
 smart_contracts/credit_score/contract.algo.ts::CreditScore.get_score_after_if_else@2:
-    // smart_contracts/credit_score/contract.algo.ts:138
+    // smart_contracts/credit_score/contract.algo.ts:141
     // return this.credit_profiles(user).value.score
     frame_dig 0
     box_get

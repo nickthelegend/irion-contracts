@@ -40,7 +40,10 @@ export class CreditScore extends Contract {
 
   credit_profiles = BoxMap<Account, CreditProfile>({ keyPrefix: 'c' })
 
-  @abimethod({ onCreate: 'require' })
+  @abimethod({ allowActions: ['NoOp'], onCreate: 'require' })
+  public create(): void {}
+
+  @abimethod({ allowActions: ['NoOp', 'OptIn'], onCreate: 'allow' })
   public bootstrap(): void {
     this.min_score.value = MIN_SCORE
     this.max_score.value = MAX_SCORE
