@@ -3,7 +3,7 @@
   "sources": [
     "../../lending_pool/contract.algo.ts"
   ],
-  "mappings": "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",
+  "mappings": "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",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -11,7 +11,7 @@
       "params": {},
       "block": "main",
       "stack_in": [],
-      "op": "intcblock 0 1 8 4 1000000000000"
+      "op": "intcblock 0 1 4 8 1000000000000"
     },
     "13": {
       "op": "bytecblock \"total_deposits\" \"l\" \"total_borrowed\" \"pool_asset_id\" \"last_update_round\" 0x151f7c75 \"lp_token_id\" \"reserve_factor\" \"interest_rate_base\""
@@ -168,7 +168,7 @@
       ]
     },
     "215": {
-      "op": "intc_2 // 8",
+      "op": "intc_3 // 8",
       "defined_out": [
         "8",
         "len%0#0",
@@ -344,30 +344,110 @@
       "op": "itxn_submit"
     },
     "265": {
-      "op": "bytec 6 // \"lp_token_id\"",
+      "op": "itxn CreatedAssetID",
       "defined_out": [
-        "\"lp_token_id\""
+        "create_lp_token.CreatedAssetID#0"
       ],
       "stack_out": [
-        "\"lp_token_id\""
+        "create_lp_token.CreatedAssetID#0"
       ]
     },
     "267": {
-      "op": "itxn CreatedAssetID",
+      "op": "bytec 6 // \"lp_token_id\"",
       "defined_out": [
         "\"lp_token_id\"",
         "create_lp_token.CreatedAssetID#0"
       ],
       "stack_out": [
-        "\"lp_token_id\"",
-        "create_lp_token.CreatedAssetID#0"
+        "create_lp_token.CreatedAssetID#0",
+        "\"lp_token_id\""
       ]
     },
     "269": {
+      "op": "dig 1",
+      "defined_out": [
+        "\"lp_token_id\"",
+        "create_lp_token.CreatedAssetID#0",
+        "create_lp_token.CreatedAssetID#0 (copy)"
+      ],
+      "stack_out": [
+        "create_lp_token.CreatedAssetID#0",
+        "\"lp_token_id\"",
+        "create_lp_token.CreatedAssetID#0 (copy)"
+      ]
+    },
+    "271": {
       "op": "app_global_put",
+      "stack_out": [
+        "create_lp_token.CreatedAssetID#0"
+      ]
+    },
+    "272": {
+      "op": "itxn_begin"
+    },
+    "273": {
+      "op": "global CurrentApplicationAddress",
+      "defined_out": [
+        "create_lp_token.CreatedAssetID#0",
+        "inner_txn_params%1%%param_AssetReceiver_idx_0#0"
+      ],
+      "stack_out": [
+        "create_lp_token.CreatedAssetID#0",
+        "inner_txn_params%1%%param_AssetReceiver_idx_0#0"
+      ]
+    },
+    "275": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "create_lp_token.CreatedAssetID#0",
+        "inner_txn_params%1%%param_AssetReceiver_idx_0#0",
+        "0"
+      ]
+    },
+    "276": {
+      "op": "itxn_field AssetAmount",
+      "stack_out": [
+        "create_lp_token.CreatedAssetID#0",
+        "inner_txn_params%1%%param_AssetReceiver_idx_0#0"
+      ]
+    },
+    "278": {
+      "op": "itxn_field AssetReceiver",
+      "stack_out": [
+        "create_lp_token.CreatedAssetID#0"
+      ]
+    },
+    "280": {
+      "op": "itxn_field XferAsset",
       "stack_out": []
     },
-    "270": {
+    "282": {
+      "op": "intc_2 // 4",
+      "defined_out": [
+        "4"
+      ],
+      "stack_out": [
+        "4"
+      ]
+    },
+    "283": {
+      "op": "itxn_field TypeEnum",
+      "stack_out": []
+    },
+    "285": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "286": {
+      "op": "itxn_field Fee",
+      "stack_out": []
+    },
+    "288": {
+      "op": "itxn_submit"
+    },
+    "289": {
       "op": "bytec_0 // \"total_deposits\"",
       "defined_out": [
         "\"total_deposits\""
@@ -376,18 +456,18 @@
         "\"total_deposits\""
       ]
     },
-    "271": {
+    "290": {
       "op": "intc_0 // 0",
       "stack_out": [
         "\"total_deposits\"",
         "0"
       ]
     },
-    "272": {
+    "291": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "273": {
+    "292": {
       "op": "bytec_2 // \"total_borrowed\"",
       "defined_out": [
         "\"total_borrowed\""
@@ -396,18 +476,18 @@
         "\"total_borrowed\""
       ]
     },
-    "274": {
+    "293": {
       "op": "intc_0 // 0",
       "stack_out": [
         "\"total_borrowed\"",
         "0"
       ]
     },
-    "275": {
+    "294": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "276": {
+    "295": {
       "op": "bytec 7 // \"reserve_factor\"",
       "defined_out": [
         "\"reserve_factor\""
@@ -416,7 +496,7 @@
         "\"reserve_factor\""
       ]
     },
-    "278": {
+    "297": {
       "op": "pushint 1000 // 1000",
       "defined_out": [
         "\"reserve_factor\"",
@@ -427,11 +507,11 @@
         "1000"
       ]
     },
-    "281": {
+    "300": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "282": {
+    "301": {
       "op": "bytec 8 // \"interest_rate_base\"",
       "defined_out": [
         "\"interest_rate_base\""
@@ -440,7 +520,7 @@
         "\"interest_rate_base\""
       ]
     },
-    "284": {
+    "303": {
       "op": "pushint 500 // 500",
       "defined_out": [
         "\"interest_rate_base\"",
@@ -451,11 +531,11 @@
         "500"
       ]
     },
-    "287": {
+    "306": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "288": {
+    "307": {
       "op": "bytec 4 // \"last_update_round\"",
       "defined_out": [
         "\"last_update_round\""
@@ -464,7 +544,7 @@
         "\"last_update_round\""
       ]
     },
-    "290": {
+    "309": {
       "op": "global Round",
       "defined_out": [
         "\"last_update_round\"",
@@ -475,11 +555,11 @@
         "tmp%0#1"
       ]
     },
-    "292": {
+    "311": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "293": {
+    "312": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -488,11 +568,11 @@
         "1"
       ]
     },
-    "294": {
+    "313": {
       "op": "return",
       "stack_out": []
     },
-    "295": {
+    "314": {
       "subroutine": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.deposit[routing]",
       "params": {},
       "block": "deposit",
@@ -502,7 +582,7 @@
         "existing_deposits#0"
       ]
     },
-    "297": {
+    "316": {
       "op": "txn GroupIndex",
       "defined_out": [
         "tmp%0#0"
@@ -512,7 +592,7 @@
         "tmp%0#0"
       ]
     },
-    "299": {
+    "318": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -524,7 +604,7 @@
         "1"
       ]
     },
-    "300": {
+    "319": {
       "op": "-",
       "defined_out": [
         "payment#0"
@@ -534,7 +614,7 @@
         "payment#0"
       ]
     },
-    "301": {
+    "320": {
       "op": "dup",
       "defined_out": [
         "payment#0",
@@ -546,7 +626,7 @@
         "payment#0 (copy)"
       ]
     },
-    "302": {
+    "321": {
       "op": "gtxns TypeEnum",
       "defined_out": [
         "gtxn_type%0#0",
@@ -558,8 +638,8 @@
         "gtxn_type%0#0"
       ]
     },
-    "304": {
-      "op": "intc_3 // axfer",
+    "323": {
+      "op": "intc_2 // axfer",
       "defined_out": [
         "axfer",
         "gtxn_type%0#0",
@@ -572,7 +652,7 @@
         "axfer"
       ]
     },
-    "305": {
+    "324": {
       "op": "==",
       "defined_out": [
         "gtxn_type_matches%0#0",
@@ -584,7 +664,7 @@
         "gtxn_type_matches%0#0"
       ]
     },
-    "306": {
+    "325": {
       "error": "transaction type is axfer",
       "op": "assert // transaction type is axfer",
       "stack_out": [
@@ -592,7 +672,7 @@
         "payment#0"
       ]
     },
-    "307": {
+    "326": {
       "op": "dup",
       "stack_out": [
         "existing_deposits#0",
@@ -600,7 +680,7 @@
         "payment#0 (copy)"
       ]
     },
-    "308": {
+    "327": {
       "op": "gtxns XferAsset",
       "stack_out": [
         "existing_deposits#0",
@@ -608,7 +688,7 @@
         "tmp%0#0"
       ]
     },
-    "310": {
+    "329": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -622,7 +702,7 @@
         "0"
       ]
     },
-    "311": {
+    "330": {
       "op": "bytec_3 // \"pool_asset_id\"",
       "defined_out": [
         "\"pool_asset_id\"",
@@ -638,7 +718,7 @@
         "\"pool_asset_id\""
       ]
     },
-    "312": {
+    "331": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -654,7 +734,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "313": {
+    "332": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -664,7 +744,7 @@
         "maybe_value%0#0"
       ]
     },
-    "314": {
+    "333": {
       "op": "==",
       "defined_out": [
         "payment#0",
@@ -676,7 +756,7 @@
         "tmp%1#0"
       ]
     },
-    "315": {
+    "334": {
       "error": "Asset must be the pool asset",
       "op": "assert // Asset must be the pool asset",
       "stack_out": [
@@ -684,7 +764,7 @@
         "payment#0"
       ]
     },
-    "316": {
+    "335": {
       "op": "dup",
       "stack_out": [
         "existing_deposits#0",
@@ -692,7 +772,7 @@
         "payment#0 (copy)"
       ]
     },
-    "317": {
+    "336": {
       "op": "gtxns AssetReceiver",
       "defined_out": [
         "payment#0",
@@ -704,7 +784,7 @@
         "reinterpret_bytes[32]%0#0"
       ]
     },
-    "319": {
+    "338": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
         "payment#0",
@@ -718,7 +798,7 @@
         "reinterpret_bytes[32]%1#0"
       ]
     },
-    "321": {
+    "340": {
       "op": "==",
       "defined_out": [
         "payment#0",
@@ -730,7 +810,7 @@
         "tmp%2#0"
       ]
     },
-    "322": {
+    "341": {
       "error": "Asset must be received by the pool",
       "op": "assert // Asset must be received by the pool",
       "stack_out": [
@@ -738,7 +818,7 @@
         "payment#0"
       ]
     },
-    "323": {
+    "342": {
       "op": "gtxns AssetAmount",
       "defined_out": [
         "deposit_amount#1"
@@ -748,7 +828,7 @@
         "deposit_amount#1"
       ]
     },
-    "325": {
+    "344": {
       "op": "dup",
       "defined_out": [
         "deposit_amount#1"
@@ -759,7 +839,7 @@
         "deposit_amount#1"
       ]
     },
-    "326": {
+    "345": {
       "error": "Deposit amount must be > 0",
       "op": "assert // Deposit amount must be > 0",
       "stack_out": [
@@ -767,7 +847,7 @@
         "deposit_amount#1"
       ]
     },
-    "327": {
+    "346": {
       "op": "txn Sender",
       "defined_out": [
         "deposit_amount#1",
@@ -779,7 +859,7 @@
         "tmp%5#0"
       ]
     },
-    "329": {
+    "348": {
       "callsub": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.update_accrued_yield",
       "op": "callsub update_accrued_yield",
       "stack_out": [
@@ -787,7 +867,7 @@
         "deposit_amount#1"
       ]
     },
-    "332": {
+    "351": {
       "op": "bytec_1 // \"l\"",
       "defined_out": [
         "\"l\"",
@@ -799,7 +879,7 @@
         "\"l\""
       ]
     },
-    "333": {
+    "352": {
       "op": "txn Sender",
       "defined_out": [
         "\"l\"",
@@ -813,7 +893,7 @@
         "materialized_values%0#0"
       ]
     },
-    "335": {
+    "354": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -825,7 +905,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "336": {
+    "355": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -839,7 +919,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "337": {
+    "356": {
       "op": "bury 1",
       "stack_out": [
         "existing_deposits#0",
@@ -847,14 +927,14 @@
         "maybe_exists%1#0"
       ]
     },
-    "339": {
+    "358": {
       "op": "bz deposit_ternary_false@3",
       "stack_out": [
         "existing_deposits#0",
         "deposit_amount#1"
       ]
     },
-    "342": {
+    "361": {
       "op": "bytec_1 // \"l\"",
       "stack_out": [
         "existing_deposits#0",
@@ -862,7 +942,7 @@
         "\"l\""
       ]
     },
-    "343": {
+    "362": {
       "op": "txn Sender",
       "defined_out": [
         "\"l\"",
@@ -876,7 +956,7 @@
         "materialized_values%1#0"
       ]
     },
-    "345": {
+    "364": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%1#0",
@@ -888,7 +968,7 @@
         "box_prefixed_key%1#0"
       ]
     },
-    "346": {
+    "365": {
       "op": "box_get",
       "defined_out": [
         "aggregate%box_get%0#0",
@@ -902,7 +982,7 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "347": {
+    "366": {
       "error": "Box must have value",
       "op": "assert // Box must have value",
       "defined_out": [
@@ -915,7 +995,7 @@
         "current_position#0"
       ]
     },
-    "348": {
+    "367": {
       "block": "deposit_ternary_merge@4",
       "stack_in": [
         "existing_deposits#0",
@@ -934,7 +1014,7 @@
         "current_position#0 (copy)"
       ]
     },
-    "349": {
+    "368": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -949,7 +1029,7 @@
         "0"
       ]
     },
-    "350": {
+    "369": {
       "op": "extract_uint64",
       "defined_out": [
         "current_position#0",
@@ -962,7 +1042,7 @@
         "values%0#0"
       ]
     },
-    "351": {
+    "370": {
       "op": "dig 2",
       "defined_out": [
         "current_position#0",
@@ -977,7 +1057,7 @@
         "deposit_amount#1"
       ]
     },
-    "353": {
+    "372": {
       "op": "+",
       "defined_out": [
         "current_position#0",
@@ -991,7 +1071,7 @@
         "deposit_amount#0"
       ]
     },
-    "354": {
+    "373": {
       "op": "global Round",
       "defined_out": [
         "current_position#0",
@@ -1007,7 +1087,7 @@
         "deposit_round#0"
       ]
     },
-    "356": {
+    "375": {
       "op": "uncover 2",
       "stack_out": [
         "existing_deposits#0",
@@ -1017,7 +1097,7 @@
         "current_position#0"
       ]
     },
-    "358": {
+    "377": {
       "op": "extract 16 8",
       "defined_out": [
         "aggregate%extract%1#0",
@@ -1033,7 +1113,7 @@
         "aggregate%extract%1#0"
       ]
     },
-    "361": {
+    "380": {
       "op": "uncover 2",
       "stack_out": [
         "existing_deposits#0",
@@ -1043,7 +1123,7 @@
         "deposit_amount#0"
       ]
     },
-    "363": {
+    "382": {
       "op": "itob",
       "defined_out": [
         "aggregate%extract%1#0",
@@ -1059,7 +1139,7 @@
         "aggregate%val_as_bytes%3#0"
       ]
     },
-    "364": {
+    "383": {
       "op": "uncover 2",
       "stack_out": [
         "existing_deposits#0",
@@ -1069,7 +1149,7 @@
         "deposit_round#0"
       ]
     },
-    "366": {
+    "385": {
       "op": "itob",
       "defined_out": [
         "aggregate%extract%1#0",
@@ -1085,7 +1165,7 @@
         "aggregate%val_as_bytes%4#0"
       ]
     },
-    "367": {
+    "386": {
       "op": "concat",
       "defined_out": [
         "aggregate%extract%1#0",
@@ -1099,7 +1179,7 @@
         "aggregate%head%4#0"
       ]
     },
-    "368": {
+    "387": {
       "op": "swap",
       "stack_out": [
         "existing_deposits#0",
@@ -1108,7 +1188,7 @@
         "aggregate%extract%1#0"
       ]
     },
-    "369": {
+    "388": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%5#0",
@@ -1120,7 +1200,7 @@
         "aggregate%head%5#0"
       ]
     },
-    "370": {
+    "389": {
       "op": "bytec_1 // \"l\"",
       "defined_out": [
         "\"l\"",
@@ -1134,7 +1214,7 @@
         "\"l\""
       ]
     },
-    "371": {
+    "390": {
       "op": "txn Sender",
       "defined_out": [
         "\"l\"",
@@ -1150,7 +1230,7 @@
         "materialized_values%2#0"
       ]
     },
-    "373": {
+    "392": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%5#0",
@@ -1164,7 +1244,7 @@
         "box_prefixed_key%2#0"
       ]
     },
-    "374": {
+    "393": {
       "op": "swap",
       "stack_out": [
         "existing_deposits#0",
@@ -1173,14 +1253,14 @@
         "aggregate%head%5#0"
       ]
     },
-    "375": {
+    "394": {
       "op": "box_put",
       "stack_out": [
         "existing_deposits#0",
         "deposit_amount#1"
       ]
     },
-    "376": {
+    "395": {
       "op": "intc_0 // 0",
       "stack_out": [
         "existing_deposits#0",
@@ -1188,7 +1268,7 @@
         "0"
       ]
     },
-    "377": {
+    "396": {
       "op": "bytec_0 // \"total_deposits\"",
       "defined_out": [
         "\"total_deposits\"",
@@ -1202,7 +1282,7 @@
         "\"total_deposits\""
       ]
     },
-    "378": {
+    "397": {
       "op": "app_global_get_ex",
       "defined_out": [
         "deposit_amount#1",
@@ -1216,7 +1296,7 @@
         "maybe_exists%2#0"
       ]
     },
-    "379": {
+    "398": {
       "op": "swap",
       "stack_out": [
         "existing_deposits#0",
@@ -1225,7 +1305,7 @@
         "existing_deposits#0"
       ]
     },
-    "380": {
+    "399": {
       "op": "dup",
       "stack_out": [
         "existing_deposits#0",
@@ -1235,7 +1315,7 @@
         "existing_deposits#0 (copy)"
       ]
     },
-    "381": {
+    "400": {
       "op": "cover 2",
       "stack_out": [
         "existing_deposits#0",
@@ -1245,7 +1325,7 @@
         "existing_deposits#0"
       ]
     },
-    "383": {
+    "402": {
       "op": "bury 4",
       "defined_out": [
         "deposit_amount#1",
@@ -1259,7 +1339,7 @@
         "maybe_exists%2#0"
       ]
     },
-    "385": {
+    "404": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -1268,14 +1348,14 @@
         "existing_deposits#0"
       ]
     },
-    "386": {
+    "405": {
       "op": "bnz deposit_after_if_else@7",
       "stack_out": [
         "existing_deposits#0",
         "deposit_amount#1"
       ]
     },
-    "389": {
+    "408": {
       "op": "dup",
       "defined_out": [
         "deposit_amount#1",
@@ -1288,7 +1368,7 @@
         "lp_tokens_to_mint#0"
       ]
     },
-    "390": {
+    "409": {
       "block": "deposit_after_inlined_smart_contracts/lending_pool/contract.algo.ts::LendingPool.calculate_lp_tokens@8",
       "stack_in": [
         "existing_deposits#0",
@@ -1297,7 +1377,7 @@
       ],
       "op": "itxn_begin"
     },
-    "391": {
+    "410": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0"
@@ -1309,7 +1389,7 @@
         "0"
       ]
     },
-    "392": {
+    "411": {
       "op": "bytec 6 // \"lp_token_id\"",
       "defined_out": [
         "\"lp_token_id\"",
@@ -1323,7 +1403,7 @@
         "\"lp_token_id\""
       ]
     },
-    "394": {
+    "413": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%3#0",
@@ -1337,7 +1417,7 @@
         "maybe_exists%3#0"
       ]
     },
-    "395": {
+    "414": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -1347,7 +1427,7 @@
         "maybe_value%2#0"
       ]
     },
-    "396": {
+    "415": {
       "op": "txn Sender",
       "defined_out": [
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0",
@@ -1361,7 +1441,7 @@
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0"
       ]
     },
-    "398": {
+    "417": {
       "op": "uncover 2",
       "defined_out": [
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0",
@@ -1376,7 +1456,7 @@
         "lp_tokens_to_mint#0"
       ]
     },
-    "400": {
+    "419": {
       "op": "itxn_field AssetAmount",
       "stack_out": [
         "existing_deposits#0",
@@ -1385,7 +1465,7 @@
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0"
       ]
     },
-    "402": {
+    "421": {
       "op": "itxn_field AssetReceiver",
       "stack_out": [
         "existing_deposits#0",
@@ -1393,15 +1473,15 @@
         "maybe_value%2#0"
       ]
     },
-    "404": {
+    "423": {
       "op": "itxn_field XferAsset",
       "stack_out": [
         "existing_deposits#0",
         "deposit_amount#1"
       ]
     },
-    "406": {
-      "op": "intc_3 // 4",
+    "425": {
+      "op": "intc_2 // 4",
       "defined_out": [
         "4"
       ],
@@ -1411,14 +1491,14 @@
         "4"
       ]
     },
-    "407": {
+    "426": {
       "op": "itxn_field TypeEnum",
       "stack_out": [
         "existing_deposits#0",
         "deposit_amount#1"
       ]
     },
-    "409": {
+    "428": {
       "op": "intc_0 // 0",
       "stack_out": [
         "existing_deposits#0",
@@ -1426,17 +1506,17 @@
         "0"
       ]
     },
-    "410": {
+    "429": {
       "op": "itxn_field Fee",
       "stack_out": [
         "existing_deposits#0",
         "deposit_amount#1"
       ]
     },
-    "412": {
+    "431": {
       "op": "itxn_submit"
     },
-    "413": {
+    "432": {
       "op": "intc_0 // 0",
       "stack_out": [
         "existing_deposits#0",
@@ -1444,7 +1524,7 @@
         "0"
       ]
     },
-    "414": {
+    "433": {
       "op": "bytec_0 // \"total_deposits\"",
       "defined_out": [
         "\"total_deposits\"",
@@ -1457,7 +1537,7 @@
         "\"total_deposits\""
       ]
     },
-    "415": {
+    "434": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%4#0",
@@ -1470,7 +1550,7 @@
         "maybe_exists%4#0"
       ]
     },
-    "416": {
+    "435": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -1479,7 +1559,7 @@
         "maybe_value%3#0"
       ]
     },
-    "417": {
+    "436": {
       "op": "dig 1",
       "defined_out": [
         "deposit_amount#1",
@@ -1492,7 +1572,7 @@
         "deposit_amount#1"
       ]
     },
-    "419": {
+    "438": {
       "op": "+",
       "defined_out": [
         "deposit_amount#1",
@@ -1504,7 +1584,7 @@
         "tmp%14#0"
       ]
     },
-    "420": {
+    "439": {
       "op": "bytec_0 // \"total_deposits\"",
       "stack_out": [
         "existing_deposits#0",
@@ -1513,7 +1593,7 @@
         "\"total_deposits\""
       ]
     },
-    "421": {
+    "440": {
       "op": "swap",
       "stack_out": [
         "existing_deposits#0",
@@ -1522,14 +1602,14 @@
         "tmp%14#0"
       ]
     },
-    "422": {
+    "441": {
       "op": "app_global_put",
       "stack_out": [
         "existing_deposits#0",
         "deposit_amount#1"
       ]
     },
-    "423": {
+    "442": {
       "op": "bytec 4 // \"last_update_round\"",
       "defined_out": [
         "\"last_update_round\"",
@@ -1541,7 +1621,7 @@
         "\"last_update_round\""
       ]
     },
-    "425": {
+    "444": {
       "op": "global Round",
       "defined_out": [
         "\"last_update_round\"",
@@ -1555,14 +1635,14 @@
         "tmp%15#0"
       ]
     },
-    "427": {
+    "446": {
       "op": "app_global_put",
       "stack_out": [
         "existing_deposits#0",
         "deposit_amount#1"
       ]
     },
-    "428": {
+    "447": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -1574,14 +1654,14 @@
         "1"
       ]
     },
-    "429": {
+    "448": {
       "op": "return",
       "stack_out": [
         "existing_deposits#0",
         "deposit_amount#1"
       ]
     },
-    "430": {
+    "449": {
       "block": "deposit_after_if_else@7",
       "stack_in": [
         "existing_deposits#0",
@@ -1597,7 +1677,7 @@
         "deposit_amount#1"
       ]
     },
-    "431": {
+    "450": {
       "op": "intc 4 // 1000000000000",
       "defined_out": [
         "1000000000000",
@@ -1610,7 +1690,7 @@
         "1000000000000"
       ]
     },
-    "433": {
+    "452": {
       "op": "*",
       "defined_out": [
         "deposit_amount#1",
@@ -1622,7 +1702,7 @@
         "tmp%1#1"
       ]
     },
-    "434": {
+    "453": {
       "op": "dig 2",
       "defined_out": [
         "deposit_amount#1",
@@ -1636,7 +1716,7 @@
         "existing_deposits#0"
       ]
     },
-    "436": {
+    "455": {
       "op": "/",
       "defined_out": [
         "deposit_amount#1",
@@ -1649,10 +1729,10 @@
         "lp_tokens_to_mint#0"
       ]
     },
-    "437": {
+    "456": {
       "op": "b deposit_after_inlined_smart_contracts/lending_pool/contract.algo.ts::LendingPool.calculate_lp_tokens@8"
     },
-    "440": {
+    "459": {
       "block": "deposit_ternary_false@3",
       "stack_in": [
         "existing_deposits#0",
@@ -1668,7 +1748,7 @@
         "tmp%6#0"
       ]
     },
-    "442": {
+    "461": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -1681,7 +1761,7 @@
         "0"
       ]
     },
-    "443": {
+    "462": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -1694,7 +1774,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "444": {
+    "463": {
       "op": "swap",
       "stack_out": [
         "existing_deposits#0",
@@ -1703,7 +1783,7 @@
         "tmp%6#0"
       ]
     },
-    "445": {
+    "464": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -1716,7 +1796,7 @@
         "aggregate%val_as_bytes%1#0"
       ]
     },
-    "446": {
+    "465": {
       "op": "dig 1",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -1731,7 +1811,7 @@
         "aggregate%val_as_bytes%0#0 (copy)"
       ]
     },
-    "448": {
+    "467": {
       "op": "swap",
       "stack_out": [
         "existing_deposits#0",
@@ -1741,7 +1821,7 @@
         "aggregate%val_as_bytes%1#0"
       ]
     },
-    "449": {
+    "468": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%1#0",
@@ -1754,7 +1834,7 @@
         "aggregate%head%1#0"
       ]
     },
-    "450": {
+    "469": {
       "op": "swap",
       "stack_out": [
         "existing_deposits#0",
@@ -1763,7 +1843,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "451": {
+    "470": {
       "op": "concat",
       "defined_out": [
         "current_position#0"
@@ -1774,10 +1854,10 @@
         "current_position#0"
       ]
     },
-    "452": {
+    "471": {
       "op": "b deposit_ternary_merge@4"
     },
-    "455": {
+    "474": {
       "subroutine": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.withdraw[routing]",
       "params": {},
       "block": "withdraw",
@@ -1790,7 +1870,7 @@
         "tmp%0#0"
       ]
     },
-    "458": {
+    "477": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -1801,7 +1881,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "459": {
+    "478": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -1812,8 +1892,8 @@
         "len%0#0"
       ]
     },
-    "460": {
-      "op": "intc_2 // 8",
+    "479": {
+      "op": "intc_3 // 8",
       "defined_out": [
         "8",
         "len%0#0",
@@ -1825,7 +1905,7 @@
         "8"
       ]
     },
-    "461": {
+    "480": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -1836,14 +1916,14 @@
         "eq%0#0"
       ]
     },
-    "462": {
+    "481": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "463": {
+    "482": {
       "op": "btoi",
       "defined_out": [
         "lp_amount#0"
@@ -1852,12 +1932,12 @@
         "lp_amount#0"
       ]
     },
-    "464": {
+    "483": {
       "error": "LP amount must be > 0",
       "op": "assert // LP amount must be > 0",
       "stack_out": []
     },
-    "465": {
+    "484": {
       "op": "bytec_1 // \"l\"",
       "defined_out": [
         "\"l\""
@@ -1866,7 +1946,7 @@
         "\"l\""
       ]
     },
-    "466": {
+    "485": {
       "op": "txn Sender",
       "defined_out": [
         "\"l\"",
@@ -1877,7 +1957,7 @@
         "materialized_values%0#0"
       ]
     },
-    "468": {
+    "487": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%0#0"
@@ -1886,7 +1966,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "469": {
+    "488": {
       "op": "box_get",
       "defined_out": [
         "aggregate%box_get%1#0",
@@ -1897,14 +1977,14 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "470": {
+    "489": {
       "error": "Box must have value",
       "op": "assert // Box must have value",
       "stack_out": [
         "position#0"
       ]
     },
-    "471": {
+    "490": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -1915,7 +1995,7 @@
         "0"
       ]
     },
-    "472": {
+    "491": {
       "op": "extract_uint64",
       "defined_out": [
         "values%0#0"
@@ -1924,12 +2004,12 @@
         "values%0#0"
       ]
     },
-    "473": {
+    "492": {
       "error": "No deposit found",
       "op": "assert // No deposit found",
       "stack_out": []
     },
-    "474": {
+    "493": {
       "op": "txn Sender",
       "defined_out": [
         "tmp%2#0"
@@ -1938,18 +2018,18 @@
         "tmp%2#0"
       ]
     },
-    "476": {
+    "495": {
       "callsub": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.update_accrued_yield",
       "op": "callsub update_accrued_yield",
       "stack_out": []
     },
-    "479": {
+    "498": {
       "op": "bytec_1 // \"l\"",
       "stack_out": [
         "\"l\""
       ]
     },
-    "480": {
+    "499": {
       "op": "txn Sender",
       "defined_out": [
         "\"l\"",
@@ -1960,7 +2040,7 @@
         "materialized_values%1#0"
       ]
     },
-    "482": {
+    "501": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%1#0"
@@ -1969,7 +2049,7 @@
         "box_prefixed_key%1#0"
       ]
     },
-    "483": {
+    "502": {
       "op": "box_get",
       "defined_out": [
         "aggregate%box_get%3#0",
@@ -1980,14 +2060,14 @@
         "aggregate%box_get%3#0"
       ]
     },
-    "484": {
+    "503": {
       "error": "Box must have value",
       "op": "assert // Box must have value",
       "stack_out": [
         "updated_position#0"
       ]
     },
-    "485": {
+    "504": {
       "op": "dup",
       "defined_out": [
         "updated_position#0",
@@ -1998,7 +2078,7 @@
         "updated_position#0 (copy)"
       ]
     },
-    "486": {
+    "505": {
       "op": "pushint 16 // 16",
       "defined_out": [
         "16",
@@ -2011,7 +2091,7 @@
         "16"
       ]
     },
-    "488": {
+    "507": {
       "op": "extract_uint64",
       "defined_out": [
         "updated_position#0",
@@ -2022,14 +2102,14 @@
         "yield_earned#0"
       ]
     },
-    "489": {
+    "508": {
       "op": "swap",
       "stack_out": [
         "yield_earned#0",
         "updated_position#0"
       ]
     },
-    "490": {
+    "509": {
       "op": "intc_0 // 0",
       "stack_out": [
         "yield_earned#0",
@@ -2037,7 +2117,7 @@
         "0"
       ]
     },
-    "491": {
+    "510": {
       "op": "extract_uint64",
       "defined_out": [
         "values%2#0",
@@ -2048,7 +2128,7 @@
         "values%2#0"
       ]
     },
-    "492": {
+    "511": {
       "op": "dup",
       "defined_out": [
         "values%2#0",
@@ -2061,7 +2141,7 @@
         "values%2#0 (copy)"
       ]
     },
-    "493": {
+    "512": {
       "op": "uncover 2",
       "stack_out": [
         "values%2#0",
@@ -2069,7 +2149,7 @@
         "yield_earned#0"
       ]
     },
-    "495": {
+    "514": {
       "op": "+",
       "defined_out": [
         "total_withdrawal#0",
@@ -2080,7 +2160,7 @@
         "total_withdrawal#0"
       ]
     },
-    "496": {
+    "515": {
       "op": "bytec_1 // \"l\"",
       "stack_out": [
         "values%2#0",
@@ -2088,7 +2168,7 @@
         "\"l\""
       ]
     },
-    "497": {
+    "516": {
       "op": "txn Sender",
       "defined_out": [
         "\"l\"",
@@ -2103,7 +2183,7 @@
         "materialized_values%2#0"
       ]
     },
-    "499": {
+    "518": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%2#0",
@@ -2116,7 +2196,7 @@
         "box_prefixed_key%2#0"
       ]
     },
-    "500": {
+    "519": {
       "op": "box_del",
       "defined_out": [
         "total_withdrawal#0",
@@ -2129,14 +2209,14 @@
         "{box_del}"
       ]
     },
-    "501": {
+    "520": {
       "op": "pop",
       "stack_out": [
         "values%2#0",
         "total_withdrawal#0"
       ]
     },
-    "502": {
+    "521": {
       "op": "intc_0 // 0",
       "stack_out": [
         "values%2#0",
@@ -2144,7 +2224,7 @@
         "0"
       ]
     },
-    "503": {
+    "522": {
       "op": "bytec_0 // \"total_deposits\"",
       "defined_out": [
         "\"total_deposits\"",
@@ -2159,7 +2239,7 @@
         "\"total_deposits\""
       ]
     },
-    "504": {
+    "523": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -2174,7 +2254,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "505": {
+    "524": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -2183,7 +2263,7 @@
         "maybe_value%0#0"
       ]
     },
-    "506": {
+    "525": {
       "op": "uncover 2",
       "stack_out": [
         "total_withdrawal#0",
@@ -2191,7 +2271,7 @@
         "values%2#0"
       ]
     },
-    "508": {
+    "527": {
       "op": "-",
       "defined_out": [
         "tmp%4#0",
@@ -2202,7 +2282,7 @@
         "tmp%4#0"
       ]
     },
-    "509": {
+    "528": {
       "op": "bytec_0 // \"total_deposits\"",
       "stack_out": [
         "total_withdrawal#0",
@@ -2210,7 +2290,7 @@
         "\"total_deposits\""
       ]
     },
-    "510": {
+    "529": {
       "op": "swap",
       "stack_out": [
         "total_withdrawal#0",
@@ -2218,23 +2298,23 @@
         "tmp%4#0"
       ]
     },
-    "511": {
+    "530": {
       "op": "app_global_put",
       "stack_out": [
         "total_withdrawal#0"
       ]
     },
-    "512": {
+    "531": {
       "op": "itxn_begin"
     },
-    "513": {
+    "532": {
       "op": "intc_0 // 0",
       "stack_out": [
         "total_withdrawal#0",
         "0"
       ]
     },
-    "514": {
+    "533": {
       "op": "bytec_3 // \"pool_asset_id\"",
       "defined_out": [
         "\"pool_asset_id\"",
@@ -2247,7 +2327,7 @@
         "\"pool_asset_id\""
       ]
     },
-    "515": {
+    "534": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%1#0",
@@ -2260,7 +2340,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "516": {
+    "535": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -2268,7 +2348,7 @@
         "maybe_value%1#0"
       ]
     },
-    "517": {
+    "536": {
       "op": "txn Sender",
       "defined_out": [
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0",
@@ -2281,7 +2361,7 @@
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0"
       ]
     },
-    "519": {
+    "538": {
       "op": "uncover 2",
       "stack_out": [
         "maybe_value%1#0",
@@ -2289,25 +2369,25 @@
         "total_withdrawal#0"
       ]
     },
-    "521": {
+    "540": {
       "op": "itxn_field AssetAmount",
       "stack_out": [
         "maybe_value%1#0",
         "inner_txn_params%0%%param_AssetReceiver_idx_0#0"
       ]
     },
-    "523": {
+    "542": {
       "op": "itxn_field AssetReceiver",
       "stack_out": [
         "maybe_value%1#0"
       ]
     },
-    "525": {
+    "544": {
       "op": "itxn_field XferAsset",
       "stack_out": []
     },
-    "527": {
-      "op": "intc_3 // 4",
+    "546": {
+      "op": "intc_2 // 4",
       "defined_out": [
         "4"
       ],
@@ -2315,24 +2395,24 @@
         "4"
       ]
     },
-    "528": {
+    "547": {
       "op": "itxn_field TypeEnum",
       "stack_out": []
     },
-    "530": {
+    "549": {
       "op": "intc_0 // 0",
       "stack_out": [
         "0"
       ]
     },
-    "531": {
+    "550": {
       "op": "itxn_field Fee",
       "stack_out": []
     },
-    "533": {
+    "552": {
       "op": "itxn_submit"
     },
-    "534": {
+    "553": {
       "op": "bytec 4 // \"last_update_round\"",
       "defined_out": [
         "\"last_update_round\""
@@ -2341,7 +2421,7 @@
         "\"last_update_round\""
       ]
     },
-    "536": {
+    "555": {
       "op": "global Round",
       "defined_out": [
         "\"last_update_round\"",
@@ -2352,11 +2432,11 @@
         "tmp%5#0"
       ]
     },
-    "538": {
+    "557": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "539": {
+    "558": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -2365,11 +2445,11 @@
         "1"
       ]
     },
-    "540": {
+    "559": {
       "op": "return",
       "stack_out": []
     },
-    "541": {
+    "560": {
       "subroutine": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.borrow[routing]",
       "params": {},
       "block": "borrow",
@@ -2382,7 +2462,7 @@
         "tmp%0#0"
       ]
     },
-    "544": {
+    "563": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -2393,7 +2473,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "545": {
+    "564": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -2404,8 +2484,8 @@
         "len%0#0"
       ]
     },
-    "546": {
-      "op": "intc_2 // 8",
+    "565": {
+      "op": "intc_3 // 8",
       "defined_out": [
         "8",
         "len%0#0",
@@ -2417,7 +2497,7 @@
         "8"
       ]
     },
-    "547": {
+    "566": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -2428,21 +2508,21 @@
         "eq%0#0"
       ]
     },
-    "548": {
+    "567": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "549": {
+    "568": {
       "op": "dup",
       "stack_out": [
         "tmp%0#0",
         "tmp%0#0 (copy)"
       ]
     },
-    "550": {
+    "569": {
       "op": "btoi",
       "defined_out": [
         "amount#0",
@@ -2453,7 +2533,7 @@
         "amount#0"
       ]
     },
-    "551": {
+    "570": {
       "op": "txna ApplicationArgs 2",
       "defined_out": [
         "amount#0",
@@ -2466,7 +2546,7 @@
         "borrower#0"
       ]
     },
-    "554": {
+    "573": {
       "op": "dup",
       "defined_out": [
         "amount#0",
@@ -2481,7 +2561,7 @@
         "borrower#0 (copy)"
       ]
     },
-    "555": {
+    "574": {
       "op": "len",
       "defined_out": [
         "amount#0",
@@ -2496,7 +2576,7 @@
         "len%1#0"
       ]
     },
-    "556": {
+    "575": {
       "op": "pushint 32 // 32",
       "defined_out": [
         "32",
@@ -2513,7 +2593,7 @@
         "32"
       ]
     },
-    "558": {
+    "577": {
       "op": "==",
       "defined_out": [
         "amount#0",
@@ -2528,7 +2608,7 @@
         "eq%1#0"
       ]
     },
-    "559": {
+    "578": {
       "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "stack_out": [
@@ -2537,7 +2617,7 @@
         "borrower#0"
       ]
     },
-    "560": {
+    "579": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -2552,7 +2632,7 @@
         "0"
       ]
     },
-    "561": {
+    "580": {
       "op": "bytec_3 // \"pool_asset_id\"",
       "defined_out": [
         "\"pool_asset_id\"",
@@ -2569,7 +2649,7 @@
         "\"pool_asset_id\""
       ]
     },
-    "562": {
+    "581": {
       "op": "app_global_get_ex",
       "defined_out": [
         "amount#0",
@@ -2586,7 +2666,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "563": {
+    "582": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -2596,7 +2676,7 @@
         "pool_asset#0"
       ]
     },
-    "564": {
+    "583": {
       "op": "intc_0 // 0",
       "stack_out": [
         "tmp%0#0",
@@ -2606,7 +2686,7 @@
         "0"
       ]
     },
-    "565": {
+    "584": {
       "op": "bytec_0 // \"total_deposits\"",
       "defined_out": [
         "\"total_deposits\"",
@@ -2625,7 +2705,7 @@
         "\"total_deposits\""
       ]
     },
-    "566": {
+    "585": {
       "op": "app_global_get_ex",
       "defined_out": [
         "amount#0",
@@ -2644,7 +2724,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "567": {
+    "586": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -2655,7 +2735,7 @@
         "maybe_value%1#0"
       ]
     },
-    "568": {
+    "587": {
       "op": "intc_0 // 0",
       "stack_out": [
         "tmp%0#0",
@@ -2666,7 +2746,7 @@
         "0"
       ]
     },
-    "569": {
+    "588": {
       "op": "bytec_2 // \"total_borrowed\"",
       "defined_out": [
         "\"total_borrowed\"",
@@ -2687,7 +2767,7 @@
         "\"total_borrowed\""
       ]
     },
-    "570": {
+    "589": {
       "op": "app_global_get_ex",
       "defined_out": [
         "amount#0",
@@ -2708,7 +2788,7 @@
         "maybe_exists%2#0"
       ]
     },
-    "571": {
+    "590": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -2720,7 +2800,7 @@
         "maybe_value%2#0"
       ]
     },
-    "572": {
+    "591": {
       "op": "swap",
       "stack_out": [
         "tmp%0#0",
@@ -2731,7 +2811,7 @@
         "maybe_value%1#0"
       ]
     },
-    "573": {
+    "592": {
       "op": "dig 1",
       "defined_out": [
         "amount#0",
@@ -2752,7 +2832,7 @@
         "maybe_value%2#0 (copy)"
       ]
     },
-    "575": {
+    "594": {
       "op": "-",
       "defined_out": [
         "amount#0",
@@ -2771,7 +2851,7 @@
         "available#0"
       ]
     },
-    "576": {
+    "595": {
       "op": "dig 4",
       "defined_out": [
         "amount#0",
@@ -2792,7 +2872,7 @@
         "amount#0 (copy)"
       ]
     },
-    "578": {
+    "597": {
       "op": ">=",
       "defined_out": [
         "amount#0",
@@ -2811,7 +2891,7 @@
         "tmp%1#1"
       ]
     },
-    "579": {
+    "598": {
       "error": "Insufficient liquidity",
       "op": "assert // Insufficient liquidity",
       "stack_out": [
@@ -2822,7 +2902,7 @@
         "maybe_value%2#0"
       ]
     },
-    "580": {
+    "599": {
       "op": "dig 3",
       "stack_out": [
         "tmp%0#0",
@@ -2833,7 +2913,7 @@
         "amount#0 (copy)"
       ]
     },
-    "582": {
+    "601": {
       "op": "+",
       "defined_out": [
         "amount#0",
@@ -2850,7 +2930,7 @@
         "tmp%2#1"
       ]
     },
-    "583": {
+    "602": {
       "op": "bytec_2 // \"total_borrowed\"",
       "stack_out": [
         "tmp%0#0",
@@ -2861,7 +2941,7 @@
         "\"total_borrowed\""
       ]
     },
-    "584": {
+    "603": {
       "op": "swap",
       "stack_out": [
         "tmp%0#0",
@@ -2872,7 +2952,7 @@
         "tmp%2#1"
       ]
     },
-    "585": {
+    "604": {
       "op": "app_global_put",
       "stack_out": [
         "tmp%0#0",
@@ -2881,10 +2961,10 @@
         "pool_asset#0"
       ]
     },
-    "586": {
+    "605": {
       "op": "itxn_begin"
     },
-    "587": {
+    "606": {
       "op": "uncover 2",
       "stack_out": [
         "tmp%0#0",
@@ -2893,7 +2973,7 @@
         "amount#0"
       ]
     },
-    "589": {
+    "608": {
       "op": "itxn_field AssetAmount",
       "stack_out": [
         "tmp%0#0",
@@ -2901,17 +2981,17 @@
         "pool_asset#0"
       ]
     },
-    "591": {
+    "610": {
       "op": "itxn_field XferAsset"
     },
-    "593": {
+    "612": {
       "op": "itxn_field AssetReceiver",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "595": {
-      "op": "intc_3 // 4",
+    "614": {
+      "op": "intc_2 // 4",
       "defined_out": [
         "4",
         "tmp%0#0"
@@ -2921,29 +3001,29 @@
         "4"
       ]
     },
-    "596": {
+    "615": {
       "op": "itxn_field TypeEnum",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "598": {
+    "617": {
       "op": "intc_0 // 0",
       "stack_out": [
         "tmp%0#0",
         "0"
       ]
     },
-    "599": {
+    "618": {
       "op": "itxn_field Fee",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "601": {
+    "620": {
       "op": "itxn_submit"
     },
-    "602": {
+    "621": {
       "op": "bytec 5 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -2954,14 +3034,14 @@
         "0x151f7c75"
       ]
     },
-    "604": {
+    "623": {
       "op": "swap",
       "stack_out": [
         "0x151f7c75",
         "tmp%0#0"
       ]
     },
-    "605": {
+    "624": {
       "op": "concat",
       "defined_out": [
         "tmp%6#0"
@@ -2970,11 +3050,11 @@
         "tmp%6#0"
       ]
     },
-    "606": {
+    "625": {
       "op": "log",
       "stack_out": []
     },
-    "607": {
+    "626": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -2983,11 +3063,11 @@
         "1"
       ]
     },
-    "608": {
+    "627": {
       "op": "return",
       "stack_out": []
     },
-    "609": {
+    "628": {
       "subroutine": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.repay[routing]",
       "params": {},
       "block": "repay",
@@ -3000,7 +3080,7 @@
         "tmp%0#0"
       ]
     },
-    "611": {
+    "630": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1",
@@ -3011,7 +3091,7 @@
         "1"
       ]
     },
-    "612": {
+    "631": {
       "op": "-",
       "defined_out": [
         "payment#0"
@@ -3020,7 +3100,7 @@
         "payment#0"
       ]
     },
-    "613": {
+    "632": {
       "op": "dup",
       "defined_out": [
         "payment#0",
@@ -3031,7 +3111,7 @@
         "payment#0 (copy)"
       ]
     },
-    "614": {
+    "633": {
       "op": "gtxns TypeEnum",
       "defined_out": [
         "gtxn_type%0#0",
@@ -3042,8 +3122,8 @@
         "gtxn_type%0#0"
       ]
     },
-    "616": {
-      "op": "intc_3 // axfer",
+    "635": {
+      "op": "intc_2 // axfer",
       "defined_out": [
         "axfer",
         "gtxn_type%0#0",
@@ -3055,7 +3135,7 @@
         "axfer"
       ]
     },
-    "617": {
+    "636": {
       "op": "==",
       "defined_out": [
         "gtxn_type_matches%0#0",
@@ -3066,14 +3146,14 @@
         "gtxn_type_matches%0#0"
       ]
     },
-    "618": {
+    "637": {
       "error": "transaction type is axfer",
       "op": "assert // transaction type is axfer",
       "stack_out": [
         "payment#0"
       ]
     },
-    "619": {
+    "638": {
       "op": "txna ApplicationArgs 1",
       "defined_out": [
         "payment#0",
@@ -3084,7 +3164,7 @@
         "tmp%1#0"
       ]
     },
-    "622": {
+    "641": {
       "op": "dup",
       "defined_out": [
         "payment#0",
@@ -3097,7 +3177,7 @@
         "tmp%1#0 (copy)"
       ]
     },
-    "623": {
+    "642": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -3112,7 +3192,7 @@
         "0"
       ]
     },
-    "624": {
+    "643": {
       "error": "invalid array length header",
       "op": "extract_uint16 // on error: invalid array length header",
       "defined_out": [
@@ -3126,7 +3206,7 @@
         "aggregate%array_length%0#0"
       ]
     },
-    "625": {
+    "644": {
       "op": "pushint 2 // 2",
       "defined_out": [
         "2",
@@ -3141,7 +3221,7 @@
         "2"
       ]
     },
-    "627": {
+    "646": {
       "op": "+",
       "defined_out": [
         "add%0#0",
@@ -3154,7 +3234,7 @@
         "add%0#0"
       ]
     },
-    "628": {
+    "647": {
       "op": "swap",
       "stack_out": [
         "payment#0",
@@ -3162,7 +3242,7 @@
         "tmp%1#0"
       ]
     },
-    "629": {
+    "648": {
       "op": "len",
       "defined_out": [
         "add%0#0",
@@ -3175,7 +3255,7 @@
         "len%0#0"
       ]
     },
-    "630": {
+    "649": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -3186,21 +3266,21 @@
         "eq%0#0"
       ]
     },
-    "631": {
+    "650": {
       "error": "invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
       "op": "assert // invalid number of bytes for arc4.dynamic_array<arc4.uint8>",
       "stack_out": [
         "payment#0"
       ]
     },
-    "632": {
+    "651": {
       "op": "intc_0 // 0",
       "stack_out": [
         "payment#0",
         "0"
       ]
     },
-    "633": {
+    "652": {
       "op": "bytec_3 // \"pool_asset_id\"",
       "defined_out": [
         "\"pool_asset_id\"",
@@ -3213,7 +3293,7 @@
         "\"pool_asset_id\""
       ]
     },
-    "634": {
+    "653": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -3226,7 +3306,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "635": {
+    "654": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -3234,7 +3314,7 @@
         "pool_asset#0"
       ]
     },
-    "636": {
+    "655": {
       "op": "dig 1",
       "stack_out": [
         "payment#0",
@@ -3242,7 +3322,7 @@
         "payment#0 (copy)"
       ]
     },
-    "638": {
+    "657": {
       "op": "gtxns XferAsset",
       "stack_out": [
         "payment#0",
@@ -3250,7 +3330,7 @@
         "tmp%0#0"
       ]
     },
-    "640": {
+    "659": {
       "op": "==",
       "defined_out": [
         "payment#0",
@@ -3261,21 +3341,21 @@
         "tmp%1#1"
       ]
     },
-    "641": {
+    "660": {
       "error": "Asset must be the pool asset",
       "op": "assert // Asset must be the pool asset",
       "stack_out": [
         "payment#0"
       ]
     },
-    "642": {
+    "661": {
       "op": "dup",
       "stack_out": [
         "payment#0",
         "payment#0 (copy)"
       ]
     },
-    "643": {
+    "662": {
       "op": "gtxns AssetReceiver",
       "defined_out": [
         "payment#0",
@@ -3286,7 +3366,7 @@
         "reinterpret_bytes[32]%0#0"
       ]
     },
-    "645": {
+    "664": {
       "op": "global CurrentApplicationAddress",
       "defined_out": [
         "payment#0",
@@ -3299,7 +3379,7 @@
         "reinterpret_bytes[32]%1#0"
       ]
     },
-    "647": {
+    "666": {
       "op": "==",
       "defined_out": [
         "payment#0",
@@ -3310,14 +3390,14 @@
         "tmp%2#1"
       ]
     },
-    "648": {
+    "667": {
       "error": "Asset must be received by pool",
       "op": "assert // Asset must be received by pool",
       "stack_out": [
         "payment#0"
       ]
     },
-    "649": {
+    "668": {
       "op": "gtxns AssetAmount",
       "defined_out": [
         "tmp%3#0"
@@ -3326,7 +3406,7 @@
         "tmp%3#0"
       ]
     },
-    "651": {
+    "670": {
       "op": "dup",
       "defined_out": [
         "tmp%3#0",
@@ -3337,21 +3417,21 @@
         "tmp%3#0 (copy)"
       ]
     },
-    "652": {
+    "671": {
       "error": "Repayment amount must be > 0",
       "op": "assert // Repayment amount must be > 0",
       "stack_out": [
         "tmp%3#0"
       ]
     },
-    "653": {
+    "672": {
       "op": "intc_0 // 0",
       "stack_out": [
         "tmp%3#0",
         "0"
       ]
     },
-    "654": {
+    "673": {
       "op": "bytec_2 // \"total_borrowed\"",
       "defined_out": [
         "\"total_borrowed\"",
@@ -3364,7 +3444,7 @@
         "\"total_borrowed\""
       ]
     },
-    "655": {
+    "674": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%1#0",
@@ -3377,7 +3457,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "656": {
+    "675": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -3385,14 +3465,14 @@
         "maybe_value%1#0"
       ]
     },
-    "657": {
+    "676": {
       "op": "swap",
       "stack_out": [
         "maybe_value%1#0",
         "tmp%3#0"
       ]
     },
-    "658": {
+    "677": {
       "op": "-",
       "defined_out": [
         "tmp%6#0"
@@ -3401,31 +3481,31 @@
         "tmp%6#0"
       ]
     },
-    "659": {
+    "678": {
       "op": "bytec_2 // \"total_borrowed\"",
       "stack_out": [
         "tmp%6#0",
         "\"total_borrowed\""
       ]
     },
-    "660": {
+    "679": {
       "op": "swap",
       "stack_out": [
         "\"total_borrowed\"",
         "tmp%6#0"
       ]
     },
-    "661": {
+    "680": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "662": {
+    "681": {
       "op": "intc_0 // 0",
       "stack_out": [
         "0"
       ]
     },
-    "663": {
+    "682": {
       "op": "bytec 7 // \"reserve_factor\"",
       "defined_out": [
         "\"reserve_factor\"",
@@ -3436,7 +3516,7 @@
         "\"reserve_factor\""
       ]
     },
-    "665": {
+    "684": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%2#0",
@@ -3447,28 +3527,28 @@
         "maybe_exists%2#0"
       ]
     },
-    "666": {
+    "685": {
       "op": "bury 1",
       "stack_out": [
         "maybe_exists%2#0"
       ]
     },
-    "668": {
+    "687": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": []
     },
-    "669": {
+    "688": {
       "op": "intc_1 // 1",
       "stack_out": [
         "1"
       ]
     },
-    "670": {
+    "689": {
       "op": "return",
       "stack_out": []
     },
-    "671": {
+    "690": {
       "subroutine": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.get_pool_stats[routing]",
       "params": {},
       "block": "get_pool_stats",
@@ -3481,7 +3561,7 @@
         "0"
       ]
     },
-    "672": {
+    "691": {
       "op": "bytec_0 // \"total_deposits\"",
       "defined_out": [
         "\"total_deposits\"",
@@ -3492,7 +3572,7 @@
         "\"total_deposits\""
       ]
     },
-    "673": {
+    "692": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -3503,21 +3583,21 @@
         "maybe_exists%0#0"
       ]
     },
-    "674": {
+    "693": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
         "maybe_value%0#0"
       ]
     },
-    "675": {
+    "694": {
       "op": "intc_0 // 0",
       "stack_out": [
         "maybe_value%0#0",
         "0"
       ]
     },
-    "676": {
+    "695": {
       "op": "bytec_2 // \"total_borrowed\"",
       "defined_out": [
         "\"total_borrowed\"",
@@ -3530,7 +3610,7 @@
         "\"total_borrowed\""
       ]
     },
-    "677": {
+    "696": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%1#0",
@@ -3543,7 +3623,7 @@
         "maybe_exists%1#0"
       ]
     },
-    "678": {
+    "697": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -3551,7 +3631,7 @@
         "maybe_value%1#0"
       ]
     },
-    "679": {
+    "698": {
       "callsub": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.calculate_utilization",
       "op": "callsub calculate_utilization",
       "defined_out": [
@@ -3565,7 +3645,7 @@
         "tmp%0#1"
       ]
     },
-    "682": {
+    "701": {
       "op": "uncover 2",
       "stack_out": [
         "maybe_value%1#0",
@@ -3573,7 +3653,7 @@
         "maybe_value%0#0"
       ]
     },
-    "684": {
+    "703": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -3586,7 +3666,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "685": {
+    "704": {
       "op": "uncover 2",
       "stack_out": [
         "tmp%0#1",
@@ -3594,7 +3674,7 @@
         "maybe_value%1#0"
       ]
     },
-    "687": {
+    "706": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -3607,7 +3687,7 @@
         "aggregate%val_as_bytes%1#0"
       ]
     },
-    "688": {
+    "707": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%1#0",
@@ -3618,14 +3698,14 @@
         "aggregate%head%1#0"
       ]
     },
-    "689": {
+    "708": {
       "op": "swap",
       "stack_out": [
         "aggregate%head%1#0",
         "tmp%0#1"
       ]
     },
-    "690": {
+    "709": {
       "op": "itob",
       "defined_out": [
         "aggregate%head%1#0",
@@ -3636,7 +3716,7 @@
         "aggregate%val_as_bytes%2#0"
       ]
     },
-    "691": {
+    "710": {
       "op": "concat",
       "defined_out": [
         "aggregate%head%2#0"
@@ -3645,7 +3725,7 @@
         "aggregate%head%2#0"
       ]
     },
-    "692": {
+    "711": {
       "op": "bytec 5 // 0x151f7c75",
       "defined_out": [
         "0x151f7c75",
@@ -3656,14 +3736,14 @@
         "0x151f7c75"
       ]
     },
-    "694": {
+    "713": {
       "op": "swap",
       "stack_out": [
         "0x151f7c75",
         "aggregate%head%2#0"
       ]
     },
-    "695": {
+    "714": {
       "op": "concat",
       "defined_out": [
         "tmp%1#0"
@@ -3672,11 +3752,11 @@
         "tmp%1#0"
       ]
     },
-    "696": {
+    "715": {
       "op": "log",
       "stack_out": []
     },
-    "697": {
+    "716": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -3685,11 +3765,11 @@
         "1"
       ]
     },
-    "698": {
+    "717": {
       "op": "return",
       "stack_out": []
     },
-    "699": {
+    "718": {
       "subroutine": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.get_lender_position[routing]",
       "params": {},
       "block": "get_lender_position",
@@ -3702,7 +3782,7 @@
         "lender#0"
       ]
     },
-    "702": {
+    "721": {
       "op": "dup",
       "defined_out": [
         "lender#0",
@@ -3713,7 +3793,7 @@
         "lender#0 (copy)"
       ]
     },
-    "703": {
+    "722": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -3724,7 +3804,7 @@
         "len%0#0"
       ]
     },
-    "704": {
+    "723": {
       "op": "pushint 32 // 32",
       "defined_out": [
         "32",
@@ -3737,7 +3817,7 @@
         "32"
       ]
     },
-    "706": {
+    "725": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -3748,14 +3828,14 @@
         "eq%0#0"
       ]
     },
-    "707": {
+    "726": {
       "error": "invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "op": "assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>",
       "stack_out": [
         "lender#0"
       ]
     },
-    "708": {
+    "727": {
       "op": "bytec_1 // \"l\"",
       "defined_out": [
         "\"l\"",
@@ -3766,14 +3846,14 @@
         "\"l\""
       ]
     },
-    "709": {
+    "728": {
       "op": "swap",
       "stack_out": [
         "\"l\"",
         "lender#0"
       ]
     },
-    "710": {
+    "729": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%0#0"
@@ -3782,7 +3862,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "711": {
+    "730": {
       "op": "dup",
       "defined_out": [
         "box_prefixed_key%0#0"
@@ -3792,7 +3872,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "712": {
+    "731": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -3805,20 +3885,20 @@
         "maybe_exists%0#0"
       ]
     },
-    "713": {
+    "732": {
       "op": "bury 1",
       "stack_out": [
         "box_prefixed_key%0#0",
         "maybe_exists%0#0"
       ]
     },
-    "715": {
+    "734": {
       "op": "bnz get_lender_position_after_if_else@3",
       "stack_out": [
         "box_prefixed_key%0#0"
       ]
     },
-    "718": {
+    "737": {
       "op": "pushbytes 0x00000000000000000000000000000000",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -3829,7 +3909,7 @@
         "tmp%2#0"
       ]
     },
-    "736": {
+    "755": {
       "block": "get_lender_position_after_inlined_smart_contracts/lending_pool/contract.algo.ts::LendingPool.get_lender_position@4",
       "stack_in": [
         "box_prefixed_key%0#0",
@@ -3845,7 +3925,7 @@
         "0x151f7c75"
       ]
     },
-    "738": {
+    "757": {
       "op": "swap",
       "defined_out": [
         "0x151f7c75",
@@ -3857,7 +3937,7 @@
         "tmp%2#0"
       ]
     },
-    "739": {
+    "758": {
       "op": "concat",
       "defined_out": [
         "tmp%3#0"
@@ -3867,13 +3947,13 @@
         "tmp%3#0"
       ]
     },
-    "740": {
+    "759": {
       "op": "log",
       "stack_out": [
         "box_prefixed_key%0#0"
       ]
     },
-    "741": {
+    "760": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -3883,13 +3963,13 @@
         "1"
       ]
     },
-    "742": {
+    "761": {
       "op": "return",
       "stack_out": [
         "box_prefixed_key%0#0"
       ]
     },
-    "743": {
+    "762": {
       "block": "get_lender_position_after_if_else@3",
       "stack_in": [
         "box_prefixed_key%0#0"
@@ -3903,7 +3983,7 @@
         "box_prefixed_key%0#0"
       ]
     },
-    "744": {
+    "763": {
       "op": "box_get",
       "defined_out": [
         "aggregate%box_get%1#0",
@@ -3916,7 +3996,7 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "745": {
+    "764": {
       "error": "Box must have value",
       "op": "assert // Box must have value",
       "stack_out": [
@@ -3924,7 +4004,7 @@
         "position#0"
       ]
     },
-    "746": {
+    "765": {
       "op": "dup",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -3937,7 +4017,7 @@
         "position#0 (copy)"
       ]
     },
-    "747": {
+    "766": {
       "op": "extract 0 8",
       "defined_out": [
         "aggregate%extract%0#0",
@@ -3950,7 +4030,7 @@
         "aggregate%extract%0#0"
       ]
     },
-    "750": {
+    "769": {
       "op": "swap",
       "stack_out": [
         "box_prefixed_key%0#0",
@@ -3958,7 +4038,7 @@
         "position#0"
       ]
     },
-    "751": {
+    "770": {
       "op": "extract 16 8",
       "defined_out": [
         "aggregate%extract%0#0",
@@ -3971,7 +4051,7 @@
         "aggregate%extract%1#0"
       ]
     },
-    "754": {
+    "773": {
       "op": "concat",
       "defined_out": [
         "box_prefixed_key%0#0",
@@ -3982,10 +4062,10 @@
         "tmp%2#0"
       ]
     },
-    "755": {
+    "774": {
       "op": "b get_lender_position_after_inlined_smart_contracts/lending_pool/contract.algo.ts::LendingPool.get_lender_position@4"
     },
-    "758": {
+    "777": {
       "subroutine": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.set_credit_score_app[routing]",
       "params": {},
       "block": "set_credit_score_app",
@@ -3998,7 +4078,7 @@
         "tmp%0#0"
       ]
     },
-    "761": {
+    "780": {
       "op": "dup",
       "defined_out": [
         "tmp%0#0",
@@ -4009,7 +4089,7 @@
         "tmp%0#0 (copy)"
       ]
     },
-    "762": {
+    "781": {
       "op": "len",
       "defined_out": [
         "len%0#0",
@@ -4020,8 +4100,8 @@
         "len%0#0"
       ]
     },
-    "763": {
-      "op": "intc_2 // 8",
+    "782": {
+      "op": "intc_3 // 8",
       "defined_out": [
         "8",
         "len%0#0",
@@ -4033,7 +4113,7 @@
         "8"
       ]
     },
-    "764": {
+    "783": {
       "op": "==",
       "defined_out": [
         "eq%0#0",
@@ -4044,14 +4124,14 @@
         "eq%0#0"
       ]
     },
-    "765": {
+    "784": {
       "error": "invalid number of bytes for arc4.uint64",
       "op": "assert // invalid number of bytes for arc4.uint64",
       "stack_out": [
         "tmp%0#0"
       ]
     },
-    "766": {
+    "785": {
       "op": "btoi",
       "defined_out": [
         "app_id#0"
@@ -4060,7 +4140,7 @@
         "app_id#0"
       ]
     },
-    "767": {
+    "786": {
       "op": "pushbytes \"credit_score_app_id\"",
       "defined_out": [
         "\"credit_score_app_id\"",
@@ -4071,18 +4151,18 @@
         "\"credit_score_app_id\""
       ]
     },
-    "788": {
+    "807": {
       "op": "swap",
       "stack_out": [
         "\"credit_score_app_id\"",
         "app_id#0"
       ]
     },
-    "789": {
+    "808": {
       "op": "app_global_put",
       "stack_out": []
     },
-    "790": {
+    "809": {
       "op": "intc_1 // 1",
       "defined_out": [
         "1"
@@ -4091,11 +4171,11 @@
         "1"
       ]
     },
-    "791": {
+    "810": {
       "op": "return",
       "stack_out": []
     },
-    "792": {
+    "811": {
       "subroutine": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.update_accrued_yield",
       "params": {
         "lender#0": "bytes"
@@ -4104,20 +4184,20 @@
       "stack_in": [],
       "op": "proto 1 0"
     },
-    "795": {
+    "814": {
       "op": "intc_0 // 0",
       "stack_out": [
         "position#0"
       ]
     },
-    "796": {
+    "815": {
       "op": "pushbytes \"\"",
       "stack_out": [
         "position#0",
         "rounds_elapsed#0"
       ]
     },
-    "798": {
+    "817": {
       "op": "bytec_1 // \"l\"",
       "defined_out": [
         "\"l\""
@@ -4128,7 +4208,7 @@
         "\"l\""
       ]
     },
-    "799": {
+    "818": {
       "op": "frame_dig -1",
       "defined_out": [
         "\"l\"",
@@ -4141,7 +4221,7 @@
         "lender#0 (copy)"
       ]
     },
-    "801": {
+    "820": {
       "op": "concat",
       "defined_out": [
         "key#0"
@@ -4152,7 +4232,7 @@
         "key#0"
       ]
     },
-    "802": {
+    "821": {
       "op": "dup",
       "defined_out": [
         "key#0"
@@ -4164,7 +4244,7 @@
         "key#0"
       ]
     },
-    "803": {
+    "822": {
       "op": "box_len",
       "defined_out": [
         "_%0#0",
@@ -4179,7 +4259,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "804": {
+    "823": {
       "op": "bury 1",
       "stack_out": [
         "position#0",
@@ -4188,7 +4268,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "806": {
+    "825": {
       "op": "bnz update_accrued_yield_after_if_else@2",
       "stack_out": [
         "position#0",
@@ -4196,11 +4276,11 @@
         "key#0"
       ]
     },
-    "809": {
+    "828": {
       "retsub": true,
       "op": "retsub"
     },
-    "810": {
+    "829": {
       "block": "update_accrued_yield_after_if_else@2",
       "stack_in": [
         "position#0",
@@ -4218,7 +4298,7 @@
         "key#0"
       ]
     },
-    "812": {
+    "831": {
       "op": "box_get",
       "defined_out": [
         "aggregate%box_get%1#0",
@@ -4233,7 +4313,7 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "813": {
+    "832": {
       "op": "swap",
       "stack_out": [
         "position#0",
@@ -4243,7 +4323,7 @@
         "position#0"
       ]
     },
-    "814": {
+    "833": {
       "op": "dup",
       "stack_out": [
         "position#0",
@@ -4254,7 +4334,7 @@
         "position#0 (copy)"
       ]
     },
-    "815": {
+    "834": {
       "op": "cover 2",
       "stack_out": [
         "position#0",
@@ -4265,7 +4345,7 @@
         "position#0"
       ]
     },
-    "817": {
+    "836": {
       "op": "frame_bury 0",
       "defined_out": [
         "aggregate%box_get%1#0",
@@ -4280,7 +4360,7 @@
         "aggregate%box_get%1#0"
       ]
     },
-    "819": {
+    "838": {
       "error": "Box must have value",
       "op": "assert // Box must have value",
       "stack_out": [
@@ -4290,7 +4370,7 @@
         "position#0"
       ]
     },
-    "820": {
+    "839": {
       "op": "global Round",
       "defined_out": [
         "key#0",
@@ -4305,7 +4385,7 @@
         "tmp%0#0"
       ]
     },
-    "822": {
+    "841": {
       "op": "swap",
       "stack_out": [
         "position#0",
@@ -4315,8 +4395,8 @@
         "position#0"
       ]
     },
-    "823": {
-      "op": "intc_2 // 8",
+    "842": {
+      "op": "intc_3 // 8",
       "defined_out": [
         "8",
         "key#0",
@@ -4332,7 +4412,7 @@
         "8"
       ]
     },
-    "824": {
+    "843": {
       "op": "extract_uint64",
       "defined_out": [
         "key#0",
@@ -4348,7 +4428,7 @@
         "values%0#0"
       ]
     },
-    "825": {
+    "844": {
       "op": "-",
       "defined_out": [
         "key#0",
@@ -4362,7 +4442,7 @@
         "rounds_elapsed#0"
       ]
     },
-    "826": {
+    "845": {
       "op": "dup",
       "stack_out": [
         "position#0",
@@ -4372,7 +4452,7 @@
         "rounds_elapsed#0"
       ]
     },
-    "827": {
+    "846": {
       "op": "frame_bury 1",
       "defined_out": [
         "key#0",
@@ -4386,7 +4466,7 @@
         "rounds_elapsed#0"
       ]
     },
-    "829": {
+    "848": {
       "op": "bnz update_accrued_yield_after_if_else@4",
       "stack_out": [
         "position#0",
@@ -4394,11 +4474,11 @@
         "key#0"
       ]
     },
-    "832": {
+    "851": {
       "retsub": true,
       "op": "retsub"
     },
-    "833": {
+    "852": {
       "block": "update_accrued_yield_after_if_else@4",
       "stack_in": [
         "position#0",
@@ -4417,7 +4497,7 @@
         "utilization#0"
       ]
     },
-    "836": {
+    "855": {
       "op": "intc_0 // 0",
       "defined_out": [
         "0",
@@ -4431,7 +4511,7 @@
         "0"
       ]
     },
-    "837": {
+    "856": {
       "op": "bytec 8 // \"interest_rate_base\"",
       "defined_out": [
         "\"interest_rate_base\"",
@@ -4447,7 +4527,7 @@
         "\"interest_rate_base\""
       ]
     },
-    "839": {
+    "858": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -4463,7 +4543,7 @@
         "maybe_exists%0#0"
       ]
     },
-    "840": {
+    "859": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -4474,7 +4554,7 @@
         "maybe_value%0#0"
       ]
     },
-    "841": {
+    "860": {
       "op": "swap",
       "stack_out": [
         "position#0",
@@ -4484,7 +4564,7 @@
         "utilization#0"
       ]
     },
-    "842": {
+    "861": {
       "op": "pushint 800 // 800",
       "defined_out": [
         "800",
@@ -4500,7 +4580,7 @@
         "800"
       ]
     },
-    "845": {
+    "864": {
       "op": "*",
       "defined_out": [
         "maybe_value%0#0",
@@ -4514,7 +4594,7 @@
         "tmp%1#1"
       ]
     },
-    "846": {
+    "865": {
       "op": "pushint 10000 // 10000",
       "defined_out": [
         "10000",
@@ -4530,7 +4610,7 @@
         "10000"
       ]
     },
-    "849": {
+    "868": {
       "op": "/",
       "defined_out": [
         "maybe_value%0#0",
@@ -4544,7 +4624,7 @@
         "tmp%2#1"
       ]
     },
-    "850": {
+    "869": {
       "op": "+",
       "defined_out": [
         "rate#0"
@@ -4556,7 +4636,7 @@
         "rate#0"
       ]
     },
-    "851": {
+    "870": {
       "op": "frame_dig 0",
       "defined_out": [
         "position#0",
@@ -4570,7 +4650,7 @@
         "position#0"
       ]
     },
-    "853": {
+    "872": {
       "op": "dup",
       "defined_out": [
         "position#0",
@@ -4586,7 +4666,7 @@
         "position#0 (copy)"
       ]
     },
-    "854": {
+    "873": {
       "op": "cover 2",
       "stack_out": [
         "position#0",
@@ -4597,7 +4677,7 @@
         "position#0 (copy)"
       ]
     },
-    "856": {
+    "875": {
       "op": "intc_0 // 0",
       "stack_out": [
         "position#0",
@@ -4609,7 +4689,7 @@
         "0"
       ]
     },
-    "857": {
+    "876": {
       "op": "extract_uint64",
       "defined_out": [
         "deposit_amount#0",
@@ -4625,7 +4705,7 @@
         "deposit_amount#0"
       ]
     },
-    "858": {
+    "877": {
       "op": "*",
       "defined_out": [
         "position#0",
@@ -4639,7 +4719,7 @@
         "tmp%0#0"
       ]
     },
-    "859": {
+    "878": {
       "op": "frame_dig 1",
       "defined_out": [
         "position#0",
@@ -4655,7 +4735,7 @@
         "rounds_elapsed#0"
       ]
     },
-    "861": {
+    "880": {
       "op": "*",
       "stack_out": [
         "position#0",
@@ -4665,7 +4745,7 @@
         "tmp%1#1"
       ]
     },
-    "862": {
+    "881": {
       "op": "pushint 15768000000 // 15768000000",
       "defined_out": [
         "15768000000",
@@ -4682,7 +4762,7 @@
         "15768000000"
       ]
     },
-    "868": {
+    "887": {
       "op": "/",
       "defined_out": [
         "position#0",
@@ -4697,7 +4777,7 @@
         "yield_amount#0"
       ]
     },
-    "869": {
+    "888": {
       "op": "dig 1",
       "stack_out": [
         "position#0",
@@ -4708,7 +4788,7 @@
         "position#0 (copy)"
       ]
     },
-    "871": {
+    "890": {
       "op": "pushint 16 // 16",
       "defined_out": [
         "16",
@@ -4727,7 +4807,7 @@
         "16"
       ]
     },
-    "873": {
+    "892": {
       "op": "extract_uint64",
       "defined_out": [
         "position#0",
@@ -4744,7 +4824,7 @@
         "values%2#0"
       ]
     },
-    "874": {
+    "893": {
       "op": "+",
       "defined_out": [
         "position#0",
@@ -4759,7 +4839,7 @@
         "tmp%5#0"
       ]
     },
-    "875": {
+    "894": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%0#0",
@@ -4774,7 +4854,7 @@
         "aggregate%val_as_bytes%0#0"
       ]
     },
-    "876": {
+    "895": {
       "op": "replace2 16",
       "stack_out": [
         "position#0",
@@ -4783,7 +4863,7 @@
         "position#0"
       ]
     },
-    "878": {
+    "897": {
       "op": "global Round",
       "defined_out": [
         "position#0",
@@ -4798,7 +4878,7 @@
         "tmp%6#0"
       ]
     },
-    "880": {
+    "899": {
       "op": "itob",
       "defined_out": [
         "aggregate%val_as_bytes%1#0",
@@ -4813,7 +4893,7 @@
         "aggregate%val_as_bytes%1#0"
       ]
     },
-    "881": {
+    "900": {
       "op": "replace2 8",
       "stack_out": [
         "position#0",
@@ -4822,7 +4902,7 @@
         "position#0"
       ]
     },
-    "883": {
+    "902": {
       "op": "frame_dig 2",
       "defined_out": [
         "key#0",
@@ -4837,7 +4917,7 @@
         "key#0"
       ]
     },
-    "885": {
+    "904": {
       "op": "swap",
       "stack_out": [
         "position#0",
@@ -4847,7 +4927,7 @@
         "position#0"
       ]
     },
-    "886": {
+    "905": {
       "op": "box_put",
       "stack_out": [
         "position#0",
@@ -4855,11 +4935,11 @@
         "key#0"
       ]
     },
-    "887": {
+    "906": {
       "retsub": true,
       "op": "retsub"
     },
-    "888": {
+    "907": {
       "subroutine": "smart_contracts/lending_pool/contract.algo.ts::LendingPool.calculate_utilization",
       "params": {},
       "block": "calculate_utilization",
@@ -4872,7 +4952,7 @@
         "0"
       ]
     },
-    "889": {
+    "908": {
       "op": "bytec_0 // \"total_deposits\"",
       "defined_out": [
         "\"total_deposits\"",
@@ -4883,7 +4963,7 @@
         "\"total_deposits\""
       ]
     },
-    "890": {
+    "909": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%0#0",
@@ -4894,28 +4974,28 @@
         "maybe_exists%0#0"
       ]
     },
-    "891": {
+    "910": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
         "maybe_value%0#0"
       ]
     },
-    "892": {
+    "911": {
       "op": "bnz calculate_utilization_after_if_else@2",
       "stack_out": []
     },
-    "895": {
+    "914": {
       "op": "intc_0 // 0",
       "stack_out": [
         "0"
       ]
     },
-    "896": {
+    "915": {
       "retsub": true,
       "op": "retsub"
     },
-    "897": {
+    "916": {
       "block": "calculate_utilization_after_if_else@2",
       "stack_in": [],
       "op": "intc_0 // 0",
@@ -4926,7 +5006,7 @@
         "0"
       ]
     },
-    "898": {
+    "917": {
       "op": "bytec_2 // \"total_borrowed\"",
       "defined_out": [
         "\"total_borrowed\"",
@@ -4937,7 +5017,7 @@
         "\"total_borrowed\""
       ]
     },
-    "899": {
+    "918": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%1#0",
@@ -4948,14 +5028,14 @@
         "maybe_exists%1#0"
       ]
     },
-    "900": {
+    "919": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
         "maybe_value%1#0"
       ]
     },
-    "901": {
+    "920": {
       "op": "pushint 10000 // 10000",
       "defined_out": [
         "10000",
@@ -4966,7 +5046,7 @@
         "10000"
       ]
     },
-    "904": {
+    "923": {
       "op": "*",
       "defined_out": [
         "tmp%1#0"
@@ -4975,14 +5055,14 @@
         "tmp%1#0"
       ]
     },
-    "905": {
+    "924": {
       "op": "intc_0 // 0",
       "stack_out": [
         "tmp%1#0",
         "0"
       ]
     },
-    "906": {
+    "925": {
       "op": "bytec_0 // \"total_deposits\"",
       "defined_out": [
         "\"total_deposits\"",
@@ -4995,7 +5075,7 @@
         "\"total_deposits\""
       ]
     },
-    "907": {
+    "926": {
       "op": "app_global_get_ex",
       "defined_out": [
         "maybe_exists%2#0",
@@ -5008,7 +5088,7 @@
         "maybe_exists%2#0"
       ]
     },
-    "908": {
+    "927": {
       "error": "check GlobalState exists",
       "op": "assert // check GlobalState exists",
       "stack_out": [
@@ -5016,7 +5096,7 @@
         "maybe_value%2#0"
       ]
     },
-    "909": {
+    "928": {
       "op": "/",
       "defined_out": [
         "tmp%2#0"
@@ -5025,7 +5105,7 @@
         "tmp%2#0"
       ]
     },
-    "910": {
+    "929": {
       "retsub": true,
       "op": "retsub"
     }

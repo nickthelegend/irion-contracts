@@ -3,45 +3,27 @@
 
 // @algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram() -> uint64:
 main:
-    intcblock 1 32 0 8 300 850
+    intcblock 1 0 32 8 300 850
     bytecblock "c" 0x151f7c75 "lending_pool_app_id"
-    // smart_contracts/credit_score/contract.algo.ts:36
-    // export class CreditScore extends Contract {
-    pushbytes 0xb98b0a03 // method "initialize_user(address)void"
-    txna ApplicationArgs 0
-    match main_initialize_user_route@2
-
-main_switch_case_next@3:
     // smart_contracts/credit_score/contract.algo.ts:36
     // export class CreditScore extends Contract {
     txn OnCompletion
     !
     assert // OnCompletion must be NoOp
     txn ApplicationID
-    bz main_create_NoOp@14
-    pushbytess 0x5cf1dfec 0xb82a4596 0x973e8ccd 0xb2b513cd 0x205b720c 0xafa5ad30 0xe2e0fd47 0x95cb9e25 // method "update_score_on_deposit(address,uint64)void", method "update_score_on_borrow(address,uint64)void", method "update_score_on_repay(address,uint64,bool)void", method "update_score_on_default(address)void", method "get_score(address)uint64", method "get_borrow_limit(address)uint64", method "get_credit_profile(address)(uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64)", method "set_lending_pool_app(uint64)void"
+    bz main_create_NoOp@13
+    pushbytess 0x50658ca9 0x5cf1dfec 0xb82a4596 0x973e8ccd 0xb2b513cd 0x205b720c 0xafa5ad30 0xe2e0fd47 0x95cb9e25 // method "create_profile()void", method "update_score_on_deposit(address,uint64)void", method "update_score_on_borrow(address,uint64)void", method "update_score_on_repay(address,uint64,bool)void", method "update_score_on_default(address)void", method "get_score(address)uint64", method "get_borrow_limit(address)uint64", method "get_credit_profile(address)(uint64,uint64,uint64,uint64,uint64,uint64,uint64,uint64)", method "set_lending_pool_app(uint64)void"
     txna ApplicationArgs 0
-    match update_score_on_deposit update_score_on_borrow update_score_on_repay update_score_on_default get_score get_borrow_limit get_credit_profile set_lending_pool_app
+    match create_profile update_score_on_deposit update_score_on_borrow update_score_on_repay update_score_on_default get_score get_borrow_limit get_credit_profile set_lending_pool_app
     err
 
-main_create_NoOp@14:
+main_create_NoOp@13:
     // smart_contracts/credit_score/contract.algo.ts:36
     // export class CreditScore extends Contract {
     pushbytes 0xbec76d87 // method "bootstrap()void"
     txna ApplicationArgs 0
     match bootstrap
     err
-
-main_initialize_user_route@2:
-    // smart_contracts/credit_score/contract.algo.ts:50
-    // @abimethod({ allowActions: 'OptIn' })
-    txn OnCompletion
-    intc_0 // OptIn
-    ==
-    txn ApplicationID
-    &&
-    assert // OnCompletion must be OptIn && can only call when not creating
-    b initialize_user
 
 
 // smart_contracts/credit_score/contract.algo.ts::CreditScore.bootstrap[routing]() -> void:
@@ -65,7 +47,7 @@ bootstrap:
     bytec_2 // "lending_pool_app_id"
     // smart_contracts/credit_score/contract.algo.ts:47
     // this.lending_pool_app_id.value = Uint64(0)
-    intc_2 // 0
+    intc_1 // 0
     app_global_put
     // smart_contracts/credit_score/contract.algo.ts:43
     // @abimethod({ onCreate: 'require' })
@@ -73,16 +55,8 @@ bootstrap:
     return
 
 
-// smart_contracts/credit_score/contract.algo.ts::CreditScore.initialize_user[routing]() -> void:
-initialize_user:
-    // smart_contracts/credit_score/contract.algo.ts:50
-    // @abimethod({ allowActions: 'OptIn' })
-    txna ApplicationArgs 1
-    dup
-    len
-    intc_1 // 32
-    ==
-    assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
+// smart_contracts/credit_score/contract.algo.ts::CreditScore.create_profile[routing]() -> void:
+create_profile:
     // smart_contracts/credit_score/contract.algo.ts:60
     // last_updated_round: Global.round,
     global Round
@@ -104,14 +78,18 @@ initialize_user:
     // smart_contracts/credit_score/contract.algo.ts:41
     // credit_profiles = BoxMap<Account, CreditProfile>({ keyPrefix: 'c' })
     bytec_0 // "c"
-    uncover 2
+    // smart_contracts/credit_score/contract.algo.ts:62
+    // this.credit_profiles(Txn.sender).value = clone(initial_profile)
+    txn Sender
+    // smart_contracts/credit_score/contract.algo.ts:41
+    // credit_profiles = BoxMap<Account, CreditProfile>({ keyPrefix: 'c' })
     concat
     // smart_contracts/credit_score/contract.algo.ts:62
-    // this.credit_profiles(user).value = clone(initial_profile)
+    // this.credit_profiles(Txn.sender).value = clone(initial_profile)
     swap
     box_put
     // smart_contracts/credit_score/contract.algo.ts:50
-    // @abimethod({ allowActions: 'OptIn' })
+    // @abimethod()
     intc_0 // 1
     return
 
@@ -123,7 +101,7 @@ update_score_on_deposit:
     txna ApplicationArgs 1
     dup
     len
-    intc_1 // 32
+    intc_2 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
     txna ApplicationArgs 2
@@ -159,7 +137,7 @@ update_score_on_deposit:
     // smart_contracts/credit_score/contract.algo.ts:72
     // const new_score: uint64 = this.clamp_score(profile.score + capped_bonus)
     dig 1
-    intc_2 // 0
+    intc_1 // 0
     extract_uint64
     +
     callsub clamp_score
@@ -197,7 +175,7 @@ update_score_on_borrow:
     txna ApplicationArgs 1
     dup
     len
-    intc_1 // 32
+    intc_2 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
     txna ApplicationArgs 2
@@ -220,7 +198,7 @@ update_score_on_borrow:
     // smart_contracts/credit_score/contract.algo.ts:83
     // const new_score: uint64 = this.clamp_score(profile.score - NEW_LOAN_PENALTY)
     dup
-    intc_2 // 0
+    intc_1 // 0
     extract_uint64
     pushint 5 // 5
     -
@@ -268,7 +246,7 @@ update_score_on_repay:
     txna ApplicationArgs 1
     dup
     len
-    intc_1 // 32
+    intc_2 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
     txna ApplicationArgs 2
@@ -285,7 +263,7 @@ update_score_on_repay:
     intc_0 // 1
     ==
     assert // invalid number of bytes for arc4.bool
-    intc_2 // 0
+    intc_1 // 0
     getbit
     // smart_contracts/credit_score/contract.algo.ts:41
     // credit_profiles = BoxMap<Account, CreditProfile>({ keyPrefix: 'c' })
@@ -306,7 +284,7 @@ update_score_on_repay:
     // smart_contracts/credit_score/contract.algo.ts:97
     // profile.on_time_repayments = profile.on_time_repayments + Uint64(1)
     dupn 2
-    intc_1 // 32
+    intc_2 // 32
     extract_uint64
     intc_0 // 1
     +
@@ -322,7 +300,7 @@ update_score_on_repay_after_if_else@4:
     // const new_score: uint64 = this.clamp_score(profile.score - score_change)
     dig 1
     dup
-    intc_2 // 0
+    intc_1 // 0
     extract_uint64
     uncover 2
     -
@@ -388,7 +366,7 @@ update_score_on_default:
     txna ApplicationArgs 1
     dup
     len
-    intc_1 // 32
+    intc_2 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
     // smart_contracts/credit_score/contract.algo.ts:41
@@ -404,7 +382,7 @@ update_score_on_default:
     // smart_contracts/credit_score/contract.algo.ts:116
     // const new_score: uint64 = this.clamp_score(profile.score - DEFAULT_PENALTY)
     dup
-    intc_2 // 0
+    intc_1 // 0
     extract_uint64
     pushint 100 // 100
     -
@@ -434,7 +412,7 @@ get_score:
     txna ApplicationArgs 1
     dup
     len
-    intc_1 // 32
+    intc_2 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
     callsub smart_contracts/credit_score/contract.algo.ts::CreditScore.get_score
@@ -454,7 +432,7 @@ get_borrow_limit:
     txna ApplicationArgs 1
     dup
     len
-    intc_1 // 32
+    intc_2 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
     // smart_contracts/credit_score/contract.algo.ts:143
@@ -468,7 +446,7 @@ get_borrow_limit:
     bz get_borrow_limit_after_if_else@3
     // smart_contracts/credit_score/contract.algo.ts:146
     // return Uint64(0)
-    intc_2 // 0
+    intc_1 // 0
 
 get_borrow_limit_after_inlined_smart_contracts/credit_score/contract.algo.ts::CreditScore.get_borrow_limit@10:
     // smart_contracts/credit_score/contract.algo.ts:141
@@ -539,7 +517,7 @@ get_credit_profile:
     txna ApplicationArgs 1
     dup
     len
-    intc_1 // 32
+    intc_2 // 32
     ==
     assert // invalid number of bytes for arc4.static_array<arc4.uint8, 32>
     // smart_contracts/credit_score/contract.algo.ts:41
@@ -733,7 +711,7 @@ smart_contracts/credit_score/contract.algo.ts::CreditScore.get_score_after_if_el
     frame_dig 0
     box_get
     assert // Box must have value
-    intc_2 // 0
+    intc_1 // 0
     extract_uint64
     swap
     retsub

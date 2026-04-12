@@ -29,13 +29,19 @@ async function importDeployerIfExists(dir: string) {
 
 // get a list of all deployers from the subdirectories
 async function getDeployers() {
+  // First, check for deploy-config in the root smart_contracts directory
+  const rootDeployer = await importDeployerIfExists(baseDir)
+  const rootDeployers = rootDeployer ? [rootDeployer] : []
+
+  // Then get deployers from subdirectories
   const directories = fs
     .readdirSync(baseDir, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => path.resolve(baseDir, dirent.name))
 
-  const deployers = await Promise.all(directories.map(importDeployerIfExists))
-  return deployers.filter((deployer) => deployer !== null) // Filter out null values
+  const subdirectoryDeployers = await Promise.all(directories.map(importDeployerIfExists))
+  
+  return [...rootDeployers, ...subdirectoryDeployers.filter((d) => d !== null)]
 }
 
 // execute all the deployers

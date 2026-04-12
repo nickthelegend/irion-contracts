@@ -47,8 +47,8 @@ export class CreditScore extends Contract {
     this.lending_pool_app_id.value = Uint64(0)
   }
 
-  @abimethod({ allowActions: 'OptIn' })
-  public initialize_user(user: Account): void {
+  @abimethod()
+  public create_profile(): void {
     const initial_profile: CreditProfile = {
       score: MIN_SCORE,
       total_borrowed: Uint64(0),
@@ -59,7 +59,7 @@ export class CreditScore extends Contract {
       lending_pool_deposits: Uint64(0),
       last_updated_round: Global.round,
     }
-    this.credit_profiles(user).value = clone(initial_profile)
+    this.credit_profiles(Txn.sender).value = clone(initial_profile)
   }
 
   public update_score_on_deposit(user: Account, amount: uint64): void {
