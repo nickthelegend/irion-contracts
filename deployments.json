@@ -1,15 +1,15 @@
 {
   "network": "localnet",
-  "deployed_at": "2026-04-14T11:20:40.179Z",
-  "usdc_asset_id": 1157,
-  "credit_score_app_id": 1158,
-  "lending_pool_app_id": 1161,
-  "bnpl_credit_app_id": 1170,
-  "merchant_escrow_app_id": 1173,
+  "deployed_at": "2026-04-14T13:43:08.337Z",
+  "usdc_asset_id": 1031,
+  "credit_score_app_id": 1032,
+  "lending_pool_app_id": 1035,
+  "bnpl_credit_app_id": 1044,
+  "merchant_escrow_app_id": 1047,
   "addresses": {
-    "credit_score": "PWFOS4DRSQFO54GHDCA6PQ6BE4IHKN7FAWMDLONBZTU7ZUPDSF4DPPZD4A",
-    "lending_pool": "TAFB5U2EOAPPCAWM26ZFM3D3M6AJ6VOUF4D3HLKFJG6LQ7RGJ4NWS6KB2I",
-    "bnpl_credit": "HYKX2IGSUYVUH7TND5BCFDPPU6I2ZZWGAJXCMJOESASUONRLXPP5KT6UPI",
-    "merchant_escrow": "JBW7GMTYLLDK2JSDZ64P2DEVJEEB4MST77Q63DCJGBP7QRE7REP7JYTGHY"
+    "credit_score": "7CGBF67G3IR3JSJ2WI6IZK2E5N66OZMHQP2XIEIZHEMRCNHW6KT4TYFRGY",
+    "lending_pool": "U3TOFQM72V7G2ZYAPMIPIIOKBRXIHBYFGP7RIIA3ANOL4E763OJQRHXWTU",
+    "bnpl_credit": "NCV7RQ3UI64A3P6ALSVUIV7OSCYOETL2YI2FQIIVXHD7W5M3F637GHMVDM",
+    "merchant_escrow": "LGPHH7LZXSCMDCXGVU76ECSGDLL46PACFNCPHL3UXLISMV57SAEYITIXHA"
   }
 }
