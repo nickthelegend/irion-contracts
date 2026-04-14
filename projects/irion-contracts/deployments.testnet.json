@@ -1,23 +1,23 @@
 {
   "network": "testnet",
-  "deployed_at": "2026-04-14T05:39:05.930Z",
+  "deployed_at": "2026-04-14T06:08:14.343Z",
   "deployer_address": "NICKXD44FJQJZ2O5QLHS4FQSRX6WHHTSZG6HBQK4TJIOMHNVUSML33XITQ",
-  "iusdc_asset_id": 758795478,
-  "credit_score_app_id": 758795481,
-  "lending_pool_app_id": 758795495,
-  "bnpl_credit_app_id": 758795511,
-  "merchant_escrow_app_id": 758795523,
+  "iusdc_asset_id": 758796273,
+  "credit_score_app_id": 758796274,
+  "lending_pool_app_id": 758796287,
+  "bnpl_credit_app_id": 758796304,
+  "merchant_escrow_app_id": 758796316,
   "addresses": {
-    "credit_score": "2W3VAVWISKBCK5NHHEK5LTWPQ747PQW3EAK32BRLWYKO2QX3T45CAF6B5U",
-    "lending_pool": "OYOCH4ILBAFUVDIL2ATYS4R5XLBOAKQSNGVWFGAV6VWWDDRJG72YBMLOUI",
-    "bnpl_credit": "DTZIBK52XQUVTGUDRAQL565XHWCFXOJOCQDWCHTWUZ7VJSY3GD3A5SHQHQ",
-    "merchant_escrow": "UW4DJWO3LKLWEXMPXXBLEXG7FLIEZIUXROCJ35C5O4LBKDZEZPIJ2SF4EM"
+    "credit_score": "33SDC6HUGER4V4RFEO456RDA4PAB74SM5EDQ3UANXOBOLXKOJR2XAYLO2Q",
+    "lending_pool": "DAUZXQX7GXBQXP2YI7OYSY6UO5AIAZKA4NXHLFXBLT24FMOH4IWNJ3HP3Y",
+    "bnpl_credit": "XF74ILJXLBG7IOMNTC44H27SAW4ADTJ5U7A4HGQXYS3VKTSVXRRDFG2W3M",
+    "merchant_escrow": "PTQZXK7AJ4ATDITIBP46BC64WWAPJVVPLIURU5RNWGBF7GIKWRGATMHOCA"
   },
   "explorer": {
-    "credit_score": "https://testnet.explorer.perawallet.app/application/758795481",
-    "lending_pool": "https://testnet.explorer.perawallet.app/application/758795495",
-    "bnpl_credit": "https://testnet.explorer.perawallet.app/application/758795511",
-    "merchant_escrow": "https://testnet.explorer.perawallet.app/application/758795523",
-    "iusdc": "https://testnet.explorer.perawallet.app/asset/758795478"
+    "credit_score": "https://testnet.explorer.perawallet.app/application/758796274",
+    "lending_pool": "https://testnet.explorer.perawallet.app/application/758796287",
+    "bnpl_credit": "https://testnet.explorer.perawallet.app/application/758796304",
+    "merchant_escrow": "https://testnet.explorer.perawallet.app/application/758796316",
+    "iusdc": "https://testnet.explorer.perawallet.app/asset/758796273"
   }
 }

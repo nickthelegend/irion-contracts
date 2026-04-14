@@ -65,6 +65,12 @@ export class LendingPool extends Contract {
       assetAmount: Uint64(0),
     }).submit()
 
+    itxn.assetTransfer({
+      xferAsset: this.pool_asset_id.value,
+      assetReceiver: Global.currentApplicationAddress,
+      assetAmount: Uint64(0),
+    }).submit()
+
     this.total_deposits.value = Uint64(0)
     this.total_borrowed.value = Uint64(0)
     this.reserve_factor.value = Uint64(1000)
