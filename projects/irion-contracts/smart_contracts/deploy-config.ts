@@ -133,9 +133,15 @@ async function deploy() {
   })
 
   await bnplCreditClient.send.bootstrap({
-    args: [creditScoreAppId, lendingPoolAppId],
+    args: [creditScoreAppId, lendingPoolAppId, usdcAssetId],
   })
-  console.log('  BNPLCredit bootstrapped!')
+  
+  console.log('[7/9] Opting BNPLCredit into USDC...')
+  await bnplCreditClient.send.optInToAsset({
+    args: [usdcAssetId],
+    extraFee: microAlgo(1000),
+  })
+  console.log('  BNPLCredit bootstrapped and opted-in!')
 
   // ─────────────────────────────────────────────
   // STEP 6: Deploy MerchantEscrow (create + fund + bootstrap)

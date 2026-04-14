@@ -44,6 +44,7 @@ export class BNPLCredit extends Contract {
   loan_counter = GlobalState<uint64>()
   late_fee_bps = GlobalState<uint64>()
   installment_interval = GlobalState<uint64>()
+  asset_id = GlobalState<uint64>()
 
   loan_boxes = BoxMap<uint64, LoanData>({ keyPrefix: 'l' })
   user_loans = BoxMap<Account, uint64[]>({ keyPrefix: 'u' })
@@ -54,13 +55,25 @@ export class BNPLCredit extends Contract {
   @abimethod({ allowActions: ['NoOp', 'OptIn'], onCreate: 'allow' })
   public bootstrap(
     credit_score_app_id: uint64,
-    lending_pool_app_id: uint64
+    lending_pool_app_id: uint64,
+    asset_id: uint64
   ): void {
     this.credit_score_app_id.value = credit_score_app_id
     this.lending_pool_app_id.value = lending_pool_app_id
+    this.asset_id.value = asset_id
     this.loan_counter.value = Uint64(0)
     this.late_fee_bps.value = LATE_FEE_BPS
     this.installment_interval.value = INSTALLMENT_INTERVAL_ROUNDS
+  }
+
+  @abimethod()
+  public opt_in_to_asset(asset: uint64): void {
+    itxn.assetTransfer({
+      xferAsset: asset,
+      assetAmount: Uint64(0),
+      assetReceiver: Global.currentApplicationAddress,
+      fee: Uint64(0)
+    }).submit()
   }
 
   @abimethod()
@@ -127,7 +140,7 @@ export class BNPLCredit extends Contract {
       'Payment must be from borrower'
     )
 
-    assert(payment.xferAsset.id === this.lending_pool_app_id.value, 'Must pay with pool asset')
+    assert(payment.xferAsset.id === this.asset_id.value, 'Must pay with pool asset')
 
     const payment_round: uint64 = Global.round
     const is_on_time: boolean = payment_round <= loan.next_due_round
