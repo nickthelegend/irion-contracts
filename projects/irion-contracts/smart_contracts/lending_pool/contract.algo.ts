@@ -55,6 +55,7 @@ export class LendingPool extends Contract {
       assetName: 'Irion LP',
       manager: Global.currentApplicationAddress,
       reserve: Global.currentApplicationAddress,
+      fee: Uint64(0),
     }).submit()
 
     this.lp_token_id.value = create_lp_token.createdAsset.id
@@ -63,12 +64,14 @@ export class LendingPool extends Contract {
       xferAsset: this.lp_token_id.value,
       assetReceiver: Global.currentApplicationAddress,
       assetAmount: Uint64(0),
+      fee: Uint64(0),
     }).submit()
 
     itxn.assetTransfer({
       xferAsset: this.pool_asset_id.value,
       assetReceiver: Global.currentApplicationAddress,
       assetAmount: Uint64(0),
+      fee: Uint64(0),
     }).submit()
 
     this.total_deposits.value = Uint64(0)
@@ -114,6 +117,7 @@ export class LendingPool extends Contract {
       xferAsset: this.lp_token_id.value,
       assetReceiver: Txn.sender,
       assetAmount: lp_tokens_to_mint,
+      fee: Uint64(0),
     }).submit()
 
     this.total_deposits.value = this.total_deposits.value + payment.assetAmount
@@ -154,6 +158,7 @@ export class LendingPool extends Contract {
       xferAsset: this.pool_asset_id.value,
       assetReceiver: Txn.sender,
       assetAmount: total_withdrawal,
+      fee: Uint64(0),
     }).submit()
 
     this.last_update_round.value = Global.round
@@ -172,6 +177,7 @@ export class LendingPool extends Contract {
       xferAsset: pool_asset,
       assetReceiver: borrower,
       assetAmount: amount,
+      fee: Uint64(0),
     }).submit()
 
     return amount

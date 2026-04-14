@@ -93,11 +93,11 @@ async function deploy() {
     assetId: usdcAssetId,
   })
 
-  // Call bootstrap with USDC asset ID + extra fee for inner txns (assetConfig + assetTransfer = 2 inner txns)
+  // Call bootstrap with USDC asset ID + extra fee for inner txns (assetConfig + 2×assetTransfer = 3 inner txns)
   console.log('[5/9] Calling LendingPool bootstrap...')
   await lendingPoolClient.send.bootstrap({
     args: [usdcAssetId],
-    extraFee: microAlgo(2000), // 2 inner txns × 1000 microAlgo each
+    extraFee: microAlgo(3000), // 3 inner txns × 1000 microAlgo each
   })
   console.log('  LendingPool bootstrapped!')
 
