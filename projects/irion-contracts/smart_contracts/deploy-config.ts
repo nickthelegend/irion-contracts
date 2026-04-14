@@ -8,11 +8,22 @@ import { CreditScoreFactory } from './artifacts/credit_score/CreditScoreClient'
 import { BnplCreditFactory } from './artifacts/bnpl_credit/BNPLCreditClient'
 import { MerchantEscrowFactory } from './artifacts/merchant_escrow/MerchantEscrowClient'
 
-async function deploy() {
+export async function deploy() {
   console.log('=== BNPL Protocol Deployment ===\n')
 
   const algorand = AlgorandClient.fromEnvironment()
-  const dispenser = await algorand.account.localNetDispenser()
+  
+  let dispenser: any
+  try {
+    // Try to get deployer from env first
+    dispenser = await algorand.account.fromEnvironment('DEPLOYER')
+    console.log('Using DEPLOYER from environment')
+  } catch (e) {
+    // Fallback to localnet dispenser
+    dispenser = await algorand.account.localNetDispenser()
+    console.log('Using LocalNet Dispenser')
+  }
+  
   console.log('Deployer:', dispenser.addr.toString())
 
   // ─────────────────────────────────────────────
@@ -21,7 +32,7 @@ async function deploy() {
   console.log('[1/9] Creating mock USDC ASA...')
   const usdcTxResult = await algorand.send.assetCreate({
     sender: dispenser.addr,
-    total: 1_000_000_000_000_000n, // 1 billion USDC (6 decimals)
+    total: 10_000_000_000_000_000n, // 10 billion USDC (6 decimals)
     decimals: 6,
     defaultFrozen: false,
     unitName: 'USDC',
@@ -195,7 +206,9 @@ async function deploy() {
     }
   }
 
-  const deploymentsPath = path.join(__dirname, '..', '..', '..', 'deployments.json')
+  const isTestnet = (process.env.ALGOD_NETWORK || '').toLowerCase() === 'testnet'
+  const deploymentsFilename = isTestnet ? 'deployments.testnet.json' : 'deployments.json'
+  const deploymentsPath = path.join(__dirname, '..', '..', '..', deploymentsFilename)
   fs.writeFileSync(deploymentsPath, JSON.stringify(deployments, null, 2))
 
   console.log('\n=== Deployment Complete ===')

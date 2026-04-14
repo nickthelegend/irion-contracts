@@ -1,23 +1,15 @@
 {
-  "network": "testnet",
-  "deployed_at": "2026-04-14T06:08:14.343Z",
-  "deployer_address": "NICKXD44FJQJZ2O5QLHS4FQSRX6WHHTSZG6HBQK4TJIOMHNVUSML33XITQ",
-  "iusdc_asset_id": 758796273,
-  "credit_score_app_id": 758796274,
-  "lending_pool_app_id": 758796287,
-  "bnpl_credit_app_id": 758796304,
-  "merchant_escrow_app_id": 758796316,
+  "network": "localnet",
+  "deployed_at": "2026-04-14T21:08:42.389Z",
+  "usdc_asset_id": 758823248,
+  "credit_score_app_id": 758823250,
+  "lending_pool_app_id": 758823264,
+  "bnpl_credit_app_id": 758823294,
+  "merchant_escrow_app_id": 758823312,
   "addresses": {
-    "credit_score": "33SDC6HUGER4V4RFEO456RDA4PAB74SM5EDQ3UANXOBOLXKOJR2XAYLO2Q",
-    "lending_pool": "DAUZXQX7GXBQXP2YI7OYSY6UO5AIAZKA4NXHLFXBLT24FMOH4IWNJ3HP3Y",
-    "bnpl_credit": "XF74ILJXLBG7IOMNTC44H27SAW4ADTJ5U7A4HGQXYS3VKTSVXRRDFG2W3M",
-    "merchant_escrow": "PTQZXK7AJ4ATDITIBP46BC64WWAPJVVPLIURU5RNWGBF7GIKWRGATMHOCA"
-  },
-  "explorer": {
-    "credit_score": "https://testnet.explorer.perawallet.app/application/758796274",
-    "lending_pool": "https://testnet.explorer.perawallet.app/application/758796287",
-    "bnpl_credit": "https://testnet.explorer.perawallet.app/application/758796304",
-    "merchant_escrow": "https://testnet.explorer.perawallet.app/application/758796316",
-    "iusdc": "https://testnet.explorer.perawallet.app/asset/758796273"
+    "credit_score": "FSD7KCG44ATXXZKCNMLTXJYDJSGAIDURD4CNHJVS6OW7HIZ2X5S42D3XDU",
+    "lending_pool": "FTP2A7RJLMCHY6R67JDHWKJUJWTQXIFI2DQ3ZN5APVMIJEK2QOLYX7NDAE",
+    "bnpl_credit": "VDXXCRRS6UM2XFNSXMRVHCWNP7PUONKLZVW5VUX5ZJ2PBYYANUN2CPWABI",
+    "merchant_escrow": "6YDUQS757SMS24TQBYSFKRZQLM5K4O7AKJH5FQWNM5FQ57Q7KNK2LBOYMI"
   }
 }
