@@ -104,7 +104,10 @@ export class CreditScore extends Contract {
       score_change = LATE_REPAYMENT_PENALTY
     }
 
-    const new_score: uint64 = this.clamp_score(profile.score - score_change)
+    // Add bonus for on-time, subtract penalty for late
+    const new_score: uint64 = on_time 
+      ? this.clamp_score(profile.score + score_change)
+      : this.clamp_score(profile.score - score_change)
     profile.score = new_score
     profile.total_repaid = profile.total_repaid + amount
     profile.active_loans = profile.active_loans - Uint64(1)
@@ -145,19 +148,31 @@ export class CreditScore extends Contract {
   public get_borrow_limit(user: Account): uint64 {
     const score: uint64 = this.get_score(user)
 
-    if (score < Uint64(500)) {
+    if (score < Uint64(300)) {
       return Uint64(0)
     }
+    if (score < Uint64(350)) {
+      return Uint64(10_000_000)       // $10 - New user starter limit
+    }
+    if (score < Uint64(400)) {
+      return Uint64(25_000_000)       // $25 - After 1 on-time repayment
+    }
+    if (score < Uint64(450)) {
+      return Uint64(50_000_000)       // $50 - After 2 on-time repayments
+    }
+    if (score < Uint64(500)) {
+      return Uint64(100_000_000)      // $100 - After 3+ on-time repayments
+    }
     if (score < Uint64(600)) {
-      return Uint64(500_000_000)
+      return Uint64(500_000_000)      // $500
     }
     if (score < Uint64(700)) {
-      return Uint64(2_000_000_000)
+      return Uint64(2_000_000_000)    // $2,000
     }
     if (score < Uint64(750)) {
-      return Uint64(5_000_000_000)
+      return Uint64(5_000_000_000)    // $5,000
     }
-    return Uint64(10_000_000_000)
+    return Uint64(10_000_000_000)     // $10,000
   }
 
   @abimethod({ readonly: true })
