@@ -35,6 +35,7 @@ export class LendingPool extends Contract {
   interest_rate_base = GlobalState<uint64>()
   pool_asset_id = GlobalState<uint64>()
   lp_token_id = GlobalState<uint64>()
+  total_lp_supply = GlobalState<uint64>()
   last_update_round = GlobalState<uint64>()
 
   lender_boxes = BoxMap<Account, LenderPosition>({ keyPrefix: 'l' })
@@ -76,6 +77,7 @@ export class LendingPool extends Contract {
 
     this.total_deposits.value = Uint64(0)
     this.total_borrowed.value = Uint64(0)
+    this.total_lp_supply.value = Uint64(0)
     this.reserve_factor.value = Uint64(1000)
     this.interest_rate_base.value = Uint64(500)
     this.last_update_round.value = Global.round
@@ -110,7 +112,8 @@ export class LendingPool extends Contract {
 
     const lp_tokens_to_mint: uint64 = this.calculate_lp_tokens(
       payment.assetAmount,
-      this.total_deposits.value
+      this.total_deposits.value,
+      this.total_lp_supply.value
     )
 
     itxn.assetTransfer({
@@ -121,19 +124,24 @@ export class LendingPool extends Contract {
     }).submit()
 
     this.total_deposits.value = this.total_deposits.value + payment.assetAmount
+    this.total_lp_supply.value = this.total_lp_supply.value + lp_tokens_to_mint
     this.last_update_round.value = Global.round
   }
 
   private calculate_lp_tokens(
     deposit_amount: uint64,
-    existing_deposits: uint64
+    existing_deposits: uint64,
+    existing_lp_supply: uint64
   ): uint64 {
     if (existing_deposits === Uint64(0)) {
       return deposit_amount
     }
 
-    const total_lp_supply: uint64 = Uint64(1_000_000_000_000)
-    const new_lp_amount: uint64 = (deposit_amount * total_lp_supply) / existing_deposits
+    if (existing_lp_supply === Uint64(0)) {
+      return deposit_amount
+    }
+
+    const new_lp_amount: uint64 = (deposit_amount * existing_lp_supply) / existing_deposits
     return new_lp_amount
   }
 
@@ -153,6 +161,7 @@ export class LendingPool extends Contract {
     this.lender_boxes(Txn.sender).delete()
 
     this.total_deposits.value = this.total_deposits.value - updated_position.deposit_amount
+    this.total_lp_supply.value = this.total_lp_supply.value - lp_amount
 
     itxn.assetTransfer({
       xferAsset: this.pool_asset_id.value,
