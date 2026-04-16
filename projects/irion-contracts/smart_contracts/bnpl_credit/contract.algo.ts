@@ -14,6 +14,7 @@ import {
   abimethod,
   gtxn,
   clone,
+  op,
 } from "@algorandfoundation/algorand-typescript";
 import { methodSelector } from '@algorandfoundation/algorand-typescript/arc4'
 
@@ -161,7 +162,8 @@ export class BNPLCredit extends Contract {
         loan.next_due_round = loan.next_due_round + this.installment_interval.value
       }
     } else {
-      const late_fee: uint64 = (payment.assetAmount * this.late_fee_bps.value) / Uint64(10000)
+      const [high, low] = op.mulw(payment.assetAmount, this.late_fee_bps.value)
+      const late_fee: uint64 = op.divw(high, low, Uint64(10000))
       const total_payment: uint64 = payment.assetAmount + late_fee
 
       loan.total_repaid = loan.total_repaid + total_payment

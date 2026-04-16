@@ -150,7 +150,7 @@ async function deploy() {
   })
 
   await bnplCreditClient.send.bootstrap({
-    args: [creditScoreAppId, lendingPoolAppId],
+    args: [creditScoreAppId, lendingPoolAppId, iusdcAssetId],
   })
   console.log('  BNPLCredit bootstrapped!')
 

@@ -3,7 +3,7 @@
   "sources": [
     "../../bnpl_credit/contract.algo.ts"
   ],
-  "mappings": "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",
+  "mappings": "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",
   "op_pc_offset": 0,
   "pc_events": {
     "1": {
@@ -5741,10 +5741,11 @@
       ]
     },
     "791": {
-      "op": "*",
+      "op": "mulw",
       "defined_out": [
-        "tmp%13#0",
-        "tmp%14#0"
+        "high#0",
+        "low#0",
+        "tmp%13#0"
       ],
       "stack_out": [
         "tmp%6#0",
@@ -5752,15 +5753,17 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "tmp%13#0",
-        "tmp%14#0"
+        "high#0",
+        "low#0"
       ]
     },
     "792": {
       "op": "pushint 10000 // 10000",
       "defined_out": [
         "10000",
-        "tmp%13#0",
-        "tmp%14#0"
+        "high#0",
+        "low#0",
+        "tmp%13#0"
       ],
       "stack_out": [
         "tmp%6#0",
@@ -5768,12 +5771,13 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "tmp%13#0",
-        "tmp%14#0",
+        "high#0",
+        "low#0",
         "10000"
       ]
     },
     "795": {
-      "op": "/",
+      "op": "divw",
       "defined_out": [
         "late_fee#0",
         "tmp%13#0"
@@ -5911,7 +5915,7 @@
       "op": "+",
       "defined_out": [
         "box_prefixed_key%0#0",
-        "tmp%18#0",
+        "tmp%17#0",
         "total_payment#0"
       ],
       "stack_out": [
@@ -5919,7 +5923,7 @@
         "total_payment#0",
         "box_prefixed_key%0#0",
         "loan#0",
-        "tmp%18#0"
+        "tmp%17#0"
       ]
     },
     "808": {
@@ -6052,7 +6056,7 @@
       "defined_out": [
         "box_prefixed_key%0#0",
         "loan#0",
-        "tmp%19#0",
+        "tmp%18#0",
         "total_payment#0"
       ],
       "stack_out": [
@@ -6061,7 +6065,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "loan#0",
-        "tmp%19#0"
+        "tmp%18#0"
       ]
     },
     "820": {
@@ -6205,7 +6209,7 @@
       "defined_out": [
         "box_prefixed_key%0#0",
         "loan#0",
-        "tmp%20#0",
+        "tmp%19#0",
         "total_payment#0"
       ],
       "stack_out": [
@@ -6213,7 +6217,7 @@
         "total_payment#0",
         "box_prefixed_key%0#0",
         "loan#0",
-        "tmp%20#0"
+        "tmp%19#0"
       ]
     },
     "835": {
@@ -6386,7 +6390,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "total_payment#0"
       ],
       "stack_out": [
@@ -6396,7 +6400,7 @@
         "loan#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0"
+        "tmp%20#0"
       ]
     },
     "856": {
@@ -6408,7 +6412,7 @@
         "loan#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "loan#0 (copy)"
       ]
     },
@@ -6421,7 +6425,7 @@
         "loan#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "loan#0 (copy)",
         "0"
       ]
@@ -6433,7 +6437,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "total_payment#0"
       ],
       "stack_out": [
@@ -6443,7 +6447,7 @@
         "loan#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "aggregate%extract_uint16%4#0"
       ]
     },
@@ -6456,7 +6460,7 @@
         "loan#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "aggregate%extract_uint16%4#0",
         "loan#0 (copy)"
       ]
@@ -6470,7 +6474,7 @@
         "loan#0",
         "loan#0 (copy)",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "total_payment#0"
       ],
       "stack_out": [
@@ -6480,7 +6484,7 @@
         "loan#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "aggregate%extract_uint16%4#0",
         "loan#0 (copy)",
         "2"
@@ -6494,7 +6498,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "total_payment#0"
       ],
       "stack_out": [
@@ -6504,7 +6508,7 @@
         "loan#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "aggregate%extract_uint16%4#0",
         "aggregate%extract_uint16%5#0"
       ]
@@ -6517,7 +6521,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "aggregate%extract_uint16%4#0",
         "aggregate%extract_uint16%5#0",
         "loan#0"
@@ -6531,7 +6535,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "loan#0",
         "aggregate%extract_uint16%4#0",
         "aggregate%extract_uint16%5#0"
@@ -6544,7 +6548,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "total_payment#0"
       ],
       "stack_out": [
@@ -6553,7 +6557,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "aggregate%substring3%2#0"
       ]
     },
@@ -6563,7 +6567,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "total_payment#0",
         "values%13#0"
       ],
@@ -6573,7 +6577,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "values%13#0"
       ]
     },
@@ -6584,7 +6588,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "total_payment#0",
         "values%13#0"
       ],
@@ -6594,7 +6598,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "values%13#0",
         "Method(repay(asset_transfer,address))"
       ]
@@ -6607,7 +6611,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "maybe_value%4#0",
-        "tmp%21#0",
+        "tmp%20#0",
         "values%13#0"
       ]
     },
@@ -6620,7 +6624,7 @@
         "loan#0",
         "maybe_value%4#0",
         "values%13#0",
-        "tmp%21#0"
+        "tmp%20#0"
       ]
     },
     "878": {
@@ -6829,7 +6833,7 @@
       "op": "+",
       "defined_out": [
         "loan#0",
-        "tmp%22#0"
+        "tmp%21#0"
       ],
       "stack_out": [
         "tmp%6#0",
@@ -6837,7 +6841,7 @@
         "box_prefixed_key%0#0",
         "loan#0",
         "loan#0",
-        "tmp%22#0"
+        "tmp%21#0"
       ]
     },
     "905": {

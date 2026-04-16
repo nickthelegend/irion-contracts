@@ -15,6 +15,9 @@ import {
   gtxn,
   Application,
   clone,
+  op,
+  BigUint,
+  biguint,
 } from "@algorandfoundation/algorand-typescript";
 
 type LenderPosition = {
@@ -133,16 +136,12 @@ export class LendingPool extends Contract {
     existing_deposits: uint64,
     existing_lp_supply: uint64
   ): uint64 {
-    if (existing_deposits === Uint64(0)) {
+    if (existing_deposits === Uint64(0) || existing_lp_supply === Uint64(0)) {
       return deposit_amount
     }
 
-    if (existing_lp_supply === Uint64(0)) {
-      return deposit_amount
-    }
-
-    const new_lp_amount: uint64 = (deposit_amount * existing_lp_supply) / existing_deposits
-    return new_lp_amount
+    const [high, low] = op.mulw(deposit_amount, existing_lp_supply)
+    return op.divw(high, low, existing_deposits)
   }
 
   @abimethod()
@@ -255,9 +254,9 @@ export class LendingPool extends Contract {
     rounds_elapsed: uint64
   ): uint64 {
     const rounds_per_year: uint64 = Uint64(1576800)
-    const yield_amount: uint64 = (deposit_amount * annual_rate * rounds_elapsed) /
-      (BPS_MULTIPLIER * rounds_per_year)
-    return yield_amount
+    const yield_amount: biguint = (BigUint(deposit_amount) * BigUint(annual_rate) * BigUint(rounds_elapsed)) /
+      (BigUint(BPS_MULTIPLIER) * BigUint(rounds_per_year))
+    return op.btoi(Bytes(yield_amount))
   }
 
   @abimethod({ readonly: true })
